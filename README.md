@@ -8,6 +8,16 @@
   <strong>Battery charge limiter for Mac, with limits below 80%</strong>
 </p>
 
+> **Simplified Chinese translation.**
+> This repository is a Simplified Chinese translation of
+> [Chargectl](https://github.com/tyldra-org/chargectl). It is not the official
+> project. English remains the source language, and the app follows the language
+> chosen for Chargectl in macOS settings. The original project, its copyright
+> notices and the Apache License 2.0 are unchanged.
+>
+> **简体中文翻译版。**
+> 本仓库是 [Chargectl](https://github.com/tyldra-org/chargectl) 的简体中文翻译版，不是官方仓库。英文仍是源语言，应用语言跟随 macOS 中为 Chargectl 选择的语言。原项目、版权声明和 Apache License 2.0 均保持不变。
+
 <p align="center">
   <a href="https://github.com/tyldra-org/chargectl/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/tyldra-org/chargectl/actions/workflows/ci.yml/badge.svg?branch=main"></a>
   <a href="https://github.com/tyldra-org/chargectl/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/tyldra-org/chargectl"></a>
