@@ -497,8 +497,9 @@ private struct LogLine: View {
     }
 
     private var text: String {
-        guard kind != .helper, !entry.message.hasPrefix("macOS") else { return entry.message }
-        return entry.message.capitalizedFirst
+        let message = LogPresentation.display(entry.message)
+        guard kind != .helper, !entry.message.hasPrefix("macOS") else { return message }
+        return message.capitalizedFirst
     }
 
     private var highlighted: Text {

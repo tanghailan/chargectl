@@ -6270,6 +6270,66 @@
           }
         }
       }
+    },
+    "Calibrate": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "校准"
+          }
+        }
+      }
+    },
+    "Below 80%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "低于 80%"
+          }
+        }
+      }
+    },
+    "At %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量 %lld%%"
+          }
+        }
+      }
+    },
+    "macOS charge limit is off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 充电上限已关闭"
+          }
+        }
+      }
+    },
+    "macOS charge limit is %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 充电上限为 %lld%%"
+          }
+        }
+      }
+    },
+    "calibration started: draining to %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已开始校准：放电至 %lld%%"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

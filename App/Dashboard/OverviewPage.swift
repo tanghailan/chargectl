@@ -878,7 +878,7 @@ private struct ActivityRow: View {
             }
             .frame(width: 10)
             VStack(alignment: .leading, spacing: 2) {
-                Text(entry.message.capitalizedFirst)
+                Text(LogPresentation.display(entry.message).capitalizedFirst)
                     .font(.system(size: 12.5, weight: accent ? .medium : .regular))
                     .foregroundStyle(entry.level == .warning ? Theme.warn : .primary)
                     .lineLimit(1)
