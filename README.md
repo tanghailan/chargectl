@@ -66,9 +66,21 @@ working while the app is closed.
 brew install --cask tyldra-org/tools/chargectl
 ```
 
-You can also download `Chargectl-<version>.zip` from
-[Releases](https://github.com/tyldra-org/chargectl/releases/latest), or
-[build it from source](#build-from-source).
+That Homebrew command and the
+[official releases](https://github.com/tyldra-org/chargectl/releases/latest)
+install the upstream English app, not this translation.
+
+Download the Simplified Chinese build,
+[`Chargectl-0.2.7.zip`](https://github.com/tanghailan/chargectl/releases/latest),
+from this repository. It is signed ad hoc, not with Chargectl’s release
+certificate, so macOS asks you to approve it and asks for your password again
+when the helper is installed or updated.
+
+You can also [build it from source](#build-from-source).
+
+下载本仓库的简体中文版本：
+[`Chargectl-0.2.7.zip`](https://github.com/tanghailan/chargectl/releases/latest)。
+它没有使用官方发布证书签名，因此 macOS 会要求你确认来源；安装或更新辅助程序时也会再次要求输入密码。上面的 Homebrew 命令安装的是官方英文版。
 
 Then open **Chargectl** from Applications. A short welcome walks you through:
 
