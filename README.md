@@ -19,8 +19,8 @@
 > 本仓库是 [Chargectl](https://github.com/tyldra-org/chargectl) 的简体中文翻译版，不是官方仓库。英文仍是源语言，应用语言跟随 macOS 中为 Chargectl 选择的语言。原项目、版权声明和 Apache License 2.0 均保持不变。
 
 <p align="center">
-  <a href="https://github.com/tyldra-org/chargectl/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/tyldra-org/chargectl/actions/workflows/ci.yml/badge.svg?branch=main"></a>
-  <a href="https://github.com/tyldra-org/chargectl/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/tyldra-org/chargectl"></a>
+  <a href="https://github.com/tanghailan/chargectl/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/tanghailan/chargectl/actions/workflows/ci.yml/badge.svg?branch=main"></a>
+  <a href="https://github.com/tanghailan/chargectl/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/tanghailan/chargectl"></a>
   <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-blue.svg"></a>
   <img alt="macOS 27" src="https://img.shields.io/badge/macOS-27-black.svg?logo=apple">
   <img alt="Apple silicon" src="https://img.shields.io/badge/Apple%20silicon-arm64-black.svg">
@@ -313,6 +313,9 @@ macOS charge limit, then removes everything Chargectl added. Details are under
 
 ### Homebrew
 
+These commands install the official English app from the upstream tap, not this
+Simplified Chinese translation:
+
 ```sh
 brew install --cask tyldra-org/tools/chargectl                  # install
 brew update && brew upgrade --cask tyldra-org/tools/chargectl   # update
@@ -325,15 +328,19 @@ other taps when you name them, or after `brew trust tyldra-org/tools`.
 
 ### Download
 
-Each [release](https://github.com/tyldra-org/chargectl/releases) has
-`Chargectl-<version>.zip`, its SHA-256 checksum and a build provenance
-attestation. Unzip it and move Chargectl to Applications. Releases are not
-notarized, so macOS blocks the first launch of a downloaded copy: open it once,
-then choose **Open Anyway** in System Settings › Privacy & Security. To check a
-download:
+Each [release of this translation](https://github.com/tanghailan/chargectl/releases)
+has `Chargectl-<version>.zip` and its SHA-256 checksum. Unzip it and move
+Chargectl to Applications. This build is signed ad hoc and is not notarized, so
+macOS blocks the first launch of a downloaded copy: open it once, then choose
+**Open Anyway** in System Settings › Privacy & Security. To check a download:
 
 ```sh
 shasum -a 256 -c Chargectl-<version>.zip.sha256
+```
+
+The upstream project’s releases also include a build provenance attestation:
+
+```sh
 gh attestation verify Chargectl-<version>.zip --repo tyldra-org/chargectl
 ```
 
@@ -343,7 +350,7 @@ Needs Xcode 27 and [XcodeGen](https://github.com/yonaskolb/XcodeGen)
 (`brew install xcodegen`).
 
 ```sh
-git clone https://github.com/tyldra-org/chargectl.git
+git clone https://github.com/tanghailan/chargectl.git
 cd chargectl
 ./scripts/install.sh           # build and install the app
 ./scripts/install.sh --logs    # same, then follow the helper's log
