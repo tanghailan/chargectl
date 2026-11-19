@@ -58,7 +58,9 @@ struct SettingsPage: View {
                     title: "Show in menu bar", detail: Text("Chargectl’s charge ring next to the clock."),
                     divider: false
                 ) {
-                    toggle($showInMenuBar, on: "Shown in the menu bar", off: "Hidden from the menu bar")
+                    toggle(
+                        $showInMenuBar, on: String(localized: "Shown in the menu bar"),
+                        off: String(localized: "Hidden from the menu bar"))
                 }
                 SettingRow(
                     title: "Show percentage",
@@ -67,14 +69,18 @@ struct SettingsPage: View {
                     ),
                     indented: true
                 ) {
-                    toggle($showPercentage, on: "Percentage shown", off: "Percentage hidden")
+                    toggle(
+                        $showPercentage, on: String(localized: "Percentage shown"),
+                        off: String(localized: "Percentage hidden"))
                 }
                 .dimmed(!showInMenuBar)
                 SettingRow(
                     title: "Open at login",
                     detail: Text("Starts Chargectl when you log in. The helper keeps your limit either way.")
                 ) {
-                    toggle($opensAtLogin, on: "Opens at login", off: "Won’t open at login")
+                    toggle(
+                        $opensAtLogin, on: String(localized: "Opens at login"),
+                        off: String(localized: "Won’t open at login"))
                 }
                 if !showInMenuBar {
                     Label(
@@ -108,7 +114,7 @@ struct SettingsPage: View {
                     ForEach(AppearanceMode.allCases) { mode in
                         AppearanceTile(mode: mode, isSelected: appearance == mode) {
                             appearance = mode
-                            Confirmations.shared.show("Appearance: \(mode.title)")
+                            Confirmations.shared.show(String(localized: "Appearance: \(mode.localizedTitle)"))
                         }
                     }
                 }
@@ -128,7 +134,7 @@ struct SettingsPage: View {
                             get: { unit },
                             set: { value in
                                 unit = value
-                                Confirmations.shared.show("Temperature in \(value.symbol)")
+                                Confirmations.shared.show(String(localized: "Temperature in \(value.symbol)"))
                             }))
                 }
             }
@@ -147,14 +153,20 @@ struct SettingsPage: View {
                         "The helper stops, cutting wall power has no effect, the battery is too warm, or the charger can’t keep up."
                     ), divider: false
                 ) {
-                    toggle($notifyProblems, on: "Problem notifications on", off: "Problem notifications off")
+                    toggle(
+                        $notifyProblems, on: String(localized: "Problem notifications on"),
+                        off: String(localized: "Problem notifications off"))
                 }
                 .padding(.top, 6)
                 SettingRow(title: "Jobs finished", detail: Text("Top Up, Discharge, Calibrate and Full by are done.")) {
-                    toggle($notifyJobs, on: "Job notifications on", off: "Job notifications off")
+                    toggle(
+                        $notifyJobs, on: String(localized: "Job notifications on"),
+                        off: String(localized: "Job notifications off"))
                 }
                 SettingRow(title: "Limit reached", detail: Text("Charging stopped at your limit.")) {
-                    toggle($notifyLimit, on: "Limit notifications on", off: "Limit notifications off")
+                    toggle(
+                        $notifyLimit, on: String(localized: "Limit notifications on"),
+                        off: String(localized: "Limit notifications off"))
                 }
                 if notificationsDenied {
                     HStack(spacing: 10) {
@@ -188,18 +200,31 @@ struct SettingsPage: View {
         let (title, pill, detail, tone): (String, String, String, HelperTone) =
             switch model.service {
             case .running:
-                ("Running", "Active", "Switches wall power and keeps your limit while Chargectl is closed.", .ok)
-            case .checking: ("Checking…", "Asking", "Asking the helper how it is.", .quiet)
-            case .notInstalled: ("Not installed", "Off", "Charge control is off until the helper is installed.", .quiet)
+                (
+                    String(localized: "Running"), String(localized: "Active"),
+                    String(localized: "Switches wall power and keeps your limit while Chargectl is closed."), .ok
+                )
+            case .checking:
+                (
+                    String(localized: "Checking…"), String(localized: "Asking"),
+                    String(localized: "Asking the helper how it is."), .quiet
+                )
+            case .notInstalled:
+                (
+                    String(localized: "Not installed"), String(localized: "Off"),
+                    String(localized: "Charge control is off until the helper is installed."), .quiet
+                )
             case .needsApproval:
                 (
-                    "Waiting for approval", "Login Items",
-                    "Turn on Chargectl in System Settings › Login Items to start it.", .warn
+                    String(localized: "Waiting for approval"), String(localized: "Login Items"),
+                    String(localized: "Turn on Chargectl in System Settings › Login Items to start it."), .warn
                 )
             case .notResponding:
                 (
-                    "Not responding", "Stalled",
-                    "The helper is installed but doesn’t answer. Installing it again usually fixes this.", .warn
+                    String(localized: "Not responding"), String(localized: "Stalled"),
+                    String(
+                        localized: "The helper is installed but doesn’t answer. Installing it again usually fixes this."
+                    ), .warn
                 )
             }
         return Panel {
@@ -254,8 +279,14 @@ struct SettingsPage: View {
                     .padding(.top, 12)
                 Text(
                     ServiceInstaller.method == .launchdPlist
-                        ? "The helper runs as root. Installing it asks for your password once; updates keep it running. Removing it reconnects wall power."
-                        : "The helper runs as root. After installing, turn on Chargectl in System Settings › Login Items. Removing it reconnects wall power."
+                        ? String(
+                            localized:
+                                "The helper runs as root. Installing it asks for your password once; updates keep it running. Removing it reconnects wall power."
+                        )
+                        : String(
+                            localized:
+                                "The helper runs as root. After installing, turn on Chargectl in System Settings › Login Items. Removing it reconnects wall power."
+                        )
                 )
                 .font(.system(size: 11.5))
                 .foregroundStyle(.tertiary)
@@ -274,7 +305,9 @@ struct SettingsPage: View {
             Button {
                 model.installService()
             } label: {
-                Label(model.isInstallingService ? "Installing…" : "Install Again…", systemImage: "arrow.clockwise")
+                Label(
+                    model.isInstallingService ? String(localized: "Installing…") : String(localized: "Install Again…"),
+                    systemImage: "arrow.clockwise")
             }
             .buttonStyle(SoftButtonStyle(small: true))
             .disabled(model.isInstallingService)
@@ -283,7 +316,9 @@ struct SettingsPage: View {
             Button {
                 model.installService()
             } label: {
-                Label(model.isInstallingService ? "Installing…" : "Install Helper", systemImage: "arrow.down.to.line")
+                Label(
+                    model.isInstallingService ? String(localized: "Installing…") : String(localized: "Install Helper"),
+                    systemImage: "arrow.down.to.line")
             }
             .buttonStyle(SoftButtonStyle(kind: .primary, small: true))
             .disabled(model.isInstallingService)
@@ -315,7 +350,7 @@ struct SettingsPage: View {
                         Button("Remove") {
                             confirmingRemove = false
                             model.uninstallService()
-                            Confirmations.shared.show("Helper removed")
+                            Confirmations.shared.show(String(localized: "Helper removed"))
                         }
                         .buttonStyle(SoftButtonStyle(kind: .danger, small: true))
                     }
@@ -346,7 +381,10 @@ struct SettingsPage: View {
                         updateStatus
                     }
                     Spacer()
-                    Button(updater.phase == .checking ? "Checking…" : "Check for Updates") {
+                    Button(
+                        updater.phase == .checking
+                            ? String(localized: "Checking…") : String(localized: "Check for Updates")
+                    ) {
                         Task { await updater.check() }
                     }
                     .buttonStyle(SoftButtonStyle(small: true))
@@ -359,10 +397,12 @@ struct SettingsPage: View {
                     title: "Update automatically",
                     detail: Text(
                         autoUpdate
-                            ? "Installs new versions while Chargectl’s windows are closed."
-                            : "Chargectl tells you about new versions; you install them here.")
+                            ? String(localized: "Installs new versions while Chargectl’s windows are closed.")
+                            : String(localized: "Chargectl tells you about new versions; you install them here."))
                 ) {
-                    toggle($autoUpdate, on: "Automatic updates on", off: "Automatic updates off")
+                    toggle(
+                        $autoUpdate, on: String(localized: "Automatic updates on"),
+                        off: String(localized: "Automatic updates off"))
                 }
                 .padding(.top, 8)
                 Text(
@@ -389,8 +429,10 @@ struct SettingsPage: View {
                 }
             case .upToDate:
                 Label(
-                    updater.lastChecked.map { "Up to date, checked \($0.formatted(.relative(presentation: .named)))" }
-                        ?? "Up to date", systemImage: "checkmark.circle"
+                    updater.lastChecked.map {
+                        String(localized: "Up to date, checked \($0.formatted(.relative(presentation: .named)))")
+                    }
+                        ?? String(localized: "Up to date"), systemImage: "checkmark.circle"
                 )
                 .labelStyle(TintedIconLabelStyle(tint: Theme.accent))
             case .available:
@@ -507,7 +549,7 @@ struct SettingsPage: View {
                 try SMAppService.mainApp.unregister()
             }
         } catch {
-            model.message = "Open at login could not be changed: \(error.localizedDescription)"
+            model.message = String(localized: "Open at login could not be changed: \(error.localizedDescription)")
             opensAtLogin = SMAppService.mainApp.status == .enabled
         }
     }
@@ -559,9 +601,9 @@ private struct MenuBarPreview: View {
         HStack(spacing: 14) {
             // The menus give way first, as on a real menu bar, so the status items always fit.
             ViewThatFits(in: .horizontal) {
-                menus(["File", "Edit", "View"])
-                menus(["File", "Edit"])
-                menus(["File"])
+                menus([String(localized: "File"), String(localized: "Edit"), String(localized: "View")])
+                menus([String(localized: "File"), String(localized: "Edit")])
+                menus([String(localized: "File")])
                 menus([])
             }
             .opacity(0.9)
@@ -670,7 +712,7 @@ private struct AppearanceTile: View {
                     if isSelected {
                         Image(systemName: "checkmark.circle.fill").foregroundStyle(Theme.accent)
                     }
-                    Text(mode.title)
+                    Text(mode.localizedTitle)
                 }
                 .font(.system(size: 12, weight: isSelected ? .medium : .regular))
                 .foregroundStyle(isSelected ? .primary : .secondary)
@@ -678,7 +720,7 @@ private struct AppearanceTile: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
-        .accessibilityLabel(mode.title)
+        .accessibilityLabel(mode.localizedTitle)
         .accessibilityAddTraits(isSelected ? [.isSelected, .isButton] : .isButton)
         .animation(.easeOut(duration: 0.2), value: isSelected)
     }
@@ -713,11 +755,13 @@ private struct UninstallSheet: View {
     @State private var removing = false
 
     private let items = [
-        ("app.dashed", "The app"), ("gearshape.2", "Background service"),
-        ("person.crop.circle.badge.checkmark", "Login Items entries"),
-        ("slider.horizontal.3", "Settings"), ("chart.xyaxis.line", "History"), ("list.bullet.rectangle", "Logs"),
-        ("switch.2", "Preferences"), ("internaldrive", "Caches"),
-        ("square.grid.2x2", "Widget data"), ("exclamationmark.triangle", "Crash reports"),
+        ("app.dashed", String(localized: "The app")), ("gearshape.2", String(localized: "Background service")),
+        ("person.crop.circle.badge.checkmark", String(localized: "Login Items entries")),
+        ("slider.horizontal.3", String(localized: "Settings")), ("chart.xyaxis.line", String(localized: "History")),
+        ("list.bullet.rectangle", String(localized: "Logs")),
+        ("switch.2", String(localized: "Preferences")), ("internaldrive", String(localized: "Caches")),
+        ("square.grid.2x2", String(localized: "Widget data")),
+        ("exclamationmark.triangle", String(localized: "Crash reports")),
     ]
 
     var body: some View {
@@ -759,7 +803,7 @@ private struct UninstallSheet: View {
                     .buttonStyle(SoftButtonStyle(small: true))
                     .keyboardShortcut(.cancelAction)
                     .disabled(removing)
-                Button(removing ? "Uninstalling…" : "Uninstall") {
+                Button(removing ? String(localized: "Uninstalling…") : String(localized: "Uninstall")) {
                     removing = true
                     Task {
                         // Returns only when a step failed; the reason shows as a notice.

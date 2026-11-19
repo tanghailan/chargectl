@@ -42,8 +42,10 @@ struct OverviewPage: View {
             .task { await energy.run() }
         } else {
             StackedEmptyState(
-                symbols: ["bolt", "thermometer.medium", "battery.0percent"], title: "Reading the battery",
-                message: model.batteryError ?? "Chargectl reads the battery once a second. This takes a moment."
+                symbols: ["bolt", "thermometer.medium", "battery.0percent"],
+                title: String(localized: "Reading the battery"),
+                message: model.batteryError
+                    ?? String(localized: "Chargectl reads the battery once a second. This takes a moment.")
             ) { EmptyView() }
             .padding(24)
         }
@@ -91,7 +93,7 @@ struct OverviewPage: View {
                     onSetLimit: model.isControllable
                         ? { limit in
                             model.update { $0.limit = limit }
-                            Confirmations.shared.show("Limit set to \(limit)%")
+                            Confirmations.shared.show(String(localized: "Limit set to \(limit)%"))
                         } : nil
                 )
                 .padding(.top, 26)
@@ -104,7 +106,7 @@ struct OverviewPage: View {
         if let estimate = model.estimate, let minutes = estimate.minutes {
             parts.append("\(TimeText.minutes(minutes)) \(estimate.caption)")
         }
-        if battery.isPluggedIn { parts.append(battery.adapterName ?? "Charger connected") }
+        if battery.isPluggedIn { parts.append(battery.adapterName ?? String(localized: "Charger connected")) }
         parts.append(unit.format(battery.temperature))
         return parts.joined(separator: " · ")
     }
@@ -117,17 +119,18 @@ struct OverviewPage: View {
                 HStack(spacing: 8) {
                     Button {
                         model.perform(.discharge)
-                        Confirmations.shared.show("Discharging to \(limit)%")
+                        Confirmations.shared.show(String(localized: "Discharging to \(limit)%"))
                     } label: {
                         Label("Discharge", systemImage: "arrow.down.to.line")
                     }
                     .disabled((model.battery?.percent ?? 0) <= limit)
                     .help(
                         (model.battery?.percent ?? 0) <= limit
-                            ? "The battery is already at or below \(limit)%" : "Run on battery down to \(limit)%")
+                            ? String(localized: "The battery is already at or below \(limit)%")
+                            : String(localized: "Run on battery down to \(limit)%"))
                     Button {
                         model.perform(.topUp)
-                        Confirmations.shared.show("Topping up to 100%")
+                        Confirmations.shared.show(String(localized: "Topping up to 100%"))
                     } label: {
                         Label("Top Up", systemImage: "arrow.up.to.line")
                     }
@@ -141,7 +144,7 @@ struct OverviewPage: View {
             } else {
                 HStack(spacing: 10) {
                     ProgressView().controlSize(.small)
-                    Text(mode.title.capitalizedFirst).font(.system(size: 12.5)).foregroundStyle(.secondary)
+                    Text(mode.localizedTitle.capitalizedFirst).font(.system(size: 12.5)).foregroundStyle(.secondary)
                     Button("Stop") { model.perform(.stop) }
                 }
             }
@@ -169,7 +172,7 @@ struct OverviewPage: View {
         let draining = batteryPower < -0.05
         return Panel {
             VStack(alignment: .leading, spacing: 14) {
-                PanelHeader(title: "Power", symbol: "bolt") { Text(flowSentence(battery)) }
+                PanelHeader(title: String(localized: "Power"), symbol: "bolt") { Text(flowSentence(battery)) }
                 PowerFlow(
                     charger: wall, mac: mac, battery: batteryPower, pluggedIn: battery.isPluggedIn,
                     wallCut: model.status?.adapterEnabled == false
@@ -188,14 +191,17 @@ struct OverviewPage: View {
                 .background(Theme.track, in: Capsule())
                 .animation(.easeOut(duration: 0.6), value: mac)
                 HStack(spacing: 16) {
-                    legend(Theme.mac, "Mac \(Int((mac / total * 100).rounded()))%")
+                    legend(Theme.mac, String(localized: "Mac \(Int((mac / total * 100).rounded()))%"))
                     if charging {
-                        legend(Theme.accent, "Battery \(Int((batteryPower / total * 100).rounded()))%")
+                        legend(
+                            Theme.accent, String(localized: "Battery \(Int((batteryPower / total * 100).rounded()))%"))
                     } else if draining {
-                        legend(Theme.warn, "From battery \(Format.watts(-batteryPower))")
+                        legend(Theme.warn, String(localized: "From battery \(Format.watts(-batteryPower))"))
                     }
                     if battery.isPluggedIn, wall > mac + max(batteryPower, 0) {
-                        legend(Theme.track, "Conversion \(Format.watts(wall - mac - max(batteryPower, 0)))")
+                        legend(
+                            Theme.track,
+                            String(localized: "Conversion \(Format.watts(wall - mac - max(batteryPower, 0)))"))
                     }
                 }
             }
@@ -211,11 +217,13 @@ struct OverviewPage: View {
 
     private func flowSentence(_ battery: BatterySnapshot) -> String {
         let watts = battery.batteryPower
-        if model.status?.adapterEnabled == false { return "Wall power cut; the battery runs the Mac" }
-        if !battery.isPluggedIn { return "The battery runs the Mac" }
-        if watts > 0.05 { return "The charger runs the Mac and charges the battery" }
-        if watts < -0.05 { return "The battery helps run the Mac" }
-        return "The charger runs the Mac; the battery is resting"
+        if model.status?.adapterEnabled == false {
+            return String(localized: "Wall power cut; the battery runs the Mac")
+        }
+        if !battery.isPluggedIn { return String(localized: "The battery runs the Mac") }
+        if watts > 0.05 { return String(localized: "The charger runs the Mac and charges the battery") }
+        if watts < -0.05 { return String(localized: "The battery helps run the Mac") }
+        return String(localized: "The charger runs the Mac; the battery is resting")
     }
 
     // MARK: Health
@@ -226,17 +234,19 @@ struct OverviewPage: View {
         return Panel {
             // The two rows spread over the card's height, which the Power card beside it sets.
             VStack(alignment: .leading, spacing: 0) {
-                PanelHeader(title: "Battery health", symbol: "heart.text.square") {
+                PanelHeader(title: String(localized: "Battery health"), symbol: "heart.text.square") {
                     Text(healthValue >= 0.8 ? "Normal" : "Below 80%")
                 }
                 Spacer(minLength: 14)
                 HStack(alignment: .top, spacing: 18) {
-                    HealthCell(title: "Health", value: String(format: "%.1f", healthValue * 100), unit: "%") {
+                    HealthCell(
+                        title: String(localized: "Health"), value: String(format: "%.1f", healthValue * 100), unit: "%"
+                    ) {
                         MiniBar(fraction: healthValue, color: Theme.accent)
                     }
                     HealthCell(
-                        title: "Cycles", value: "\(battery.cycleCount)",
-                        unit: battery.designCycleCount.map { "of \($0.formatted())" } ?? ""
+                        title: String(localized: "Cycles"), value: "\(battery.cycleCount)",
+                        unit: battery.designCycleCount.map { String(localized: "of \($0.formatted())") } ?? ""
                     ) {
                         MiniBar(
                             fraction: Double(battery.cycleCount) / Double(battery.designCycleCount ?? 1000),
@@ -246,7 +256,7 @@ struct OverviewPage: View {
                 Spacer(minLength: 18)
                 HStack(alignment: .top, spacing: 18) {
                     HealthCell(
-                        title: "Temperature",
+                        title: String(localized: "Temperature"),
                         value: battery.temperature.map { String(format: "%.1f", unit.value($0)) } ?? "–",
                         unit: unit.symbol
                     ) {
@@ -256,7 +266,7 @@ struct OverviewPage: View {
                         }
                     }
                     HealthCell(
-                        title: "Capacity", value: battery.fullChargeCapacity.formatted(), unit: "mAh"
+                        title: String(localized: "Capacity"), value: battery.fullChargeCapacity.formatted(), unit: "mAh"
                     ) {
                         Text(
                             String(
@@ -279,7 +289,7 @@ struct OverviewPage: View {
         let samples = model.history.filter { $0.date >= start }
         return Panel {
             VStack(alignment: .leading, spacing: 14) {
-                PanelHeader(title: "Charge, last \(chartHours) hours", symbol: "clock") {
+                PanelHeader(title: String(localized: "Charge, last \(chartHours) hours"), symbol: "clock") {
                     SlidingSegments(
                         options: [(1, "1H"), (6, "6H"), (24, "24H")], selection: $chartHours, compact: true)
                 }
@@ -296,9 +306,11 @@ struct OverviewPage: View {
                         let onCharger = samples.filter { ($0.wallPower ?? 0) > 0.5 }.count
                         let lowest = samples.map(\.percent).min() ?? 0
                         let change = (samples.last?.percent ?? 0) - (samples.first?.percent ?? 0)
-                        stat("On charger", TimeText.minutes(onCharger))
-                        stat("Lowest", "\(lowest)%")
-                        stat(change >= 0 ? "Charged" : "Used", "\(change >= 0 ? "+" : "−")\(abs(change))%")
+                        stat(String(localized: "On charger"), TimeText.minutes(onCharger))
+                        stat(String(localized: "Lowest"), "\(lowest)%")
+                        stat(
+                            change >= 0 ? String(localized: "Charged") : String(localized: "Used"),
+                            "\(change >= 0 ? "+" : "−")\(abs(change))%")
                     }
                     .padding(.top, 12)
                     .overlay(alignment: .top) { Rectangle().fill(Theme.line).frame(height: 1) }
@@ -321,7 +333,7 @@ struct OverviewPage: View {
         let entries = Array(model.logs.reversed().prefix(5))
         return Panel {
             VStack(alignment: .leading, spacing: 12) {
-                PanelHeader(title: "Activity", symbol: "waveform.path.ecg") {
+                PanelHeader(title: String(localized: "Activity"), symbol: "waveform.path.ecg") {
                     Button {
                         NSWorkspace.shared.open(URL(string: "chargectl://dashboard/logs")!)
                     } label: {
@@ -353,7 +365,9 @@ struct OverviewPage: View {
     private var energyUse: some View {
         Panel {
             VStack(alignment: .leading, spacing: 12) {
-                PanelHeader(title: "Using significant energy", symbol: "flame") { Text("Last minute") }
+                PanelHeader(title: String(localized: "Using significant energy"), symbol: "flame") {
+                    Text("Last minute")
+                }
                 if energy.apps.isEmpty {
                     Text(energy.isMeasuring ? "Measuring…" : "No apps are using significant energy.")
                         .font(.system(size: 12.5))
@@ -384,21 +398,26 @@ struct OverviewPage: View {
     private func charger(_ battery: BatterySnapshot) -> some View {
         Panel {
             VStack(alignment: .leading, spacing: 12) {
-                PanelHeader(title: "Charger", symbol: "powerplug") {
+                PanelHeader(title: String(localized: "Charger"), symbol: "powerplug") {
                     if let status = model.status, !status.adapterEnabled {
                         Text("Cut by Chargectl").foregroundStyle(Theme.warn)
                     }
                 }
                 if battery.isPluggedIn {
                     Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 9) {
-                        InfoRow(title: "Adapter", value: battery.adapterWatts.map { "\($0) W" } ?? "–")
                         InfoRow(
-                            title: "Input", value: battery.chargerVoltage.map { String(format: "%.1f V", $0) } ?? "–")
+                            title: String(localized: "Adapter"), value: battery.adapterWatts.map { "\($0) W" } ?? "–")
                         InfoRow(
-                            title: "Current", value: battery.chargerCurrent.map { String(format: "%.2f A", $0) } ?? "–")
+                            title: String(localized: "Input"),
+                            value: battery.chargerVoltage.map { String(format: "%.1f V", $0) } ?? "–")
                         InfoRow(
-                            title: "Wall power",
-                            value: model.status.map { $0.adapterEnabled ? "Connected" : "Cut" } ?? "–",
+                            title: String(localized: "Current"),
+                            value: battery.chargerCurrent.map { String(format: "%.2f A", $0) } ?? "–")
+                        InfoRow(
+                            title: String(localized: "Wall power"),
+                            value: model.status.map {
+                                $0.adapterEnabled ? String(localized: "Connected") : String(localized: "Cut")
+                            } ?? "–",
                             tint: model.status?.adapterEnabled == false ? Theme.warn : nil)
                     }
                     .font(.system(size: 12.5))
@@ -418,7 +437,10 @@ struct OverviewPage: View {
                 let settings = model.settings
                 let mode = model.status?.mode ?? .automatic
                 Label(
-                    settings == nil ? "Read only" : settings?.isEnabled == false ? "Off" : mode.title.capitalizedFirst,
+                    settings == nil
+                        ? String(localized: "Read only")
+                        : settings?.isEnabled == false
+                            ? String(localized: "Off") : mode.localizedTitle.capitalizedFirst,
                     systemImage: settings?.isEnabled == false || settings == nil ? "pause.circle" : "checkmark.circle"
                 )
                 .font(.system(size: 12, weight: .medium))
@@ -431,17 +453,33 @@ struct OverviewPage: View {
                 let facts: [(String, String)] =
                     if let settings {
                         [
-                            ("Limit", "\(settings.limit)%"),
-                            ("Sailing", settings.sailing == 0 ? "Off" : "\(settings.lowerBound)–\(settings.limit)%"),
-                            ("Above limit", settings.autoDischarge ? "Discharge" : "Hold"),
-                            ("macOS limit", model.macOSLimit.map { "\($0)%" } ?? "Off"),
+                            (String(localized: "Limit"), "\(settings.limit)%"),
                             (
-                                "Heat guard",
-                                settings.heatProtection ? unit.format(settings.heatThreshold, decimals: 0) : "Off"
+                                String(localized: "Sailing"),
+                                settings.sailing == 0
+                                    ? String(localized: "Off") : "\(settings.lowerBound)–\(settings.limit)%"
+                            ),
+                            (
+                                String(localized: "Above limit"),
+                                settings.autoDischarge ? String(localized: "Discharge") : String(localized: "Hold")
+                            ),
+                            (
+                                String(localized: "macOS limit"),
+                                model.macOSLimit.map { "\($0)%" } ?? String(localized: "Off")
+                            ),
+                            (
+                                String(localized: "Heat guard"),
+                                settings.heatProtection
+                                    ? unit.format(settings.heatThreshold, decimals: 0) : String(localized: "Off")
                             ),
                         ]
                     } else {
-                        [("macOS limit", model.macOSLimit.map { "\($0)%" } ?? "Off")]
+                        [
+                            (
+                                String(localized: "macOS limit"),
+                                model.macOSLimit.map { "\($0)%" } ?? String(localized: "Off")
+                            )
+                        ]
                     }
                 // In a narrow window the last facts drop out instead of wrapping or truncating.
                 ViewThatFits(in: .horizontal) {
@@ -540,8 +578,15 @@ struct HeroMeter: View {
                         .fixedSize()
                         .position(x: x(shown), y: 22)
                         .help(
-                            "Charge limit \(shown)%. Charging stops here and the Mac runs on the charger."
-                                + (lowerBound.map { " If the charge drifts below \($0)% it tops up again." } ?? ""))
+                            lowerBound.map {
+                                String(
+                                    localized:
+                                        "Charge limit \(shown)%. Charging stops here and the Mac runs on the charger. If the charge drifts below \($0)% it tops up again."
+                                )
+                            }
+                                ?? String(
+                                    localized:
+                                        "Charge limit \(shown)%. Charging stops here and the Mac runs on the charger."))
                 }
                 Ruler().frame(height: 22).offset(y: 62)
             }
@@ -565,7 +610,10 @@ struct HeroMeter: View {
         .frame(height: 86)
         .accessibilityElement()
         .accessibilityLabel("Charge limit")
-        .accessibilityValue(shown.map { "limit \($0) percent, battery at \(percent) percent" } ?? "\(percent) percent")
+        .accessibilityValue(
+            shown.map { String(localized: "limit \($0) percent, battery at \(percent) percent") }
+                ?? String(localized: "\(percent) percent")
+        )
         .accessibilityAdjustableAction { direction in
             guard let limit, let onSetLimit else { return }
             switch direction {
@@ -721,15 +769,19 @@ private struct PowerFlow: View {
                     bend: fromBattery)
                 node(
                     "powerplug", value: pluggedIn ? Format.watts(charger) : "–",
-                    title: wallCut ? "Charger, cut" : "Charger",
+                    title: wallCut ? String(localized: "Charger, cut") : String(localized: "Charger"),
                     glow: pluggedIn && !wallCut, leading: true
                 )
                 .position(x: 70, y: size.height / 2)
-                node("laptopcomputer", value: Format.watts(mac), title: "Mac", glow: false, leading: false)
-                    .position(x: size.width - 70, y: 30)
+                node(
+                    "laptopcomputer", value: Format.watts(mac), title: String(localized: "Mac"), glow: false,
+                    leading: false
+                )
+                .position(x: size.width - 70, y: 30)
                 node(
                     battery > 0.05 ? "battery.100percent.bolt" : "battery.75percent",
-                    value: abs(battery) < 0.05 ? "0 W" : Format.signedWatts(battery), title: "Battery",
+                    value: abs(battery) < 0.05 ? "0 W" : Format.signedWatts(battery),
+                    title: String(localized: "Battery"),
                     glow: abs(battery) > 0.05, leading: false, tint: fromBattery ? Theme.warn : Theme.accent
                 )
                 .position(x: size.width - 70, y: size.height - 30)
@@ -905,7 +957,7 @@ struct ChargeChart: View {
                         .shadow(color: Theme.glow.opacity(0.6), radius: 4)
                 }
                 if let limit {
-                    RuleMark(y: .value("Limit", limit))
+                    RuleMark(y: .value(String(localized: "Limit"), limit))
                         .lineStyle(StrokeStyle(lineWidth: 1, dash: [3, 4]))
                         .foregroundStyle(Color.secondary.opacity(0.8))
                 }

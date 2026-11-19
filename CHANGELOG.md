@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Simplified Chinese translations for Chargectl and its widgets. The app follows
+  the language selected in macOS settings.
+
 ### Fixed
 
 - **Widgets are no longer empty after an update or a reinstall.** macOS kept

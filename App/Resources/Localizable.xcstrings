@@ -1,0 +1,6276 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    " Charging pauses above %@.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " 温度高于 %@ 时暂停充电。"
+          }
+        }
+      }
+    },
+    " If the charge drifts down, it is not topped up until it reaches %@.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " 如果电量下降，直到降至 %@ 才会重新充电。"
+          }
+        }
+      }
+    },
+    " Plugged in above the limit, the Mac runs on the charger and the battery stays where it is.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " 接通电源时，如果电量高于限制，Mac 使用电源适配器运行，电池电量保持不变。"
+          }
+        }
+      }
+    },
+    " Plugged in above the limit, the battery discharges down to %@.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " 接通电源时，如果电量高于限制，电池会放电至 %@。"
+          }
+        }
+      }
+    },
+    "%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%"
+          }
+        }
+      }
+    },
+    "%+.1f since %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自 %2$@ 起变化 %1$+.1f"
+          }
+        }
+      }
+    },
+    "%.1f a month": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每月 %.1f"
+          }
+        }
+      }
+    },
+    "%.1f h": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%.1f 小时"
+          }
+        }
+      }
+    },
+    "%1$@ before, from %2$@%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "提前 %1$@，从 %2$@%% 开始"
+          }
+        }
+      }
+    },
+    "%1$@ of %2$@ entries · the helper keeps the last 300": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "共 %2$@ 条，显示 %1$@ 条 · 辅助程序保留最近 300 条"
+          }
+        }
+      }
+    },
+    "%1$@%2$@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@%2$@"
+          }
+        }
+      }
+    },
+    "%1$@%2$@%3$@%4$@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@%2$@%3$@%4$@"
+          }
+        }
+      }
+    },
+    "%1$@–%2$@%3$@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@%3$@"
+          }
+        }
+      }
+    },
+    "%@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@"
+          }
+        }
+      }
+    },
+    "%@ %lld percent": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@，百分之 %lld"
+          }
+        }
+      }
+    },
+    "%@ at %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%@ failed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 失败。"
+          }
+        }
+      }
+    },
+    "%@ finished": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@已完成"
+          }
+        }
+      }
+    },
+    "%@ h": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 小时"
+          }
+        }
+      }
+    },
+    "%@ is also running. Quit it so the two don't fight.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 也正在运行。请退出该应用以避免冲突。"
+          }
+        }
+      }
+    },
+    "%@ macOS charges to 100%% and the settings below are paused.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ macOS 将充电至 100%%，下方设置暂时停用。"
+          }
+        }
+      }
+    },
+    "%@ of it resting": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其中 %@ 处于休息状态"
+          }
+        }
+      }
+    },
+    "%@ only, %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅%@，%@"
+          }
+        }
+      }
+    },
+    "%@ skipped": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过 %@ 条"
+          }
+        }
+      }
+    },
+    "%@ stopped": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@已停止"
+          }
+        }
+      }
+    },
+    "%@ turned off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已关闭%@"
+          }
+        }
+      }
+    },
+    "%@ turned on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已开启%@"
+          }
+        }
+      }
+    },
+    "%@%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@%%"
+          }
+        }
+      }
+    },
+    "%lld W adapter": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld W 电源适配器"
+          }
+        }
+      }
+    },
+    "%lld entries": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 条记录"
+          }
+        }
+      }
+    },
+    "%lld entry": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 条记录"
+          }
+        }
+      }
+    },
+    "%lld h": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 小时"
+          }
+        }
+      }
+    },
+    "%lld h %lld min": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 小时 %lld 分钟"
+          }
+        }
+      }
+    },
+    "%lld match": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 个匹配项"
+          }
+        }
+      }
+    },
+    "%lld matches": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 个匹配项"
+          }
+        }
+      }
+    },
+    "%lld min": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld 分钟"
+          }
+        }
+      }
+    },
+    "%lld percent": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "百分之 %lld"
+          }
+        }
+      }
+    },
+    "%lld%% of power in": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "占输入功率的 %lld%%"
+          }
+        }
+      }
+    },
+    ", charging starts about %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "，约 %@ 开始充电"
+          }
+        }
+      }
+    },
+    "0:%@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0:%@"
+          }
+        }
+      }
+    },
+    "12 AM": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "午夜 12 点"
+          }
+        }
+      }
+    },
+    "3 months": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 个月"
+          }
+        }
+      }
+    },
+    "A charge limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电上限"
+          }
+        }
+      }
+    },
+    "Above limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超过上限"
+          }
+        }
+      }
+    },
+    "Above the limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超过上限"
+          }
+        }
+      }
+    },
+    "Active": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已启用"
+          }
+        }
+      }
+    },
+    "Activity": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "活动"
+          }
+        }
+      }
+    },
+    "Adapter": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "适配器"
+          }
+        }
+      }
+    },
+    "Adds it to Login Items.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将其添加到登录项。"
+          }
+        }
+      }
+    },
+    "After": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "之后"
+          }
+        }
+      }
+    },
+    "Afterwards": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "之后"
+          }
+        }
+      }
+    },
+    "All": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部"
+          }
+        }
+      }
+    },
+    "All of it charging": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全程充电"
+          }
+        }
+      }
+    },
+    "Allow it in Login Items": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在登录项中允许"
+          }
+        }
+      }
+    },
+    "Asking": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在询问"
+          }
+        }
+      }
+    },
+    "Asking the helper": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在询问后台服务"
+          }
+        }
+      }
+    },
+    "Asking the helper how it is.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在查询辅助服务状态。"
+          }
+        }
+      }
+    },
+    "At %@%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "达到 %@%% 时"
+          }
+        }
+      }
+    },
+    "At 100%% until %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保持 100%% 至 %@"
+          }
+        }
+      }
+    },
+    "At 90% or more": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量达到或超过 90%"
+          }
+        }
+      }
+    },
+    "At 90%+": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量 ≥90%"
+          }
+        }
+      }
+    },
+    "At the time": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "到达设定时间"
+          }
+        }
+      }
+    },
+    "Auto discharge": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动放电"
+          }
+        }
+      }
+    },
+    "Automatic": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动"
+          }
+        }
+      }
+    },
+    "Automatic lets the light show charging as usual: amber while charging, green when held.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动模式下指示灯照常显示充电状态：充电时为琥珀色，保持电量时为绿色。"
+          }
+        }
+      }
+    },
+    "Automatic updates off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动更新已关闭"
+          }
+        }
+      }
+    },
+    "Automatic updates on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动更新已开启"
+          }
+        }
+      }
+    },
+    "Back": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "返回"
+          }
+        }
+      }
+    },
+    "Back to %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复至 %lld%%"
+          }
+        }
+      }
+    },
+    "Back to the limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已恢复充电上限。"
+          }
+        }
+      }
+    },
+    "Back to your limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "恢复至你的上限"
+          }
+        }
+      }
+    },
+    "Background service": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台服务"
+          }
+        }
+      }
+    },
+    "Battery": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池"
+          }
+        }
+      }
+    },
+    "Battery %lld percent, %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量百分之 %lld，%@"
+          }
+        }
+      }
+    },
+    "Battery %lld%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池 %lld%"
+          }
+        }
+      }
+    },
+    "Battery health": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池健康"
+          }
+        }
+      }
+    },
+    "Battery health and cycles, and how they changed over three months.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池健康状况和循环次数，以及过去三个月的变化。"
+          }
+        }
+      }
+    },
+    "Battery health over time": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池健康度变化"
+          }
+        }
+      }
+    },
+    "Before the Mac sleeps, Chargectl reconnects wall power if it had cut it to discharge. Turn this on to keep discharging while asleep. macOS holds the limit itself during sleep; where it can’t hold yours, wall power stays cut while asleep so the battery only drifts down a little.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如果 Chargectl 曾为放电而切断外接电源，它会在 Mac 睡眠前重新接通电源。开启此选项可在睡眠期间继续放电。睡眠期间，macOS 会自行维持充电上限；如果无法维持你设定的上限，外接电源会在睡眠期间保持断开，让电量仅小幅下降。"
+          }
+        }
+      }
+    },
+    "Caches": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缓存"
+          }
+        }
+      }
+    },
+    "Calibrate…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "校准…"
+          }
+        }
+      }
+    },
+    "Calibrating": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在校准"
+          }
+        }
+      }
+    },
+    "Capacity": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "容量"
+          }
+        }
+      }
+    },
+    "Change": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更改"
+          }
+        }
+      }
+    },
+    "Change the limit, Top Up or Discharge without opening Chargectl.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无需打开 Chargectl 即可更改上限、充满或放电。"
+          }
+        }
+      }
+    },
+    "Charge": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量"
+          }
+        }
+      }
+    },
+    "Charge Control": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电控制"
+          }
+        }
+      }
+    },
+    "Charge Limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电上限"
+          }
+        }
+      }
+    },
+    "Charge and heat over the last day.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "过去一天的电量和温度。"
+          }
+        }
+      }
+    },
+    "Charge control": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电控制"
+          }
+        }
+      }
+    },
+    "Charge control is off until the helper is installed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装辅助服务之前，充电控制处于关闭状态。"
+          }
+        }
+      }
+    },
+    "Charge control is off.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电控制已关闭。"
+          }
+        }
+      }
+    },
+    "Charge control is on.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电控制已开启。"
+          }
+        }
+      }
+    },
+    "Charge control isn't working": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电控制未正常工作"
+          }
+        }
+      }
+    },
+    "Charge control needs its helper.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电控制需要辅助程序。"
+          }
+        }
+      }
+    },
+    "Charge control needs its helper. Install it once, then turn it on in Login Items.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电控制需要辅助程序。安装后，请在登录项中将其开启。"
+          }
+        }
+      }
+    },
+    "Charge control needs its helper. Install it once; macOS asks for your password.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电控制需要辅助程序。安装时 macOS 会要求输入密码。"
+          }
+        }
+      }
+    },
+    "Charge control needs the helper.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电控制需要辅助程序。"
+          }
+        }
+      }
+    },
+    "Charge control off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已关闭充电控制"
+          }
+        }
+      }
+    },
+    "Charge control on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已开启充电控制"
+          }
+        }
+      }
+    },
+    "Charge control stopped": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电控制已停止"
+          }
+        }
+      }
+    },
+    "Charge limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电上限"
+          }
+        }
+      }
+    },
+    "Charge limit %lld percent": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电上限百分之 %lld"
+          }
+        }
+      }
+    },
+    "Charge limit %lld%. Charging stops here and the Mac runs on the charger.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电上限为 %lld%。达到上限后停止充电，Mac 由充电器供电。"
+          }
+        }
+      }
+    },
+    "Charge limit %lld%. Charging stops here and the Mac runs on the charger. If the charge drifts below %lld% it tops up again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电上限为 %1$lld%。达到上限后停止充电，Mac 由充电器供电。如果电量降至 %2$lld% 以下，将再次充电。"
+          }
+        }
+      }
+    },
+    "Charge limit unavailable": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电上限不可用"
+          }
+        }
+      }
+    },
+    "Charge now": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前电量"
+          }
+        }
+      }
+    },
+    "Charge to 100% by a set time": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在设定时间前充至 100%"
+          }
+        }
+      }
+    },
+    "Charge to 100% by a set time, on the days you pick, then back to your limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在选定日期的设定时间前充至 100%，然后恢复至你的上限。"
+          }
+        }
+      }
+    },
+    "Charge to 100% by a set time, then back to your limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在设定时间前充至 100%，然后恢复至你的上限。"
+          }
+        }
+      }
+    },
+    "Charge to 100% once, then return to the limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充满至 100% 一次，然后恢复上限"
+          }
+        }
+      }
+    },
+    "Charge to Full by a Time": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在指定时间前充满电"
+          }
+        }
+      }
+    },
+    "Charge today": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天的电量"
+          }
+        }
+      }
+    },
+    "Charge, last %lld hours": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "过去 %lld 小时的电量"
+          }
+        }
+      }
+    },
+    "Charge, last 24 hours": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "过去 24 小时的电量"
+          }
+        }
+      }
+    },
+    "Chargectl": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl"
+          }
+        }
+      }
+    },
+    "Chargectl Service": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 服务"
+          }
+        }
+      }
+    },
+    "Chargectl checks GitHub for a new release every few hours. Each download is checked against its published checksum and code signature.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 每隔几小时检查一次 GitHub 是否有新版本。每次下载都会对照已发布的校验和与代码签名进行验证。"
+          }
+        }
+      }
+    },
+    "Chargectl hasn’t run into a problem since the helper started at %@.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自辅助程序于 %@ 启动以来，Chargectl 未遇到问题。"
+          }
+        }
+      }
+    },
+    "Chargectl hasn’t run into a problem.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 未遇到问题。"
+          }
+        }
+      }
+    },
+    "Chargectl is back to your limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 已恢复至充电上限。"
+          }
+        }
+      }
+    },
+    "Chargectl lives in your menu bar. Click the ring any time to see your battery and change the limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 位于菜单栏中。随时点按圆环即可查看电池状态并更改上限。"
+          }
+        }
+      }
+    },
+    "Chargectl manages charging with the rules on this page.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 根据此页面的规则管理充电。"
+          }
+        }
+      }
+    },
+    "Chargectl needs to install its helper.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 需要安装辅助程序。"
+          }
+        }
+      }
+    },
+    "Chargectl needs to remove its helper.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 需要移除辅助程序。"
+          }
+        }
+      }
+    },
+    "Chargectl needs to replace its old helper.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 需要替换旧的辅助程序。"
+          }
+        }
+      }
+    },
+    "Chargectl reads the battery once a second. This takes a moment.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 每秒读取一次电池信息，请稍候。"
+          }
+        }
+      }
+    },
+    "Chargectl restarts into the new version. It is downloaded from GitHub and checked against its published checksum and code signature first.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 会重新启动并运行新版本。更新会先从 GitHub 下载，并对照已发布的校验和与代码签名进行验证。"
+          }
+        }
+      }
+    },
+    "Chargectl runs the battery down to %@%%, charges it to 100%%, rests for an hour, then returns to your limit. Keep the charger connected. This takes several hours.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 会将电量降至 %@%%，再充至 100%%，静置一小时，然后恢复充电上限。请保持充电器连接。整个过程需要数小时。"
+          }
+        }
+      }
+    },
+    "Chargectl saves a summary of each day. Health changes slowly; the chart says the most after a few weeks.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 每天保存一份摘要。健康度变化缓慢，积累数周后图表更有参考价值。"
+          }
+        }
+      }
+    },
+    "Chargectl stopped charging; your Mac runs on the charger.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 已停止充电；Mac 正使用充电器供电。"
+          }
+        }
+      }
+    },
+    "Chargectl tells you about new versions; you install them here.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 会通知你有新版本，你可以在此安装。"
+          }
+        }
+      }
+    },
+    "ChargectlWidgets": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 小组件"
+          }
+        }
+      }
+    },
+    "Chargectl’s charge ring next to the clock.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "时钟旁的 Chargectl 充电圆环。"
+          }
+        }
+      }
+    },
+    "Chargectl’s helper isn’t running. Open Chargectl to install it.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 的辅助程序未运行。请打开 Chargectl 进行安装。"
+          }
+        }
+      }
+    },
+    "Charged": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已充入"
+          }
+        }
+      }
+    },
+    "Charged to %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已充电至 %lld%%"
+          }
+        }
+      }
+    },
+    "Charger": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电器"
+          }
+        }
+      }
+    },
+    "Charger connected": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电器已连接"
+          }
+        }
+      }
+    },
+    "Charger too weak": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电器功率不足"
+          }
+        }
+      }
+    },
+    "Charger, cut": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电器已断开"
+          }
+        }
+      }
+    },
+    "Charges to 100%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充至 100%"
+          }
+        }
+      }
+    },
+    "Charges to 100% by a set time; on sets weekdays at 8:00 unless a time is set.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在设定时间前充至 100%；如果尚未设置时间，开启后默认在工作日 8:00 充满。"
+          }
+        }
+      }
+    },
+    "Charges to 100% just in time for the time you choose, then goes back to the limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在指定时间前充电至 100%，然后恢复充电上限。"
+          }
+        }
+      }
+    },
+    "Charges to 100% once, then back to the limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充至 100% 一次，然后恢复至上限。"
+          }
+        }
+      }
+    },
+    "Charges to 100% once, then goes back to the limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电至 100% 一次，然后恢复充电上限。"
+          }
+        }
+      }
+    },
+    "Charging": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在充电"
+          }
+        }
+      }
+    },
+    "Charging goes back to normal. These are removed, and Chargectl is deleted:": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电将恢复正常。以下内容将被移除，Chargectl 也将被删除："
+          }
+        }
+      }
+    },
+    "Charging is controlled by a small helper that runs as an administrator, also while Chargectl is closed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电由一个以管理员身份运行的小型辅助程序控制，即使 Chargectl 关闭也会继续运行。"
+          }
+        }
+      }
+    },
+    "Charging paused": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电已暂停"
+          }
+        }
+      }
+    },
+    "Charging resumes once the battery cools by %@.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池冷却 %@ 后将恢复充电。"
+          }
+        }
+      }
+    },
+    "Charging starts": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开始充电"
+          }
+        }
+      }
+    },
+    "Charging starts around %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大约在 %@ 开始充电"
+          }
+        }
+      }
+    },
+    "Charging stopped at your limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量达到上限，充电已停止。"
+          }
+        }
+      }
+    },
+    "Charging stops at %@ and the Mac keeps running on the charger.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电在 %@ 停止，Mac 继续使用电源适配器运行。"
+          }
+        }
+      }
+    },
+    "Charging stops here and your Mac keeps running on the charger.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "达到此上限后停止充电，Mac 将继续使用充电器供电。"
+          }
+        }
+      }
+    },
+    "Charging stops here.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电将在此停止。"
+          }
+        }
+      }
+    },
+    "Charging takes": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电耗时"
+          }
+        }
+      }
+    },
+    "Charging to 100%% by %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "于 %@ 前充至 100%%"
+          }
+        }
+      }
+    },
+    "Charging to 100%%, then back to %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电至 100%%，然后恢复至 %lld%%"
+          }
+        }
+      }
+    },
+    "Check for Updates": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检查更新"
+          }
+        }
+      }
+    },
+    "Checking…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在检查…"
+          }
+        }
+      }
+    },
+    "Choose a limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择充电上限"
+          }
+        }
+      }
+    },
+    "Click to open Chargectl": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "点按以打开 Chargectl"
+          }
+        }
+      }
+    },
+    "Collecting history": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在收集历史数据"
+          }
+        }
+      }
+    },
+    "Collecting, one point a day": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在收集数据，每天一个数据点"
+          }
+        }
+      }
+    },
+    "Collecting. A point is recorded every minute.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在收集，每分钟记录一个数据点。"
+          }
+        }
+      }
+    },
+    "Coming up": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "即将到来"
+          }
+        }
+      }
+    },
+    "Connected": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已连接"
+          }
+        }
+      }
+    },
+    "Continue": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "继续"
+          }
+        }
+      }
+    },
+    "Control": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "控制"
+          }
+        }
+      }
+    },
+    "Control off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "控制已关闭"
+          }
+        }
+      }
+    },
+    "Controls": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "控制"
+          }
+        }
+      }
+    },
+    "Conversion %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "转换损耗 %@"
+          }
+        }
+      }
+    },
+    "Copied": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已复制"
+          }
+        }
+      }
+    },
+    "Copied %lld entries": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已复制 %lld 条记录"
+          }
+        }
+      }
+    },
+    "Copied %lld entry": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已复制 %lld 条记录"
+          }
+        }
+      }
+    },
+    "Copy": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "复制"
+          }
+        }
+      }
+    },
+    "Copyright 2026 Yogesh Prasad": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "版权所有 2026 Yogesh Prasad"
+          }
+        }
+      }
+    },
+    "Crash reports": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "崩溃报告"
+          }
+        }
+      }
+    },
+    "Current": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电流"
+          }
+        }
+      }
+    },
+    "Cut": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已断开"
+          }
+        }
+      }
+    },
+    "Cut by Chargectl": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 已切断外接电源"
+          }
+        }
+      }
+    },
+    "Cycles": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "循环次数"
+          }
+        }
+      }
+    },
+    "Discharge": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "放电"
+          }
+        }
+      }
+    },
+    "Discharge to limit off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已关闭放电至限制"
+          }
+        }
+      }
+    },
+    "Discharge to limit on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已开启放电至限制"
+          }
+        }
+      }
+    },
+    "Discharge to the Limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "放电至上限"
+          }
+        }
+      }
+    },
+    "Discharge to the limit when plugged in": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "接通电源时放电至限制"
+          }
+        }
+      }
+    },
+    "Discharge while asleep off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已关闭睡眠时放电"
+          }
+        }
+      }
+    },
+    "Discharge while asleep on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已开启睡眠时放电"
+          }
+        }
+      }
+    },
+    "Discharging": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在放电"
+          }
+        }
+      }
+    },
+    "Discharging to %lld%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在放电至 %lld%"
+          }
+        }
+      }
+    },
+    "Discharging to %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在放电至 %lld%%"
+          }
+        }
+      }
+    },
+    "Done": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完成"
+          }
+        }
+      }
+    },
+    "Done %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 完成"
+          }
+        }
+      }
+    },
+    "Edit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编辑"
+          }
+        }
+      }
+    },
+    "Edit in Control": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在“控制”中编辑"
+          }
+        }
+      }
+    },
+    "Empty %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 耗尽"
+          }
+        }
+      }
+    },
+    "Est.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "预计"
+          }
+        }
+      }
+    },
+    "Every day": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每天"
+          }
+        }
+      }
+    },
+    "Everything else is removed. Drag these to the Trash in Finder to finish.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他内容已移除。请在访达中将这些项目拖到废纸篓以完成卸载。"
+          }
+        }
+      }
+    },
+    "Failed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "失败"
+          }
+        }
+      }
+    },
+    "File": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文件"
+          }
+        }
+      }
+    },
+    "Finder": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "访达"
+          }
+        }
+      }
+    },
+    "From battery %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来自电池 %@"
+          }
+        }
+      }
+    },
+    "From the battery": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来自电池"
+          }
+        }
+      }
+    },
+    "From the charger": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来自充电器"
+          }
+        }
+      }
+    },
+    "Full": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已充满"
+          }
+        }
+      }
+    },
+    "Full %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 充满"
+          }
+        }
+      }
+    },
+    "Full By": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定时充满"
+          }
+        }
+      }
+    },
+    "Full by": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定时充满"
+          }
+        }
+      }
+    },
+    "Full by %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "于 %@ 前充满"
+          }
+        }
+      }
+    },
+    "Full by %@%@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "于 %@ 前充满%@"
+          }
+        }
+      }
+    },
+    "Full by is off.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定时充满已关闭。"
+          }
+        }
+      }
+    },
+    "Full by needs the helper.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定时充满需要辅助程序。"
+          }
+        }
+      }
+    },
+    "Full by off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "定时充满已关闭"
+          }
+        }
+      }
+    },
+    "Full by weekdays at 8:00": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作日 8:00 充满"
+          }
+        }
+      }
+    },
+    "Get Battery Charge": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "获取电池电量"
+          }
+        }
+      }
+    },
+    "Get Started": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开始使用"
+          }
+        }
+      }
+    },
+    "GitHub did not return a release.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GitHub 未返回发行版本。"
+          }
+        }
+      }
+    },
+    "Hand charging back to macOS?": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将充电管理交还给 macOS？"
+          }
+        }
+      }
+    },
+    "Handing charging back to macOS, then removing everything…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在将充电管理交还给 macOS，然后移除所有内容…"
+          }
+        }
+      }
+    },
+    "Health": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池健康度"
+          }
+        }
+      }
+    },
+    "Health %1$@ · %2$@ cycles": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "健康度 %1$@ · 循环 %2$@ 次"
+          }
+        }
+      }
+    },
+    "Health %@ · %@ cycles": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池健康 %@ · %@ 次循环"
+          }
+        }
+      }
+    },
+    "Heat": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "温度"
+          }
+        }
+      }
+    },
+    "Heat guard": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "温度保护"
+          }
+        }
+      }
+    },
+    "Heat guard off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已关闭温度保护"
+          }
+        }
+      }
+    },
+    "Heat guard on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已开启温度保护"
+          }
+        }
+      }
+    },
+    "Held at %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保持在 %lld%%"
+          }
+        }
+      }
+    },
+    "Held at the limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保持在上限"
+          }
+        }
+      }
+    },
+    "Held at your limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保持在你的上限"
+          }
+        }
+      }
+    },
+    "Helper": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助程序"
+          }
+        }
+      }
+    },
+    "Helper message": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助程序消息"
+          }
+        }
+      }
+    },
+    "Helper needs approval": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台服务需要批准"
+          }
+        }
+      }
+    },
+    "Helper not installed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台服务未安装"
+          }
+        }
+      }
+    },
+    "Helper not responding": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台服务无响应"
+          }
+        }
+      }
+    },
+    "Helper running": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助程序运行中"
+          }
+        }
+      }
+    },
+    "Hidden from the menu bar": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已从菜单栏中隐藏"
+          }
+        }
+      }
+    },
+    "Hide %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "隐藏%@"
+          }
+        }
+      }
+    },
+    "History": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "历史记录"
+          }
+        }
+      }
+    },
+    "Hold": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保持"
+          }
+        }
+      }
+    },
+    "Holding": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保持电量"
+          }
+        }
+      }
+    },
+    "Hours at 90% or more": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量达到或超过 90% 的小时数"
+          }
+        }
+      }
+    },
+    "How full the battery is and what Chargectl is doing.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池电量及 Chargectl 的当前操作。"
+          }
+        }
+      }
+    },
+    "How it works": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作原理"
+          }
+        }
+      }
+    },
+    "How long until the charge reaches the limit, full or empty.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "距离达到上限、充满或耗尽的时间。"
+          }
+        }
+      }
+    },
+    "How the battery spent today: at high charge, on the charger, the lowest charge.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天的高电量时间、接通电源时间和最低电量。"
+          }
+        }
+      }
+    },
+    "Idle": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "空闲"
+          }
+        }
+      }
+    },
+    "In progress": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "进行中"
+          }
+        }
+      }
+    },
+    "Input": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "输入"
+          }
+        }
+      }
+    },
+    "Install Again": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新安装"
+          }
+        }
+      }
+    },
+    "Install Again…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新安装…"
+          }
+        }
+      }
+    },
+    "Install Helper": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装辅助程序"
+          }
+        }
+      }
+    },
+    "Install the helper": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装辅助程序"
+          }
+        }
+      }
+    },
+    "Install the helper to set a charge limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装辅助工具以设置充电限制"
+          }
+        }
+      }
+    },
+    "Installation was cancelled.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装已取消。"
+          }
+        }
+      }
+    },
+    "Installing %@…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在安装 %@…"
+          }
+        }
+      }
+    },
+    "Installing…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在安装…"
+          }
+        }
+      }
+    },
+    "Installs new versions while Chargectl’s windows are closed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 窗口关闭时安装新版本。"
+          }
+        }
+      }
+    },
+    "It runs in the background and keeps the limit while Chargectl is closed. macOS asks for your password once.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "它在后台运行，并在 Chargectl 关闭时维持充电限制。macOS 会要求您输入一次密码。"
+          }
+        }
+      }
+    },
+    "It stopped answering. Install it again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助程序未响应。请重新安装。"
+          }
+        }
+      }
+    },
+    "Job notifications off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "任务通知已关闭"
+          }
+        }
+      }
+    },
+    "Job notifications on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "任务通知已开启"
+          }
+        }
+      }
+    },
+    "Just before": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "临近时"
+          }
+        }
+      }
+    },
+    "Just the charge and the limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只显示电量和上限。"
+          }
+        }
+      }
+    },
+    "Keep discharging while asleep": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "睡眠时继续放电"
+          }
+        }
+      }
+    },
+    "Keep discharging while the Mac sleeps": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac 睡眠时继续放电"
+          }
+        }
+      }
+    },
+    "Keep your MacBook’s battery at a charge limit, right from the menu bar.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直接从菜单栏控制 MacBook 的充电上限。"
+          }
+        }
+      }
+    },
+    "Last 3 months": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "过去 3 个月"
+          }
+        }
+      }
+    },
+    "Last 6 hours": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "过去 6 小时"
+          }
+        }
+      }
+    },
+    "Last minute": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上一分钟"
+          }
+        }
+      }
+    },
+    "Limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上限"
+          }
+        }
+      }
+    },
+    "Limit %@%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上限 %@%%"
+          }
+        }
+      }
+    },
+    "Limit %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上限 %lld%%"
+          }
+        }
+      }
+    },
+    "Limit notifications off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上限通知已关闭"
+          }
+        }
+      }
+    },
+    "Limit notifications on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上限通知已开启"
+          }
+        }
+      }
+    },
+    "Limit set to %lld%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上限已设为 %lld%"
+          }
+        }
+      }
+    },
+    "Limit set to %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已将上限设为 %lld%%"
+          }
+        }
+      }
+    },
+    "Live": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "实时"
+          }
+        }
+      }
+    },
+    "Live power": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "实时功率"
+          }
+        }
+      }
+    },
+    "Login Items": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录项"
+          }
+        }
+      }
+    },
+    "Login Items entries": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录项条目"
+          }
+        }
+      }
+    },
+    "Logs": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日志"
+          }
+        }
+      }
+    },
+    "Lowest": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最低"
+          }
+        }
+      }
+    },
+    "Lowest at %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最低时间：%@"
+          }
+        }
+      }
+    },
+    "Mac": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac"
+          }
+        }
+      }
+    },
+    "Mac %lld%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mac %lld%"
+          }
+        }
+      }
+    },
+    "MagSafe light": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MagSafe 指示灯"
+          }
+        }
+      }
+    },
+    "MagSafe light automatic": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MagSafe 指示灯已设为自动"
+          }
+        }
+      }
+    },
+    "MagSafe light off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "MagSafe 指示灯已关闭"
+          }
+        }
+      }
+    },
+    "Measured from the battery and charger": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从电池和充电器测量"
+          }
+        }
+      }
+    },
+    "Needs the helper": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要辅助程序"
+          }
+        }
+      }
+    },
+    "New": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "新建"
+          }
+        }
+      }
+    },
+    "Next": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一步"
+          }
+        }
+      }
+    },
+    "Next full charge": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一次充满"
+          }
+        }
+      }
+    },
+    "Next point in %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一个数据点将在 %@ 后记录"
+          }
+        }
+      }
+    },
+    "Next: %@, %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下次：%@，%@"
+          }
+        }
+      }
+    },
+    "No full charge set": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未设置定时充满"
+          }
+        }
+      }
+    },
+    "No helper": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无辅助程序"
+          }
+        }
+      }
+    },
+    "No warnings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有警告"
+          }
+        }
+      }
+    },
+    "Normal": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正常"
+          }
+        }
+      }
+    },
+    "Not connected": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未连接"
+          }
+        }
+      }
+    },
+    "Not installed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未安装"
+          }
+        }
+      }
+    },
+    "Not responding": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无响应"
+          }
+        }
+      }
+    },
+    "Not running": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未运行"
+          }
+        }
+      }
+    },
+    "Not yet": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚未开始"
+          }
+        }
+      }
+    },
+    "Nothing here yet": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这里暂时没有内容"
+          }
+        }
+      }
+    },
+    "Nothing logged yet.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚无日志。"
+          }
+        }
+      }
+    },
+    "Nothing matches “%@”": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有与“%@”匹配的结果"
+          }
+        }
+      }
+    },
+    "Now": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "现在"
+          }
+        }
+      }
+    },
+    "Now %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前 %@"
+          }
+        }
+      }
+    },
+    "Off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关"
+          }
+        }
+      }
+    },
+    "Off hands charging back to macOS until you turn charge control on again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭后由 macOS 管理充电，直到你重新打开充电控制。"
+          }
+        }
+      }
+    },
+    "Off keeps the light dark, including while charging.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭后指示灯保持熄灭，充电时也不亮起。"
+          }
+        }
+      }
+    },
+    "Off: above %@ on the charger, the battery stays where it is.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭：连接充电器且电量高于 %@ 时，电量保持不变。"
+          }
+        }
+      }
+    },
+    "On": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开启"
+          }
+        }
+      }
+    },
+    "On battery": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用电池"
+          }
+        }
+      }
+    },
+    "On battery until it gets there": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用电池供电直至达到目标"
+          }
+        }
+      }
+    },
+    "On charger": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "接通电源"
+          }
+        }
+      }
+    },
+    "On the charger": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "接通电源"
+          }
+        }
+      }
+    },
+    "On the charger the whole time": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全程连接充电器"
+          }
+        }
+      }
+    },
+    "On the charger, resting": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "连接充电器，休息中"
+          }
+        }
+      }
+    },
+    "On: above %@ on the charger, the battery runs down to the limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开启：连接充电器且电量高于 %@ 时，电池会放电至上限。"
+          }
+        }
+      }
+    },
+    "Once": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一次"
+          }
+        }
+      }
+    },
+    "Once · %@ %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一次 · %@ %@"
+          }
+        }
+      }
+    },
+    "Only the next one, then Full by turns itself off.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅执行下一次，之后“定时充满”会自动关闭。"
+          }
+        }
+      }
+    },
+    "Open": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开"
+          }
+        }
+      }
+    },
+    "Open Battery": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开电池设置"
+          }
+        }
+      }
+    },
+    "Open Chargectl": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开 Chargectl"
+          }
+        }
+      }
+    },
+    "Open Chargectl at login": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录时打开 Chargectl"
+          }
+        }
+      }
+    },
+    "Open Login Items": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开登录项"
+          }
+        }
+      }
+    },
+    "Open at login could not be changed: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法更改登录时打开设置：%@"
+          }
+        }
+      }
+    },
+    "Opens Chargectl to confirm a calibration": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开 Chargectl 以确认校准"
+          }
+        }
+      }
+    },
+    "Opens at login": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录时打开"
+          }
+        }
+      }
+    },
+    "Optimized Battery Charging is on. It can hold or delay charging by itself; turn it off so Chargectl decides.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“优化电池充电”已开启，可能会暂停或延迟充电。请将其关闭，由 Chargectl 控制充电。"
+          }
+        }
+      }
+    },
+    "Overview": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "概览"
+          }
+        }
+      }
+    },
+    "Pause above": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超过上限时暂停充电"
+          }
+        }
+      }
+    },
+    "Pause above %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "高于 %@ 时暂停"
+          }
+        }
+      }
+    },
+    "Pause charging above": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "高于此温度时暂停充电"
+          }
+        }
+      }
+    },
+    "Pause charging when warm": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "温度过高时暂停充电"
+          }
+        }
+      }
+    },
+    "Pause charging while the battery is warm": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池温度较高时暂停充电"
+          }
+        }
+      }
+    },
+    "Paused": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已暂停"
+          }
+        }
+      }
+    },
+    "Peak temperature": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最高温度"
+          }
+        }
+      }
+    },
+    "Percentage hidden": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已隐藏百分比"
+          }
+        }
+      }
+    },
+    "Percentage shown": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已显示百分比"
+          }
+        }
+      }
+    },
+    "Plugged in": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已接通电源"
+          }
+        }
+      }
+    },
+    "Plugged in above the limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "接通电源时电量超过上限"
+          }
+        }
+      }
+    },
+    "Plugged in above the limit: discharge down to it instead of holding the charge": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "接通电源时电量超过上限：放电至上限，而不是保持当前电量"
+          }
+        }
+      }
+    },
+    "Power": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "功率"
+          }
+        }
+      }
+    },
+    "Preferences": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "偏好设置"
+          }
+        }
+      }
+    },
+    "Problem notifications off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "问题通知已关闭"
+          }
+        }
+      }
+    },
+    "Problem notifications on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "问题通知已开启"
+          }
+        }
+      }
+    },
+    "Quit Chargectl": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "退出 Chargectl"
+          }
+        }
+      }
+    },
+    "Rate": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "速率"
+          }
+        }
+      }
+    },
+    "Read only": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "只读"
+          }
+        }
+      }
+    },
+    "Reading settings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在读取设置"
+          }
+        }
+      }
+    },
+    "Reading the battery": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在读取电池信息"
+          }
+        }
+      }
+    },
+    "Reading the battery…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在读取电池信息…"
+          }
+        }
+      }
+    },
+    "Recent": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最近"
+          }
+        }
+      }
+    },
+    "Recording the day needs the helper.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "记录当天数据需要辅助程序。"
+          }
+        }
+      }
+    },
+    "Remove the helper?": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除辅助程序？"
+          }
+        }
+      }
+    },
+    "Removes the Full by schedule.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除定时充满计划。"
+          }
+        }
+      }
+    },
+    "Removes the app, its background service, Login Items entries, settings, history, logs, preferences, caches and widget data, and hands charging back to macOS.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除应用、后台服务、登录项、设置、历史记录、日志、偏好设置、缓存和小组件数据，并将充电管理交还给 macOS。"
+          }
+        }
+      }
+    },
+    "Restart to Update": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新启动以更新"
+          }
+        }
+      }
+    },
+    "Resting": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "静置中"
+          }
+        }
+      }
+    },
+    "Ring": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "圆环"
+          }
+        }
+      }
+    },
+    "Run on battery down to %lld%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用电池供电至 %lld%"
+          }
+        }
+      }
+    },
+    "Run on battery down to %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用电池供电直至电量降至 %lld%%"
+          }
+        }
+      }
+    },
+    "Running": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "运行中"
+          }
+        }
+      }
+    },
+    "Runs on the battery down to the limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用电池供电直至达到上限。"
+          }
+        }
+      }
+    },
+    "Runs the Mac on its battery until the charge is down to the limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用电池为 Mac 供电，直到电量降至上限。"
+          }
+        }
+      }
+    },
+    "Sailing": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量缓降"
+          }
+        }
+      }
+    },
+    "Sailing %lld–%lld%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "浮动范围 %lld–%lld%"
+          }
+        }
+      }
+    },
+    "Sailing off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "浮动范围已关闭"
+          }
+        }
+      }
+    },
+    "Sailing range": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "浮动范围"
+          }
+        }
+      }
+    },
+    "Sailing range %lld–%lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "滑行范围 %lld–%lld%%"
+          }
+        }
+      }
+    },
+    "Sails": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "区间控制"
+          }
+        }
+      }
+    },
+    "Saved as you change them": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更改自动保存"
+          }
+        }
+      }
+    },
+    "Search looks through every message in this filter. Try one of these:": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜索会检查此筛选条件下的所有消息。试试这些词："
+          }
+        }
+      }
+    },
+    "Search looks through every message. Try one of these:": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "搜索会检查所有消息。试试这些词："
+          }
+        }
+      }
+    },
+    "Set Charge Limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置充电上限"
+          }
+        }
+      }
+    },
+    "Set Up": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置"
+          }
+        }
+      }
+    },
+    "Set a time in Chargectl": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 Chargectl 中设置时间"
+          }
+        }
+      }
+    },
+    "Sets the charge Chargectl stops charging at, from 20% to 100%.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置 Chargectl 停止充电时的电量，范围为 20% 至 100%。"
+          }
+        }
+      }
+    },
+    "Settings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置"
+          }
+        }
+      }
+    },
+    "Settings…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置…"
+          }
+        }
+      }
+    },
+    "Show %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示%@"
+          }
+        }
+      }
+    },
+    "Show in Finder": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在访达中显示"
+          }
+        }
+      }
+    },
+    "Shown in the menu bar": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已在菜单栏中显示"
+          }
+        }
+      }
+    },
+    "Skip": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过"
+          }
+        }
+      }
+    },
+    "Skip %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过 %@"
+          }
+        }
+      }
+    },
+    "Skip for Now": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂时跳过"
+          }
+        }
+      }
+    },
+    "Skip the Next Full Charge": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过下一次充满电"
+          }
+        }
+      }
+    },
+    "Skipped": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已跳过"
+          }
+        }
+      }
+    },
+    "Skipped the next full charge.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已跳过下一次充满电。"
+          }
+        }
+      }
+    },
+    "Skips the next Full by time; the ones after it stay.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跳过下一次定时充满，保留之后的计划。"
+          }
+        }
+      }
+    },
+    "Sleep": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "睡眠"
+          }
+        }
+      }
+    },
+    "Sleep discharge": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "睡眠时放电"
+          }
+        }
+      }
+    },
+    "Some days": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "部分日期"
+          }
+        }
+      }
+    },
+    "Stalled": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已停止响应"
+          }
+        }
+      }
+    },
+    "Starting": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在启动"
+          }
+        }
+      }
+    },
+    "Starting…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在启动…"
+          }
+        }
+      }
+    },
+    "Starts %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ 开始"
+          }
+        }
+      }
+    },
+    "Starts Chargectl when you log in. The helper keeps your limit either way.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录时启动 Chargectl。无论是否开启此选项，辅助程序都会维持充电上限。"
+          }
+        }
+      }
+    },
+    "Starts about %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "约 %@ 开始"
+          }
+        }
+      }
+    },
+    "Starts by itself once it’s installed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装后自动启动。"
+          }
+        }
+      }
+    },
+    "Starts just long enough before, so the battery isn’t kept full for hours, then goes back to %@.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅提前足够的时间开始充电，避免电池长时间保持满电，然后恢复至 %@。"
+          }
+        }
+      }
+    },
+    "Steady": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "稳定"
+          }
+        }
+      }
+    },
+    "Step %lld of %lld": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第 %lld 步，共 %lld 步"
+          }
+        }
+      }
+    },
+    "Stop": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止"
+          }
+        }
+      }
+    },
+    "Stop Top Up, Discharge or Full Charge": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止充满电、放电或定时充满"
+          }
+        }
+      }
+    },
+    "Stop anywhere from 20% to 100%.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 20% 至 100% 之间设置停止充电的电量。"
+          }
+        }
+      }
+    },
+    "Stops what Chargectl is doing and goes back to the limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止 Chargectl 当前的操作并恢复充电上限。"
+          }
+        }
+      }
+    },
+    "Switches wall power and keeps your limit while Chargectl is closed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 关闭时控制外接电源并保持充电上限。"
+          }
+        }
+      }
+    },
+    "System Settings › General › Login Items & Extensions.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统设置 › 通用 › 登录项与扩展。"
+          }
+        }
+      }
+    },
+    "Takes about a minute": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大约需要一分钟"
+          }
+        }
+      }
+    },
+    "Temp.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "温度"
+          }
+        }
+      }
+    },
+    "Temperature": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "温度"
+          }
+        }
+      }
+    },
+    "That time could not be scheduled.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法安排该时间。"
+          }
+        }
+      }
+    },
+    "The SMC key this Mac uses to cut and restore wall power.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此 Mac 用于断开和恢复外接电源的 SMC 键。"
+          }
+        }
+      }
+    },
+    "The app": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用"
+          }
+        }
+      }
+    },
+    "The battery charges %@.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池%@。"
+          }
+        }
+      }
+    },
+    "The battery could not be read.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法读取电池信息。"
+          }
+        }
+      }
+    },
+    "The battery helps run the Mac": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池正在辅助为 Mac 供电"
+          }
+        }
+      }
+    },
+    "The battery is already at or below %lld%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池电量已达到或低于 %lld%"
+          }
+        }
+      }
+    },
+    "The battery is already at or below %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量已达到或低于 %lld%%"
+          }
+        }
+      }
+    },
+    "The battery is at %@ now.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当前电量为 %@。"
+          }
+        }
+      }
+    },
+    "The battery is warm. Charging resumes when it cools down.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池温度较高。冷却后将继续充电。"
+          }
+        }
+      }
+    },
+    "The battery runs the Mac": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池正在为 Mac 供电"
+          }
+        }
+      }
+    },
+    "The battery’s charge in percent, and what Chargectl is doing.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "获取电池电量百分比和 Chargectl 当前的操作。"
+          }
+        }
+      }
+    },
+    "The charge beside the ring, as in %@.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在圆环旁显示电量，如 %@。"
+          }
+        }
+      }
+    },
+    "The charger runs the Mac and charges the battery": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电器正在为 Mac 供电并给电池充电"
+          }
+        }
+      }
+    },
+    "The charger runs the Mac; the battery is resting": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电器正在为 Mac 供电，电池处于静置状态"
+          }
+        }
+      }
+    },
+    "The download did not match its checksum.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载文件的校验和不匹配。"
+          }
+        }
+      }
+    },
+    "The download failed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载失败。"
+          }
+        }
+      }
+    },
+    "The download is not the expected Chargectl version.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下载的 Chargectl 版本与预期不符。"
+          }
+        }
+      }
+    },
+    "The helper could not be installed: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法安装辅助程序：%@"
+          }
+        }
+      }
+    },
+    "The helper could not be removed: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法移除辅助程序：%@"
+          }
+        }
+      }
+    },
+    "The helper is installed but doesn’t answer. Installing it again usually fixes this.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助服务已安装但没有响应。重新安装通常可以解决此问题。"
+          }
+        }
+      }
+    },
+    "The helper is not running": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "后台服务未运行"
+          }
+        }
+      }
+    },
+    "The helper is still version %@. Install it again to update it to %@.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助程序仍为 %@ 版本。请重新安装以更新至 %@。"
+          }
+        }
+      }
+    },
+    "The helper records a point every minute. The charts appear with the second point, so this page fills in on its own.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助程序每分钟记录一个数据点。记录第二个数据点后图表便会出现，此页面会自动填充数据。"
+          }
+        }
+      }
+    },
+    "The helper runs as root. After installing, turn on Chargectl in System Settings › Login Items. Removing it reconnects wall power.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助服务以 root 身份运行。安装后，请在系统设置 › 登录项中启用 Chargectl。移除服务后将恢复外接电源。"
+          }
+        }
+      }
+    },
+    "The helper runs as root. Installing it asks for your password once; updates keep it running. Removing it reconnects wall power.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助服务以 root 身份运行。安装时需要输入一次密码；更新时服务会继续运行。移除服务后将恢复外接电源。"
+          }
+        }
+      }
+    },
+    "The helper stopped answering, so charging is not controlled. Open Chargectl to install it again.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助程序无响应，充电控制已停止。请打开 Chargectl 重新安装辅助程序。"
+          }
+        }
+      }
+    },
+    "The helper stopped. Install it again to restart charge control.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助程序已停止。请重新安装以恢复充电控制。"
+          }
+        }
+      }
+    },
+    "The helper stops, cutting wall power has no effect, the battery is too warm, or the charger can’t keep up.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助程序停止运行、切断外接电源未生效、电池过热，或充电器供电不足。"
+          }
+        }
+      }
+    },
+    "The helper writes a line when the battery or a setting changes.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池状态或设置发生变化时，辅助程序会写入一条日志。"
+          }
+        }
+      }
+    },
+    "The list reloads every 5 seconds": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "列表每 5 秒刷新"
+          }
+        }
+      }
+    },
+    "The next full charge by a set time, and when charging starts.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一次定时充满的时间及充电开始时间。"
+          }
+        }
+      }
+    },
+    "The trend appears as the helper records one summary a day.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助程序每天记录一份摘要后将显示趋势。"
+          }
+        }
+      }
+    },
+    "Then": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "然后"
+          }
+        }
+      }
+    },
+    "Then back to %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "然后恢复至 %lld%%"
+          }
+        }
+      }
+    },
+    "This %lld W charger can't keep up: the battery is running down while plugged in.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此 %lld W 充电器功率不足：接通电源时电池电量仍在下降。"
+          }
+        }
+      }
+    },
+    "This Mac exposes no wall-power key, so charging cannot be controlled.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这台 Mac 未提供电源控制键，因此无法控制充电。"
+          }
+        }
+      }
+    },
+    "This charger can't keep up: the battery is running down while plugged in.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此充电器功率不足：接通电源时电池电量仍在下降。"
+          }
+        }
+      }
+    },
+    "This week": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "本周"
+          }
+        }
+      }
+    },
+    "Time": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "时间"
+          }
+        }
+      }
+    },
+    "Time Left": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "剩余时间"
+          }
+        }
+      }
+    },
+    "Today": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今天"
+          }
+        }
+      }
+    },
+    "Tomorrow": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "明天"
+          }
+        }
+      }
+    },
+    "Top Up": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充满电"
+          }
+        }
+      }
+    },
+    "Top Up, Discharge, Calibrate and Full by are done.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "补充电量、放电、校准和定时充满均已完成。"
+          }
+        }
+      }
+    },
+    "Topping up to 100%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在充电至 100%"
+          }
+        }
+      }
+    },
+    "Topping up to 100%.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在充电至 100%。"
+          }
+        }
+      }
+    },
+    "Tops up again only below %@, so the battery isn’t charged in short bursts.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅当电量低于 %@ 时才再次充电，避免频繁短时充电。"
+          }
+        }
+      }
+    },
+    "Tops up the moment the charge drops below the limit.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量一低于上限就立即补充充电。"
+          }
+        }
+      }
+    },
+    "Turn Charge Control On or Off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开或关闭充电控制"
+          }
+        }
+      }
+    },
+    "Turn Off Full By": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭定时充满"
+          }
+        }
+      }
+    },
+    "Turn it on in Login Items": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在登录项中将其打开"
+          }
+        }
+      }
+    },
+    "Turn on Chargectl in Login Items.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在登录项中打开 Chargectl。"
+          }
+        }
+      }
+    },
+    "Turn on Chargectl in System Settings › Login Items to start charge control.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在“系统设置”›“登录项”中开启 Chargectl，以启用充电控制。"
+          }
+        }
+      }
+    },
+    "Turn on Chargectl in System Settings › Login Items to start it.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在系统设置 › 登录项中启用 Chargectl 以启动它。"
+          }
+        }
+      }
+    },
+    "Turns charge control on or off.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开启或关闭充电控制。"
+          }
+        }
+      }
+    },
+    "Uninstall": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卸载"
+          }
+        }
+      }
+    },
+    "Uninstall Chargectl": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卸载 Chargectl"
+          }
+        }
+      }
+    },
+    "Uninstall Chargectl?": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卸载 Chargectl？"
+          }
+        }
+      }
+    },
+    "Uninstall stopped. The helper's files are still installed.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卸载已停止。辅助程序文件仍保留在电脑上。"
+          }
+        }
+      }
+    },
+    "Uninstall stopped: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卸载已停止：%@"
+          }
+        }
+      }
+    },
+    "Uninstalling…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在卸载…"
+          }
+        }
+      }
+    },
+    "Until %@ %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直到 %@ %@"
+          }
+        }
+      }
+    },
+    "Until %@, %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直到 %@，%@"
+          }
+        }
+      }
+    },
+    "Until it’s installed, Chargectl only shows readings.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装辅助程序之前，Chargectl 只能显示读数。"
+          }
+        }
+      }
+    },
+    "Until then": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在此之前"
+          }
+        }
+      }
+    },
+    "Until you unplug": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直到拔掉电源"
+          }
+        }
+      }
+    },
+    "Up to date": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已是最新版本"
+          }
+        }
+      }
+    },
+    "Up to date, checked %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已是最新版本，上次检查于%@"
+          }
+        }
+      }
+    },
+    "Used": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已使用"
+          }
+        }
+      }
+    },
+    "Used %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已使用 %lld%%"
+          }
+        }
+      }
+    },
+    "Used %lld%% · about %lld%% an hour": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已使用 %lld%% · 每小时约 %lld%%"
+          }
+        }
+      }
+    },
+    "Using significant energy": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "高能耗应用"
+          }
+        }
+      }
+    },
+    "Version %@ is available": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "版本 %@ 已可用"
+          }
+        }
+      }
+    },
+    "View": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示"
+          }
+        }
+      }
+    },
+    "View in Logs": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在日志中查看"
+          }
+        }
+      }
+    },
+    "Waiting for approval": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待批准"
+          }
+        }
+      }
+    },
+    "Wall power": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外接电源"
+          }
+        }
+      }
+    },
+    "Wall power cut; the battery runs the Mac": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外接电源已断开，电池正在为 Mac 供电"
+          }
+        }
+      }
+    },
+    "Wall power is reconnected and macOS takes over charging. Your settings, history and logs are kept.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外接电源已重新接通，macOS 将接管充电管理。你的设置、历史记录和日志会保留。"
+          }
+        }
+      }
+    },
+    "Warm": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "偏高"
+          }
+        }
+      }
+    },
+    "Warmest": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最高温度"
+          }
+        }
+      }
+    },
+    "Warning": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "警告"
+          }
+        }
+      }
+    },
+    "Warnings": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "警告"
+          }
+        }
+      }
+    },
+    "Watts in and out, second by second.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "实时查看输入和输出功率。"
+          }
+        }
+      }
+    },
+    "Weekdays": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作日"
+          }
+        }
+      }
+    },
+    "Welcome to Chargectl": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "欢迎使用 Chargectl"
+          }
+        }
+      }
+    },
+    "What Chargectl decided or did": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chargectl 的决定或操作"
+          }
+        }
+      }
+    },
+    "Where the watts go: into or out of the battery, the charger and the Mac.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "查看充电器、Mac 和电池之间的功率流向。"
+          }
+        }
+      }
+    },
+    "Widget data": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "小组件数据"
+          }
+        }
+      }
+    },
+    "Won’t open at login": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录时不打开"
+          }
+        }
+      }
+    },
+    "Yesterday": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "昨天"
+          }
+        }
+      }
+    },
+    "You’re all set": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一切就绪"
+          }
+        }
+      }
+    },
+    "a day, on average": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每日平均"
+          }
+        }
+      }
+    },
+    "about %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "约 %@"
+          }
+        }
+      }
+    },
+    "above the limit, discharging": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超过上限，正在放电"
+          }
+        }
+      }
+    },
+    "above the limit, running on the charger": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "超过上限，正在使用电源适配器供电"
+          }
+        }
+      }
+    },
+    "at %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保持在 %lld%%"
+          }
+        }
+      }
+    },
+    "at %lld%% on the charger": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "接通电源，电量保持在 %lld%%"
+          }
+        }
+      }
+    },
+    "at 100% for an hour": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 100% 静置一小时"
+          }
+        }
+      }
+    },
+    "at 90% or more": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量达到或超过 90%"
+          }
+        }
+      }
+    },
+    "automatic": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动"
+          }
+        }
+      }
+    },
+    "battery resting": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电池静置"
+          }
+        }
+      }
+    },
+    "calibrating, charging to 100%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在校准，充电至 100%"
+          }
+        }
+      }
+    },
+    "calibrating, draining to %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在校准，放电至 %lld%%"
+          }
+        }
+      }
+    },
+    "calibrating, resting at 100%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在校准，在 100% 静置"
+          }
+        }
+      }
+    },
+    "calibration": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "校准"
+          }
+        }
+      }
+    },
+    "charge control": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电控制"
+          }
+        }
+      }
+    },
+    "charge control off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电控制已关闭"
+          }
+        }
+      }
+    },
+    "charge cycles": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充电循环次数"
+          }
+        }
+      }
+    },
+    "charging": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在充电"
+          }
+        }
+      }
+    },
+    "charging to %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在充电至 %lld%%"
+          }
+        }
+      }
+    },
+    "charging to 100% by %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将在 %@ 前充至 100%"
+          }
+        }
+      }
+    },
+    "discharge": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "放电"
+          }
+        }
+      }
+    },
+    "discharging to %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在放电至 %lld%%"
+          }
+        }
+      }
+    },
+    "every day at %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "每天 %@"
+          }
+        }
+      }
+    },
+    "from the battery": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来自电池"
+          }
+        }
+      }
+    },
+    "full charge": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充满电"
+          }
+        }
+      }
+    },
+    "fully": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "完全充满"
+          }
+        }
+      }
+    },
+    "fully charged": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已充满电"
+          }
+        }
+      }
+    },
+    "h a day": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "小时/天"
+          }
+        }
+      }
+    },
+    "holding at %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量保持在 %lld%%"
+          }
+        }
+      }
+    },
+    "holding at %lld%%, running on the charger": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量保持在 %lld%%，正在使用电源适配器供电"
+          }
+        }
+      }
+    },
+    "into the battery": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充入电池"
+          }
+        }
+      }
+    },
+    "limit %lld percent, battery at %lld percent": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上限为百分之 %lld，电量为百分之 %lld"
+          }
+        }
+      }
+    },
+    "macOS asks for your password once.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 会要求你输入一次密码。"
+          }
+        }
+      }
+    },
+    "macOS is discharging to its %lld%% limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 正在放电至其 %lld%% 的限制"
+          }
+        }
+      }
+    },
+    "macOS kept Chargectl from removing %lld folders": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 阻止 Chargectl 移除 %lld 个文件夹"
+          }
+        }
+      }
+    },
+    "macOS kept Chargectl from removing a folder": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 阻止 Chargectl 移除一个文件夹"
+          }
+        }
+      }
+    },
+    "macOS kept charging past %lld%%; running on battery back to it": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 持续充电超过 %lld%%；使用电池供电直至降回该电量"
+          }
+        }
+      }
+    },
+    "macOS limit": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 上限"
+          }
+        }
+      }
+    },
+    "macOS limit %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 上限 %lld%%"
+          }
+        }
+      }
+    },
+    "macOS manages charging": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 管理充电"
+          }
+        }
+      }
+    },
+    "macOS manages charging and charges to 100%.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 管理充电并将电池充至 100%。"
+          }
+        }
+      }
+    },
+    "macOS stops charging at %lld%%. Turn its limit off in Battery settings.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 会在 %lld%% 时停止充电。请在电池设置中关闭其限制。"
+          }
+        }
+      }
+    },
+    "macOS will charge to 100%. Your settings stay saved for when you turn it back on.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 会将电池充至 100%。你的设置会保留，以便重新开启时使用。"
+          }
+        }
+      }
+    },
+    "macOS's own %lld%% charge limit is running the Mac on battery. Turn it off in Battery settings so Chargectl can keep you on the charger.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "macOS 自带的 %lld%% 充电限制正使 Mac 使用电池。请在电池设置中将其关闭，以便 Chargectl 保持接通电源。"
+          }
+        }
+      }
+    },
+    "no readings yet": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂无读数"
+          }
+        }
+      }
+    },
+    "no time to estimate": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法估算时间"
+          }
+        }
+      }
+    },
+    "no time to estimate yet": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暂时无法估算时间"
+          }
+        }
+      }
+    },
+    "not running": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未运行"
+          }
+        }
+      }
+    },
+    "now": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "现在"
+          }
+        }
+      }
+    },
+    "of %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "共 %@ 次"
+          }
+        }
+      }
+    },
+    "of its capacity when new": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "相对于全新时的容量"
+          }
+        }
+      }
+    },
+    "off": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭"
+          }
+        }
+      }
+    },
+    "on": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开启"
+          }
+        }
+      }
+    },
+    "on battery": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用电池"
+          }
+        }
+      }
+    },
+    "on the charger": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已连接电源适配器"
+          }
+        }
+      }
+    },
+    "on the charger; charges again at %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "接通电源；电量降至 %lld%% 时重新充电"
+          }
+        }
+      }
+    },
+    "once, %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "单次，%@"
+          }
+        }
+      }
+    },
+    "plugged in, not charging": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已接通电源，未充电"
+          }
+        }
+      }
+    },
+    "reading the battery": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在读取电池信息"
+          }
+        }
+      }
+    },
+    "resting": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "休息中"
+          }
+        }
+      }
+    },
+    "running": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "运行中"
+          }
+        }
+      }
+    },
+    "running on the charger": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在使用电源适配器供电"
+          }
+        }
+      }
+    },
+    "sailing down to %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "电量缓降至 %lld%%"
+          }
+        }
+      }
+    },
+    "sailing on the charger, charges again at %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "接通电源，电量降至 %lld%% 时重新充电"
+          }
+        }
+      }
+    },
+    "starting charge control": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在启动充电控制"
+          }
+        }
+      }
+    },
+    "to %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "至 %lld%%"
+          }
+        }
+      }
+    },
+    "to 100%% by %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "于 %@ 前充至 100%%"
+          }
+        }
+      }
+    },
+    "too warm, charging paused": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "温度过高，充电已暂停"
+          }
+        }
+      }
+    },
+    "top up": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "充满电"
+          }
+        }
+      }
+    },
+    "topping up to 100%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在充电至 100%"
+          }
+        }
+      }
+    },
+    "unchanged": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无变化"
+          }
+        }
+      }
+    },
+    "unchanged since %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自 %@ 起未变化"
+          }
+        }
+      }
+    },
+    "until %lld%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直至 %lld%%"
+          }
+        }
+      }
+    },
+    "until empty at this rate": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按当前速度直至电量耗尽"
+          }
+        }
+      }
+    },
+    "until full": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "直至充满"
+          }
+        }
+      }
+    },
+    "until the battery cools": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "等待电池冷却"
+          }
+        }
+      }
+    },
+    "weekdays at %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "工作日 %@"
+          }
+        }
+      }
+    },
+    "yesterday ": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "昨天 "
+          }
+        }
+      }
+    },
+    "⌘%@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "⌘%@"
+          }
+        }
+      }
+    },
+    "⌘2": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "⌘2"
+          }
+        }
+      }
+    },
+    "⌘F": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "⌘F"
+          }
+        }
+      }
+    },
+    "%@ before, from %@%%": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@之前，电量从 %@%% 开始"
+          }
+        }
+      }
+    },
+    "%@ of %@ entries · the helper keeps the last 300": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示 %@ 条，共 %@ 条 · 辅助服务保留最近 300 条"
+          }
+        }
+      }
+    },
+    "Install the helper to record history": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装辅助程序以记录历史"
+          }
+        }
+      }
+    },
+    "The helper records charge, temperature and power once a minute, even while Chargectl is closed. macOS asks for your password once.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助程序每分钟记录一次电量、温度和功率，即使 Chargectl 已关闭也会继续记录。macOS 会要求您输入一次密码。"
+          }
+        }
+      }
+    },
+    "Install the helper to see its log": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "安装辅助程序以查看日志"
+          }
+        }
+      }
+    },
+    "The helper logs what the battery does and what Chargectl changes, even while the app is closed. macOS asks for your password once.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "辅助程序记录电池的状态和 Chargectl 所做的更改，即使应用已关闭也会继续记录。macOS 会要求您输入一次密码。"
+          }
+        }
+      }
+    },
+    "Cutting wall power has no effect: the battery keeps charging. A macOS or firmware update may have changed how charging is controlled.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "断开电源适配器未生效：电池仍在充电。macOS 或固件更新可能更改了充电控制方式。"
+          }
+        }
+      }
+    },
+    "The helper could not be copied.": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法复制辅助程序。"
+          }
+        }
+      }
+    },
+    "launchd did not start the helper": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "launchd 未能启动辅助程序"
+          }
+        }
+      }
+    },
+    "Open at login": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "登录时启动"
+          }
+        }
+      }
+    },
+    "Show in menu bar": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在菜单栏中显示"
+          }
+        }
+      }
+    },
+    "Show percentage": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示百分比"
+          }
+        }
+      }
+    },
+    "Menu bar and startup": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "菜单栏与启动"
+          }
+        }
+      }
+    },
+    "Appearance": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外观"
+          }
+        }
+      }
+    },
+    "System": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "跟随系统"
+          }
+        }
+      }
+    },
+    "Light": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "浅色"
+          }
+        }
+      }
+    },
+    "Dark": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "深色"
+          }
+        }
+      }
+    },
+    "Notifications": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知"
+          }
+        }
+      }
+    },
+    "Problems": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "问题"
+          }
+        }
+      }
+    },
+    "Jobs finished": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "任务已完成"
+          }
+        }
+      }
+    },
+    "Limit reached": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "达到充电上限"
+          }
+        }
+      }
+    },
+    "Wall power key": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外接电源键"
+          }
+        }
+      }
+    },
+    "Remove Helper…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除辅助程序…"
+          }
+        }
+      }
+    },
+    "Updates": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更新"
+          }
+        }
+      }
+    },
+    "Not checked yet": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "尚未检查"
+          }
+        }
+      }
+    },
+    "Update automatically": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动更新"
+          }
+        }
+      }
+    },
+    "Uninstall Chargectl…": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卸载 Chargectl…"
+          }
+        }
+      }
+    },
+    "Cancel": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "取消"
+          }
+        }
+      }
+    },
+    "Remove": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除"
+          }
+        }
+      }
+    },
+    "Helper removed": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已移除辅助程序"
+          }
+        }
+      }
+    },
+    "Appearance: %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外观：%@"
+          }
+        }
+      }
+    },
+    "Temperature in %@": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "温度单位为 %@"
+          }
+        }
+      }
+    },
+    "New version found": {
+      "localizations": {
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "发现新版本"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

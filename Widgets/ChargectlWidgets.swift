@@ -192,7 +192,9 @@ struct ChargeControlToggle: ControlWidget {
             ControlWidgetToggle(isOn: state.isOn, action: SetChargeControlValueIntent()) {
                 Label("Charge Limit", systemImage: "battery.75percent")
             } valueLabel: { isOn in
-                Label(isOn ? "\(state.limit)%" : "Off", systemImage: isOn ? "battery.75percent" : "battery.100percent")
+                Label(
+                    isOn ? "\(state.limit)%" : String(localized: "Off"),
+                    systemImage: isOn ? "battery.75percent" : "battery.100percent")
             }
         }
         .displayName("Charge Limit")
@@ -248,8 +250,9 @@ struct FullByControl: ControlWidget {
             } valueLabel: { isOn in
                 Label(
                     isOn
-                        ? (state.next.map { $0.formatted(.dateTime.weekday(.abbreviated).hour().minute()) } ?? "On")
-                        : "Off",
+                        ? (state.next.map { $0.formatted(.dateTime.weekday(.abbreviated).hour().minute()) }
+                            ?? String(localized: "On"))
+                        : String(localized: "Off"),
                     systemImage: "clock")
             }
         }

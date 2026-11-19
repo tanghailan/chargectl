@@ -67,14 +67,14 @@ nonisolated struct WidgetFacts: Sendable {
     var trackEnd: Int? { target ?? limit }
 
     var title: String {
-        if let status { return Self.sentence(status.activity.summary) }
-        guard let battery else { return "Reading the battery" }
-        if !battery.isPluggedIn { return "On battery" }
-        return battery.isCharging ? "Charging" : "On the charger"
+        if let status { return Self.sentence(status.activity.localizedSummary) }
+        guard let battery else { return String(localized: "Reading the battery") }
+        if !battery.isPluggedIn { return String(localized: "On battery") }
+        return battery.isCharging ? String(localized: "Charging") : String(localized: "On the charger")
     }
 
     var detail: String? {
-        guard hasHelper else { return "macOS manages charging" }
+        guard hasHelper else { return String(localized: "macOS manages charging") }
         guard let estimate else { return nil }
         if let minutes = estimate.minutes { return "\(Self.duration(minutes)) \(estimate.caption)" }
         return Self.sentence(estimate.caption)
@@ -110,9 +110,9 @@ nonisolated struct WidgetFacts: Sendable {
     var batteryWatts: Double { battery?.batteryPower ?? 0 }
 
     var batteryFlow: String {
-        if batteryWatts > 0.05 { return "into the battery" }
-        if batteryWatts < -0.05 { return "from the battery" }
-        return "battery resting"
+        if batteryWatts > 0.05 { return String(localized: "into the battery") }
+        if batteryWatts < -0.05 { return String(localized: "from the battery") }
+        return String(localized: "battery resting")
     }
 
     // MARK: Health

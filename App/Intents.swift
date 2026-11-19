@@ -18,7 +18,8 @@ enum IntentHelper {
         do {
             return try await client.status()
         } catch {
-            throw ChargectlIntentError(message: "Chargectl’s helper isn’t running. Open Chargectl to install it.")
+            throw ChargectlIntentError(
+                message: String(localized: "Chargectl’s helper isn’t running. Open Chargectl to install it."))
         }
     }
 
@@ -139,7 +140,7 @@ struct ChargeFullByIntent: AppIntent {
     func perform() async throws -> some IntentResult & ProvidesDialog {
         let parts = Calendar.current.dateComponents([.hour, .minute], from: time)
         guard let schedule = FullBySchedule.once(hour: parts.hour ?? 8, minute: parts.minute ?? 0, after: .now) else {
-            throw ChargectlIntentError(message: "That time could not be scheduled.")
+            throw ChargectlIntentError(message: String(localized: "That time could not be scheduled."))
         }
         _ = try await IntentHelper.update { $0.fullBy = schedule }
         let when = schedule.once?.formatted(.dateTime.weekday(.wide).hour().minute()) ?? ""
@@ -209,9 +210,9 @@ struct GetBatteryStatusIntent: AppIntent {
 
     func perform() async throws -> some IntentResult & ReturnsValue<Int> & ProvidesDialog {
         guard let battery = await MainActor.run(body: { try? BatteryReader(smc: try? SMC()).read() }) else {
-            throw ChargectlIntentError(message: "The battery could not be read.")
+            throw ChargectlIntentError(message: String(localized: "The battery could not be read."))
         }
-        let activity = (try? await IntentHelper.client.status())?.activity.summary
+        let activity = (try? await IntentHelper.client.status())?.activity.localizedSummary
         return .result(
             value: battery.percent,
             dialog: "\(battery.percent)%\(activity.map { ", \($0)" } ?? "").")

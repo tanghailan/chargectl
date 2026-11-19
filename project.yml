@@ -89,6 +89,7 @@ targets:
       # The Shortcuts actions widget buttons and controls run, and the helper connection.
       - path: App/Intents.swift
       - path: App/DaemonClient.swift
+      - path: App/Resources/Localizable.xcstrings
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.tyldra.chargectl.widgets
@@ -104,6 +105,7 @@ targets:
     sources:
       - path: Tests
       - path: Shared
+      - path: App/Resources/Localizable.xcstrings
       # The daemon's sources, so its control loop can be tested without starting it.
       - path: Daemon
         excludes:

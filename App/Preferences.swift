@@ -25,6 +25,14 @@ enum AppearanceMode: String, CaseIterable, Identifiable {
     var id: Self { self }
     var title: String { rawValue.capitalized }
 
+    var localizedTitle: String {
+        switch self {
+        case .system: String(localized: "System")
+        case .light: String(localized: "Light")
+        case .dark: String(localized: "Dark")
+        }
+    }
+
     /// nil follows the system.
     var nsAppearance: NSAppearance? {
         switch self {

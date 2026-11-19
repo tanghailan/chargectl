@@ -7,7 +7,7 @@ enum ServiceInstallError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .cancelled: "Installation was cancelled."
+        case .cancelled: String(localized: "Installation was cancelled.")
         case .failed(let reason): reason
         }
     }
@@ -67,11 +67,12 @@ struct ServiceInstaller {
             await Self.unregisterAppService()
             try await Self.runAsAdministrator(
                 HelperInstall.installCommand(app: Bundle.main.bundleURL.path),
-                prompt: "Chargectl needs to install its helper.")
+                prompt: String(localized: "Chargectl needs to install its helper."))
         case .appService:
             if FileManager.default.fileExists(atPath: Self.plistPath) {
                 try await Self.runAsAdministrator(
-                    HelperInstall.removeCommand, prompt: "Chargectl needs to replace its old helper.")
+                    HelperInstall.removeCommand, prompt: String(localized: "Chargectl needs to replace its old helper.")
+                )
             }
             // Registering an enabled service again changes nothing; a fresh registration makes
             // launchd take the helper inside this copy of the app.
@@ -93,7 +94,7 @@ struct ServiceInstaller {
         await Self.unregisterAppService()
         if FileManager.default.fileExists(atPath: Self.plistPath) || HelperInstall.programExists {
             try await Self.runAsAdministrator(
-                HelperInstall.removeCommand, prompt: "Chargectl needs to remove its helper.")
+                HelperInstall.removeCommand, prompt: String(localized: "Chargectl needs to remove its helper."))
         }
     }
 
@@ -145,7 +146,7 @@ struct ServiceInstaller {
                 rootFolders,
                 "/bin/rm -f /Library/Logs/DiagnosticReports/Chargectl* /Library/Logs/DiagnosticReports/Retired/Chargectl* /Library/Logs/DiagnosticReports/chargectld* /Library/Logs/DiagnosticReports/Retired/chargectld*",
                 "true",
-            ].joined(separator: "; "), prompt: "Chargectl needs to remove its helper.")
+            ].joined(separator: "; "), prompt: String(localized: "Chargectl needs to remove its helper."))
     }
 
     /// Whether anything of the helper is still on disk.

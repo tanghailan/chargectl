@@ -19,12 +19,13 @@ struct MenuContent: View {
                     macOSLimit: model.macOSLimit, isDraining: model.isDraining
                 ) { limit in
                     model.update { $0.limit = limit }
-                    confirmations.show("Limit set to \(limit)%")
+                    confirmations.show(String(localized: "Limit set to \(limit)%"))
                 }
                 .padding(.top, 18)
                 metrics(battery)
             } else {
-                Text(model.batteryError ?? "Reading the battery…").font(.system(size: 13)).foregroundStyle(.secondary)
+                Text(model.batteryError ?? String(localized: "Reading the battery…")).font(.system(size: 13))
+                    .foregroundStyle(.secondary)
             }
             if let settings = model.settings, model.isControllable {
                 switches(settings).padding(.top, 14)
@@ -84,7 +85,11 @@ struct MenuContent: View {
     private var title: String {
         switch model.service {
         case .notInstalled, .needsApproval, .notResponding:
-            model.battery.map { $0.isCharging ? "Charging" : $0.isPluggedIn ? "Plugged in" : "On battery" }
+            model.battery.map {
+                $0.isCharging
+                    ? String(localized: "Charging")
+                    : $0.isPluggedIn ? String(localized: "Plugged in") : String(localized: "On battery")
+            }
                 ?? "Chargectl"
         default: model.activitySummary.capitalizedFirst
         }
@@ -100,7 +105,9 @@ struct MenuContent: View {
 
     private func subtitle(_ battery: BatterySnapshot) -> String {
         var parts: [String] = []
-        if let limit = model.settings?.limit, model.isControllable { parts.append("Limit \(limit)%") }
+        if let limit = model.settings?.limit, model.isControllable {
+            parts.append(String(localized: "Limit \(limit)%"))
+        }
         parts.append(unit.format(battery.temperature))
         if let macOSLimit = model.macOSLimit { parts.append("macOS \(macOSLimit)%") }
         return parts.joined(separator: " · ")
@@ -111,12 +118,14 @@ struct MenuContent: View {
     private func metrics(_ battery: BatterySnapshot) -> some View {
         let watts = battery.batteryPower
         return HStack(spacing: 0) {
-            Metric(title: "Health", value: Format.percent(battery.health), first: true)
-            Metric(title: "Cycles", value: "\(battery.cycleCount)")
-            Metric(title: "Charger", value: (battery.wallPower ?? 0) < 0.05 ? "0 W" : Format.watts(battery.wallPower))
-            Metric(title: "Mac", value: Format.watts(battery.systemPower))
+            Metric(title: String(localized: "Health"), value: Format.percent(battery.health), first: true)
+            Metric(title: String(localized: "Cycles"), value: "\(battery.cycleCount)")
             Metric(
-                title: "Battery", value: abs(watts) < 0.05 ? "0 W" : Format.signedWatts(watts),
+                title: String(localized: "Charger"),
+                value: (battery.wallPower ?? 0) < 0.05 ? "0 W" : Format.watts(battery.wallPower))
+            Metric(title: String(localized: "Mac"), value: Format.watts(battery.systemPower))
+            Metric(
+                title: String(localized: "Battery"), value: abs(watts) < 0.05 ? "0 W" : Format.signedWatts(watts),
                 tint: watts > 0.05 ? Theme.accent : watts < -0.05 ? Theme.warn : nil)
         }
         .padding(.top, 10)
@@ -128,11 +137,15 @@ struct MenuContent: View {
 
     private func switches(_ settings: ChargeSettings) -> some View {
         HStack(spacing: 8) {
-            tile("Auto discharge", "arrow.down.to.line", settings.autoDischarge) { $0.autoDischarge.toggle() }
-                .help("Plugged in above the limit: discharge down to it instead of holding the charge")
-            tile("Heat guard", "thermometer.medium", settings.heatProtection) { $0.heatProtection.toggle() }
-                .help("Pause charging while the battery is warm")
-            tile("Sleep discharge", "moon", settings.holdAsleep) { $0.holdAsleep.toggle() }
+            tile(String(localized: "Auto discharge"), "arrow.down.to.line", settings.autoDischarge) {
+                $0.autoDischarge.toggle()
+            }
+            .help("Plugged in above the limit: discharge down to it instead of holding the charge")
+            tile(String(localized: "Heat guard"), "thermometer.medium", settings.heatProtection) {
+                $0.heatProtection.toggle()
+            }
+            .help("Pause charging while the battery is warm")
+            tile(String(localized: "Sleep discharge"), "moon", settings.holdAsleep) { $0.holdAsleep.toggle() }
                 .help("Keep discharging while the Mac sleeps")
         }
     }
@@ -142,7 +155,8 @@ struct MenuContent: View {
     ) -> some View {
         Button {
             model.update(change)
-            confirmations.show("\(title) \(isOn ? "off" : "on")")
+            confirmations.show(
+                isOn ? String(localized: "\(title) turned off") : String(localized: "\(title) turned on"))
         } label: {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
@@ -155,7 +169,7 @@ struct MenuContent: View {
                         )
                         .shadow(color: isOn ? Theme.glow : .clear, radius: 6)
                     Spacer()
-                    Text(isOn ? "On" : "Off")
+                    Text(isOn ? String(localized: "On") : String(localized: "Off"))
                         .font(.system(size: 10.5, weight: .medium))
                         .foregroundStyle(isOn ? AnyShapeStyle(Theme.accent) : AnyShapeStyle(.tertiary))
                 }
@@ -180,7 +194,7 @@ struct MenuContent: View {
         .buttonStyle(PressableStyle())
         .animation(.easeOut(duration: 0.2), value: isOn)
         .accessibilityLabel(title)
-        .accessibilityValue(isOn ? "on" : "off")
+        .accessibilityValue(isOn ? String(localized: "on") : String(localized: "off"))
     }
 
     @ViewBuilder private func jobs(_ settings: ChargeSettings) -> some View {
@@ -190,18 +204,18 @@ struct MenuContent: View {
             HStack(spacing: 8) {
                 Button {
                     model.perform(.discharge)
-                    confirmations.show("Discharging to \(settings.limit)%")
+                    confirmations.show(String(localized: "Discharging to \(settings.limit)%"))
                 } label: {
-                    Label("Discharge", systemImage: "battery.25percent")
+                    Label(String(localized: "Discharge"), systemImage: "battery.25percent")
                 }
                 .disabled(!canDischarge)
                 .help(
                     canDischarge
-                        ? "Run on battery down to \(settings.limit)%"
-                        : "The battery is already at or below \(settings.limit)%")
+                        ? String(localized: "Run on battery down to \(settings.limit)%")
+                        : String(localized: "The battery is already at or below \(settings.limit)%"))
                 Button {
                     model.perform(.topUp)
-                    confirmations.show("Topping up to 100%")
+                    confirmations.show(String(localized: "Topping up to 100%"))
                 } label: {
                     Label("Top Up", systemImage: "battery.100percent.bolt")
                 }
@@ -220,20 +234,21 @@ struct MenuContent: View {
                 switch mode {
                 case .topUp:
                     (
-                        "Topping up to 100%", "Then back to \(settings.limit)%",
+                        String(localized: "Topping up to 100%"), String(localized: "Then back to \(settings.limit)%"),
                         Double(percent - settings.limit) / Double(max(100 - settings.limit, 1)), Theme.accent
                     )
                 case .discharge(let target):
                     (
-                        "Discharging to \(target)%", "On battery until it gets there",
+                        String(localized: "Discharging to \(target)%"),
+                        String(localized: "On battery until it gets there"),
                         Double(100 - percent) / Double(max(100 - target, 1)), Theme.warn
                     )
                 case .calibrate:
-                    ("Calibrating", model.activitySummary.capitalizedFirst, 0, Theme.accent)
+                    (String(localized: "Calibrating"), model.activitySummary.capitalizedFirst, 0, Theme.accent)
                 case .fullBy(let deadline):
                     (
-                        "Full by \(deadline.formatted(date: .omitted, time: .shortened))",
-                        "Charging to 100%, then back to \(settings.limit)%",
+                        String(localized: "Full by \(deadline.formatted(date: .omitted, time: .shortened))"),
+                        String(localized: "Charging to 100%, then back to \(settings.limit)%"),
                         Double(percent - settings.limit) / Double(max(100 - settings.limit, 1)), Theme.accent
                     )
                 case .automatic:
@@ -251,7 +266,7 @@ struct MenuContent: View {
                 Spacer()
                 Button("Stop") {
                     model.perform(.stop)
-                    confirmations.show("\(mode.title.capitalizedFirst) stopped")
+                    confirmations.show(String(localized: "\(mode.localizedTitle.capitalizedFirst) stopped"))
                 }
                 .buttonStyle(SoftButtonStyle(small: true))
             }
@@ -266,7 +281,8 @@ struct MenuContent: View {
             Image(systemName: "exclamationmark.triangle").foregroundStyle(Theme.warn)
             Text(
                 model.service == .needsApproval
-                    ? "Turn on Chargectl in Login Items." : "Charge control needs its helper."
+                    ? String(localized: "Turn on Chargectl in Login Items.")
+                    : String(localized: "Charge control needs its helper.")
             )
             .font(.system(size: 12))
             .foregroundStyle(.secondary)
@@ -276,9 +292,11 @@ struct MenuContent: View {
                 Button("Open") { ServiceInstaller.openLoginItems() }
                     .buttonStyle(SoftButtonStyle(kind: .primary, small: true))
             } else {
-                Button(model.isInstallingService ? "Installing…" : "Install Helper") { model.installService() }
-                    .buttonStyle(SoftButtonStyle(kind: .primary, small: true))
-                    .disabled(model.isInstallingService)
+                Button(
+                    model.isInstallingService ? String(localized: "Installing…") : String(localized: "Install Helper")
+                ) { model.installService() }
+                .buttonStyle(SoftButtonStyle(kind: .primary, small: true))
+                .disabled(model.isInstallingService)
             }
         }
         .padding(.horizontal, 12)
@@ -292,11 +310,15 @@ struct MenuContent: View {
     private var footer: some View {
         VStack(alignment: .leading, spacing: 0) {
             Rectangle().fill(Theme.line).frame(height: 1).padding(.bottom, 6)
-            FooterRow(title: "Open Chargectl", symbol: "macwindow", shortcut: "O") { openDashboard(.overview) }
-            FooterRow(title: "Settings…", symbol: "gearshape", shortcut: ",") { openDashboard(.settings) }
+            FooterRow(title: String(localized: "Open Chargectl"), symbol: "macwindow", shortcut: "O") {
+                openDashboard(.overview)
+            }
+            FooterRow(title: String(localized: "Settings…"), symbol: "gearshape", shortcut: ",") {
+                openDashboard(.settings)
+            }
             updateRow
             Rectangle().fill(Theme.line).frame(height: 1).padding(.vertical, 5)
-            FooterRow(title: "Quit Chargectl", symbol: "power") { Dashboard.quit() }
+            FooterRow(title: String(localized: "Quit Chargectl"), symbol: "power") { Dashboard.quit() }
         }
     }
 
@@ -304,13 +326,17 @@ struct MenuContent: View {
     @ViewBuilder private var updateRow: some View {
         switch updater.phase {
         case .available(let version):
-            FooterRow(title: "Restart to Update", symbol: "arrow.down.circle.fill", detail: version, tint: Theme.accent)
-            {
+            FooterRow(
+                title: String(localized: "Restart to Update"), symbol: "arrow.down.circle.fill", detail: version,
+                tint: Theme.accent
+            ) {
                 Task { await updater.installAvailable() }
             }
         case .installing(let version):
-            FooterRow(title: "Installing \(version)…", symbol: "arrow.down.circle", detail: nil, tint: nil) {}
-                .disabled(true)
+            FooterRow(
+                title: String(localized: "Installing \(version)…"), symbol: "arrow.down.circle", detail: nil, tint: nil
+            ) {}
+            .disabled(true)
         default:
             EmptyView()
         }
@@ -363,7 +389,9 @@ private struct MenuLimitBar: View {
                         .shadow(color: .black.opacity(0.4), radius: 2, y: 1)
                         .offset(x: x(shown) - 2)
                 }
-                if let label = shown.map({ "Limit \($0)%" }) ?? macOSLimit.map({ "macOS limit \($0)%" }) {
+                if let label = shown.map({ String(localized: "Limit \($0)%") })
+                    ?? macOSLimit.map({ String(localized: "macOS limit \($0)%") })
+                {
                     Text(label)
                         .font(.system(size: 10.5, weight: dragged != nil ? .semibold : .regular))
                         .monospacedDigit()
@@ -406,7 +434,10 @@ private struct MenuLimitBar: View {
         }
         .accessibilityElement()
         .accessibilityLabel("Charge limit")
-        .accessibilityValue(shown.map { "limit \($0) percent, battery at \(percent) percent" } ?? "\(percent) percent")
+        .accessibilityValue(
+            shown.map { String(localized: "limit \($0) percent, battery at \(percent) percent") }
+                ?? String(localized: "\(percent) percent")
+        )
         .accessibilityAdjustableAction { direction in
             guard let limit else { return }
             switch direction {

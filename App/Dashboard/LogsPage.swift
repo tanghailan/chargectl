@@ -9,6 +9,15 @@ enum LogFilter: String, CaseIterable, Identifiable {
 
     var id: Self { self }
 
+    var title: String {
+        switch self {
+        case .all: String(localized: "All")
+        case .observed: String(localized: "Battery")
+        case .chargectl: String(localized: "Chargectl")
+        case .warnings: String(localized: "Warnings")
+        }
+    }
+
     func includes(_ entry: LogEntry) -> Bool {
         switch self {
         case .all: true
@@ -32,9 +41,12 @@ struct LogsPage: View {
             if model.service != .running {
                 HelperEmptyState(
                     model: model, symbols: ["battery.75percent", "gearshape", "list.bullet.rectangle"],
-                    title: "Install the helper to see its log",
+                    title: String(localized: "Install the helper to see its log"),
                     message:
-                        "The helper logs what the battery does and what Chargectl changes, even while the app is closed. macOS asks for your password once."
+                        String(
+                            localized:
+                                "The helper logs what the battery does and what Chargectl changes, even while the app is closed. macOS asks for your password once."
+                        )
                 )
                 .padding(.horizontal, 24)
                 .padding(.top, 4)
@@ -81,7 +93,7 @@ struct LogsPage: View {
                         withAnimation(.spring(response: 0.32, dampingFraction: 0.78)) { filter = item }
                     } label: {
                         HStack(spacing: 6) {
-                            Text(item.rawValue)
+                            Text(item.title)
                             Text("\(count)")
                                 .font(.system(size: 10.5, weight: item == .warnings && count > 0 ? .semibold : .medium))
                                 .monospacedDigit()
@@ -111,7 +123,7 @@ struct LogsPage: View {
                         .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel("\(item.rawValue), \(count)")
+                    .accessibilityLabel("\(item.title), \(count)")
                     .accessibilityAddTraits(selected ? .isSelected : [])
                 }
             }
@@ -122,7 +134,9 @@ struct LogsPage: View {
             Button {
                 copy(visible)
             } label: {
-                Label(copied ? "Copied" : "Copy", systemImage: copied ? "checkmark" : "doc.on.doc")
+                Label(
+                    copied ? String(localized: "Copied") : String(localized: "Copy"),
+                    systemImage: copied ? "checkmark" : "doc.on.doc")
             }
             .buttonStyle(SoftButtonStyle(kind: copied ? .ok : .normal))
             .disabled(visible.isEmpty)
@@ -149,7 +163,8 @@ struct LogsPage: View {
                     .padding(.horizontal, 5)
                     .overlay(RoundedRectangle(cornerRadius: 5).strokeBorder(Theme.lineStrong))
             } else {
-                Text("\(count) \(count == 1 ? "match" : "matches")").font(.system(size: 11)).foregroundStyle(.tertiary)
+                Text(count == 1 ? "\(count) match" : "\(count) matches").font(.system(size: 11)).foregroundStyle(
+                    .tertiary)
                 Button {
                     query = ""
                 } label: {
@@ -192,7 +207,10 @@ struct LogsPage: View {
         .joined(separator: "\n")
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(text, forType: .string)
-        Confirmations.shared.show("Copied \(entries.count) \(entries.count == 1 ? "entry" : "entries")")
+        Confirmations.shared.show(
+            entries.count == 1
+                ? String(localized: "Copied \(entries.count) entry")
+                : String(localized: "Copied \(entries.count) entries"))
         withAnimation { copied = true }
         Task {
             try? await Task.sleep(for: .seconds(1.5))
@@ -254,7 +272,7 @@ private struct LogList: View {
                             HStack(alignment: .firstTextBaseline) {
                                 Text(dayTitle(day.day)).font(.system(size: 12, weight: .semibold))
                                 Spacer()
-                                Text("\(count) \(count == 1 ? "entry" : "entries")").font(.system(size: 11.5))
+                                Text(count == 1 ? "\(count) entry" : "\(count) entries").font(.system(size: 11.5))
                                     .foregroundStyle(.tertiary)
                             }
                             .padding(.horizontal, 20)
@@ -286,8 +304,8 @@ private struct LogList: View {
 
     private func dayTitle(_ day: Date) -> String {
         let calendar = Calendar.current
-        if calendar.isDateInToday(day) { return "Today" }
-        if calendar.isDateInYesterday(day) { return "Yesterday" }
+        if calendar.isDateInToday(day) { return String(localized: "Today") }
+        if calendar.isDateInYesterday(day) { return String(localized: "Yesterday") }
         return day.formatted(.dateTime.weekday(.wide).day().month(.wide))
     }
 
@@ -296,8 +314,12 @@ private struct LogList: View {
             if !query.isEmpty {
                 emptyTile("magnifyingglass", accent: false)
                 Text("Nothing matches “\(query)”").font(.system(size: 15, weight: .semibold)).padding(.bottom, 6)
-                Text("Search looks through every message\(filter == .all ? "" : " in this filter"). Try one of these:")
-                    .font(.system(size: 12.5)).foregroundStyle(.secondary).padding(.bottom, 14)
+                Text(
+                    filter == .all
+                        ? "Search looks through every message. Try one of these:"
+                        : "Search looks through every message in this filter. Try one of these:"
+                )
+                .font(.system(size: 12.5)).foregroundStyle(.secondary).padding(.bottom, 14)
                 HStack(spacing: 6) {
                     ForEach(["charger", "limit", "wall power", "discharging"], id: \.self) { word in
                         Button(word) { suggest(word) }
@@ -316,8 +338,11 @@ private struct LogList: View {
                 Text("No warnings").font(.system(size: 15, weight: .semibold)).padding(.bottom, 6)
                 Text(
                     helperStart.map {
-                        "Chargectl hasn’t run into a problem since the helper started at \($0.formatted(.dateTime.hour().minute()))."
-                    } ?? "Chargectl hasn’t run into a problem."
+                        String(
+                            localized:
+                                "Chargectl hasn’t run into a problem since the helper started at \($0.formatted(.dateTime.hour().minute()))."
+                        )
+                    } ?? String(localized: "Chargectl hasn’t run into a problem.")
                 )
                 .font(.system(size: 12.5)).foregroundStyle(.secondary).multilineTextAlignment(.center).frame(
                     maxWidth: 380)
@@ -520,10 +545,10 @@ private struct LogLine: View {
 
     private var help: String {
         switch kind {
-        case .observed: "Measured from the battery and charger"
-        case .chargectl: "What Chargectl decided or did"
-        case .helper: "Helper message"
-        case .warning: "Warning"
+        case .observed: String(localized: "Measured from the battery and charger")
+        case .chargectl: String(localized: "What Chargectl decided or did")
+        case .helper: String(localized: "Helper message")
+        case .warning: String(localized: "Warning")
         }
     }
 }

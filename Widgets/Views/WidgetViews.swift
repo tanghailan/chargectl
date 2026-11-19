@@ -17,27 +17,28 @@ enum ChargectlWidgetKind: String, CaseIterable {
 
     var title: String {
         switch self {
-        case .charge: "Charge"
-        case .power: "Power"
-        case .health: "Health"
-        case .today: "Today"
-        case .fullBy: "Full By"
-        case .controls: "Controls"
-        case .ring: "Ring"
-        case .timeLeft: "Time Left"
+        case .charge: String(localized: "Charge")
+        case .power: String(localized: "Power")
+        case .health: String(localized: "Health")
+        case .today: String(localized: "Today")
+        case .fullBy: String(localized: "Full By")
+        case .controls: String(localized: "Controls")
+        case .ring: String(localized: "Ring")
+        case .timeLeft: String(localized: "Time Left")
         }
     }
 
     var summary: String {
         switch self {
-        case .charge: "How full the battery is and what Chargectl is doing."
-        case .power: "Where the watts go: into or out of the battery, the charger and the Mac."
-        case .health: "Battery health and cycles, and how they changed over three months."
-        case .today: "How the battery spent today: at high charge, on the charger, the lowest charge."
-        case .fullBy: "The next full charge by a set time, and when charging starts."
-        case .controls: "Change the limit, Top Up or Discharge without opening Chargectl."
-        case .ring: "Just the charge and the limit."
-        case .timeLeft: "How long until the charge reaches the limit, full or empty."
+        case .charge: String(localized: "How full the battery is and what Chargectl is doing.")
+        case .power: String(localized: "Where the watts go: into or out of the battery, the charger and the Mac.")
+        case .health: String(localized: "Battery health and cycles, and how they changed over three months.")
+        case .today:
+            String(localized: "How the battery spent today: at high charge, on the charger, the lowest charge.")
+        case .fullBy: String(localized: "The next full charge by a set time, and when charging starts.")
+        case .controls: String(localized: "Change the limit, Top Up or Discharge without opening Chargectl.")
+        case .ring: String(localized: "Just the charge and the limit.")
+        case .timeLeft: String(localized: "How long until the charge reaches the limit, full or empty.")
         }
     }
 
@@ -158,7 +159,8 @@ private struct JobButtons: View {
             HStack(spacing: 6) {
                 Button(intent: StopJobIntent()) {
                     Label(
-                        facts.deadline.map { "Full by \(WidgetFacts.time($0))" } ?? mode.title.capitalized,
+                        facts.deadline.map { String(localized: "Full by \(WidgetFacts.time($0))") }
+                            ?? mode.localizedTitle.capitalized,
                         systemImage: "stop.fill")
                 }
                 .buttonStyle(WidgetPillStyle(filled: true))
@@ -169,15 +171,17 @@ private struct JobButtons: View {
                 if compact {
                     Button(intent: TopUpIntent()) { Text("Top Up") }
                         .buttonStyle(WidgetPillStyle(expands: true))
-                    Button(intent: DischargeIntent()) { Text("Discharge") }
+                    Button(intent: DischargeIntent()) { Text(String(localized: "Discharge")) }
                         .buttonStyle(WidgetPillStyle(dimmed: facts.percent <= limit, expands: true))
                         .disabled(facts.percent <= limit)
                 } else {
                     Button(intent: TopUpIntent()) { Label("Top Up", systemImage: "arrow.up.to.line") }
                         .buttonStyle(WidgetPillStyle())
-                    Button(intent: DischargeIntent()) { Label("Discharge", systemImage: "arrow.down.to.line") }
-                        .buttonStyle(WidgetPillStyle(dimmed: facts.percent <= limit))
-                        .disabled(facts.percent <= limit)
+                    Button(intent: DischargeIntent()) {
+                        Label(String(localized: "Discharge"), systemImage: "arrow.down.to.line")
+                    }
+                    .buttonStyle(WidgetPillStyle(dimmed: facts.percent <= limit))
+                    .disabled(facts.percent <= limit)
                 }
             }
         }
@@ -188,22 +192,30 @@ private func chargeFigures(_ facts: WidgetFacts, details: Bool, count: Int = 3) 
     let wall = facts.wallWatts
     let all = [
         WidgetFigure(
-            title: "Charger", value: wall.map { WidgetFacts.watts($0) } ?? "\u{2014}", unit: wall == nil ? "" : "W",
-            detail: details ? (facts.battery?.adapterWatts.map { "\($0) W adapter" } ?? "Not connected") : nil,
+            title: String(localized: "Charger"), value: wall.map { WidgetFacts.watts($0) } ?? "\u{2014}",
+            unit: wall == nil ? "" : "W",
+            detail: details
+                ? (facts.battery?.adapterWatts.map { String(localized: "\($0) W adapter") }
+                    ?? String(localized: "Not connected")) : nil,
             size: details ? 17 : 15),
         WidgetFigure(
             title: "Mac", value: WidgetFacts.watts(facts.macWatts), unit: "W",
             detail: details
-                ? (wall.map { "\(Int((facts.macWatts / max($0, 0.1) * 100).rounded()))% of power in" }
-                    ?? "From the battery") : nil,
+                ? (wall.map {
+                    String(localized: "\(Int((facts.macWatts / max($0, 0.1) * 100).rounded()))% of power in")
+                }
+                    ?? String(localized: "From the battery")) : nil,
             size: details ? 17 : 15),
         WidgetFigure(
-            title: "Battery", value: WidgetFacts.watts(facts.batteryWatts, signed: true), unit: "W",
+            title: String(localized: "Battery"), value: WidgetFacts.watts(facts.batteryWatts, signed: true), unit: "W",
             detail: details ? facts.batteryFlow : nil, size: details ? 17 : 15),
         WidgetFigure(
-            title: "Temp.", value: facts.battery?.temperature.map { String(format: "%.1f", $0) } ?? "\u{2014}",
+            title: String(localized: "Temp."),
+            value: facts.battery?.temperature.map { String(format: "%.1f", $0) } ?? "\u{2014}",
             unit: "°C",
-            detail: details ? ((facts.battery?.temperature ?? 0) >= 35 ? "Warm" : "Normal") : nil,
+            detail: details
+                ? ((facts.battery?.temperature ?? 0) >= 35 ? String(localized: "Warm") : String(localized: "Normal"))
+                : nil,
             size: details ? 17 : 15),
     ]
     return FigureRow(figures: Array(all.prefix(count)))
@@ -214,8 +226,8 @@ private func percentValue(_ facts: WidgetFacts, size: CGFloat) -> BigValue {
 }
 
 private func limitNote(_ facts: WidgetFacts) -> String? {
-    if let deadline = facts.deadline { return "Full by \(WidgetFacts.time(deadline))" }
-    return facts.limit.map { "Limit \($0)%" }
+    if let deadline = facts.deadline { return String(localized: "Full by \(WidgetFacts.time(deadline))") }
+    return facts.limit.map { String(localized: "Limit \($0)%") }
 }
 
 // MARK: - Charge
@@ -231,7 +243,7 @@ private struct ChargeKind: View {
                 small
             } right: {
                 VStack(alignment: .leading, spacing: 6) {
-                    ColumnHeader(title: "Last 6 hours", note: limitNote(facts))
+                    ColumnHeader(title: String(localized: "Last 6 hours"), note: limitNote(facts))
                     ChargeArea(samples: facts.entry.history, now: facts.entry.date, limit: facts.limit).frame(
                         height: 66)
                     Spacer(minLength: 0)
@@ -282,12 +294,21 @@ private struct ChargeKind: View {
 
     private var rules: [(String, String)] {
         guard let settings = facts.settings else {
-            return [("macOS limit", "On"), ("Health", healthText), ("Cycles", cyclesText)]
+            return [
+                (String(localized: "macOS limit"), String(localized: "On")), (String(localized: "Health"), healthText),
+                (String(localized: "Cycles"), cyclesText),
+            ]
         }
         return [
-            ("Sails", settings.sailing == 0 ? "Off" : "\(settings.lowerBound)–\(settings.limit)%"),
-            ("Above the limit", settings.autoDischarge ? "Discharge" : "Hold"),
-            ("Health", healthText), ("Cycles", cyclesText),
+            (
+                String(localized: "Sails"),
+                settings.sailing == 0 ? String(localized: "Off") : "\(settings.lowerBound)–\(settings.limit)%"
+            ),
+            (
+                String(localized: "Above the limit"),
+                settings.autoDischarge ? String(localized: "Discharge") : String(localized: "Hold")
+            ),
+            (String(localized: "Health"), healthText), (String(localized: "Cycles"), cyclesText),
         ]
     }
 
@@ -319,13 +340,15 @@ private struct ChargeKind: View {
             }
         } right: {
             VStack(alignment: .leading, spacing: 6) {
-                ColumnHeader(title: "Charge, last 24 hours", note: facts.limit.map { "Limit \($0)%" })
+                ColumnHeader(
+                    title: String(localized: "Charge, last 24 hours"),
+                    note: facts.limit.map { String(localized: "Limit \($0)%") })
                 ChargeArea(
                     samples: facts.entry.history, now: facts.entry.date, hours: 24, limit: facts.limit, showsGrid: true
                 )
                 .frame(height: 120)
                 chargeFigures(facts, details: true, count: 4).padding(.top, 8)
-                ColumnHeader(title: "Recent").padding(.top, 10)
+                ColumnHeader(title: String(localized: "Recent")).padding(.top, 10)
                 RecentRows(events: Array(facts.entry.events.prefix(3)))
             }
         }
@@ -344,7 +367,8 @@ private struct ChargeKind: View {
             WidgetRing(facts: facts, lineWidth: 7, showsGlyph: false) {
                 VStack(spacing: 2) {
                     percentValue(facts, size: 42)
-                    Text(limitNote(facts) ?? "macOS limit").font(.system(size: 10.5)).foregroundStyle(.tertiary)
+                    Text(limitNote(facts) ?? String(localized: "macOS limit")).font(.system(size: 10.5))
+                        .foregroundStyle(.tertiary)
                 }
             }
             .frame(width: 136, height: 136)
@@ -356,7 +380,10 @@ private struct ChargeKind: View {
                 label: limitNote(facts), showsScale: true
             )
             .padding(.top, 22)
-            ColumnHeader(title: "Charge, last 24 hours", note: facts.limit.map { "Limit \($0)%" }).padding(.top, 16)
+            ColumnHeader(
+                title: String(localized: "Charge, last 24 hours"),
+                note: facts.limit.map { String(localized: "Limit \($0)%") }
+            ).padding(.top, 16)
             ChargeArea(
                 samples: facts.entry.history, now: facts.entry.date, hours: 24, limit: facts.limit, showsGrid: true
             )
@@ -364,7 +391,7 @@ private struct ChargeKind: View {
             .padding(.top, 6)
             chargeFigures(facts, details: false, count: 2).padding(.top, 12)
             FigureRow(figures: Array(chargeFiguresAll.suffix(2))).padding(.top, 8)
-            ColumnHeader(title: "Recent").padding(.top, 14)
+            ColumnHeader(title: String(localized: "Recent")).padding(.top, 14)
             RecentRows(events: Array(facts.entry.events.prefix(3)))
             Spacer(minLength: 8)
             JobButtons(facts: facts)
@@ -414,7 +441,8 @@ private struct PowerKind: View {
                 headline
                 VStack(spacing: 0) {
                     WidgetRow(
-                        title: "Charger", value: facts.wallWatts.map { "\(WidgetFacts.watts($0)) W" } ?? "\u{2014}",
+                        title: String(localized: "Charger"),
+                        value: facts.wallWatts.map { "\(WidgetFacts.watts($0)) W" } ?? "\u{2014}",
                         first: true)
                     WidgetRow(title: "Mac", value: "\(WidgetFacts.watts(facts.macWatts)) W")
                 }
@@ -425,7 +453,7 @@ private struct PowerKind: View {
 
     private var headline: some View {
         VStack(alignment: .leading, spacing: 0) {
-            WidgetLabel(symbol: "bolt", title: "Power")
+            WidgetLabel(symbol: "bolt", title: String(localized: "Power"))
             Spacer(minLength: 0)
             BigValue(
                 parts: [(WidgetFacts.watts(facts.batteryWatts, signed: true), "W")], size: 34,
@@ -442,7 +470,7 @@ private struct PowerKind: View {
         return VStack(alignment: .leading, spacing: 8) {
             Spacer(minLength: 0)
             ColumnHeader(
-                title: wall == nil ? "From the battery" : "From the charger",
+                title: wall == nil ? String(localized: "From the battery") : String(localized: "From the charger"),
                 note: wall.map { "\(WidgetFacts.watts($0)) W" })
             GeometryReader { geometry in
                 HStack(spacing: 2) {
@@ -460,7 +488,7 @@ private struct PowerKind: View {
                     value: "\(WidgetFacts.watts(facts.macWatts)) W"
                         + (wall != nil ? " · \(Int((facts.macWatts / total * 100).rounded()))%" : ""), first: true)
                 WidgetRow(
-                    title: "Battery",
+                    title: String(localized: "Battery"),
                     value: "\(WidgetFacts.watts(facts.batteryWatts, signed: true)) W"
                         + (wall != nil && charging ? " · \(Int((facts.batteryWatts / total * 100).rounded()))%" : ""))
             }
@@ -478,7 +506,7 @@ private struct HealthKind: View {
         if family == .systemMedium {
             Divided {
                 VStack(alignment: .leading, spacing: 0) {
-                    WidgetLabel(symbol: "heart.text.square", title: "Health")
+                    WidgetLabel(symbol: "heart.text.square", title: String(localized: "Health"))
                     Spacer(minLength: 0)
                     value(size: 40)
                     Text(capacity).font(.system(size: 11)).foregroundStyle(.secondary).padding(.top, 5)
@@ -486,7 +514,7 @@ private struct HealthKind: View {
             } right: {
                 VStack(alignment: .leading, spacing: 6) {
                     if facts.healthTrend.count > 1 {
-                        ColumnHeader(title: "Last 3 months", note: change)
+                        ColumnHeader(title: String(localized: "Last 3 months"), note: change)
                         TrendLine(values: facts.healthTrend, filled: true).frame(height: 58)
                     } else {
                         Text("The trend appears as the helper records one summary a day.")
@@ -496,19 +524,21 @@ private struct HealthKind: View {
                     Spacer(minLength: 0)
                     FigureRow(figures: [
                         WidgetFigure(
-                            title: "Cycles", value: facts.battery.map { "\($0.cycleCount)" } ?? "\u{2014}",
+                            title: String(localized: "Cycles"),
+                            value: facts.battery.map { "\($0.cycleCount)" } ?? "\u{2014}",
                             unit: facts.cyclesPerMonth.map { String(format: "%.0f a month", $0) } ?? "", size: 15),
                         WidgetFigure(
-                            title: "At 90%+",
+                            title: String(localized: "At 90%+"),
                             value: facts.highChargeHours.map { String(format: "%.1f", $0) } ?? "\u{2014}",
-                            unit: facts.highChargeHours == nil ? "" : "h a day", size: 15),
+                            unit: facts.highChargeHours == nil ? "" : String(localized: "h a day"), size: 15),
                     ])
                 }
             }
         } else {
             VStack(alignment: .leading, spacing: 0) {
                 WidgetLabel(
-                    symbol: "heart.text.square", title: "Health", note: facts.healthTrend.count > 1 ? "3 months" : nil)
+                    symbol: "heart.text.square", title: String(localized: "Health"),
+                    note: facts.healthTrend.count > 1 ? String(localized: "3 months") : nil)
                 Spacer(minLength: 0)
                 value(size: 38)
                 if facts.healthTrend.count > 1 {
@@ -537,7 +567,8 @@ private struct HealthKind: View {
 
     private var change: String? {
         facts.healthChange.map {
-            abs($0) < 0.05 ? "unchanged" : String(format: "%@%.1f", $0 > 0 ? "+" : "\u{2212}", abs($0))
+            abs($0) < 0.05
+                ? String(localized: "unchanged") : String(format: "%@%.1f", $0 > 0 ? "+" : "\u{2212}", abs($0))
         }
     }
 }
@@ -550,24 +581,29 @@ private struct TodayKind: View {
 
     var body: some View {
         if !facts.hasHelper {
-            NeedsHelper(symbol: "sun.max", title: "Today", text: "Recording the day needs the helper.")
+            NeedsHelper(
+                symbol: "sun.max", title: String(localized: "Today"),
+                text: String(localized: "Recording the day needs the helper."))
         } else if family == .systemMedium {
             Divided {
                 VStack(alignment: .leading, spacing: 0) {
-                    WidgetLabel(symbol: "sun.max", title: "Today")
+                    WidgetLabel(symbol: "sun.max", title: String(localized: "Today"))
                     Spacer(minLength: 0)
                     VStack(spacing: 0) {
-                        WidgetRow(title: "At 90%+", value: highCharge, first: true)
-                        WidgetRow(title: "On charger", value: plugged)
-                        WidgetRow(title: "Lowest", value: facts.todayLowest.map { "\($0)%" } ?? "\u{2014}")
+                        WidgetRow(title: String(localized: "At 90%+"), value: highCharge, first: true)
+                        WidgetRow(title: String(localized: "On charger"), value: plugged)
                         WidgetRow(
-                            title: "Warmest",
+                            title: String(localized: "Lowest"), value: facts.todayLowest.map { "\($0)%" } ?? "\u{2014}")
+                        WidgetRow(
+                            title: String(localized: "Warmest"),
                             value: facts.today?.maxTemperature.map { String(format: "%.0f °C", $0) } ?? "\u{2014}")
                     }
                 }
             } right: {
                 VStack(alignment: .leading, spacing: 6) {
-                    ColumnHeader(title: "Charge today", note: facts.limit.map { "Limit \($0)%" })
+                    ColumnHeader(
+                        title: String(localized: "Charge today"),
+                        note: facts.limit.map { String(localized: "Limit \($0)%") })
                     ChargeArea(
                         samples: facts.entry.history, now: facts.entry.date, hours: hoursToday, limit: facts.limit
                     )
@@ -576,7 +612,7 @@ private struct TodayKind: View {
                     HStack {
                         Text("12 AM")
                         Spacer()
-                        Text("now")
+                        Text(String(localized: "now"))
                     }
                     .font(.system(size: 9))
                     .foregroundStyle(.tertiary)
@@ -584,13 +620,15 @@ private struct TodayKind: View {
             }
         } else {
             VStack(alignment: .leading, spacing: 0) {
-                WidgetLabel(symbol: "sun.max", title: "Today")
+                WidgetLabel(symbol: "sun.max", title: String(localized: "Today"))
                 Spacer(minLength: 0)
                 BigValue(parts: hoursParts, size: 40)
-                Text("at 90% or more").font(.system(size: 11)).foregroundStyle(.secondary).padding(.top, 4)
+                Text(String(localized: "at 90% or more")).font(.system(size: 11)).foregroundStyle(.secondary).padding(
+                    .top, 4)
                 VStack(spacing: 0) {
-                    WidgetRow(title: "On charger", value: plugged, first: true)
-                    WidgetRow(title: "Lowest", value: facts.todayLowest.map { "\($0)%" } ?? "\u{2014}")
+                    WidgetRow(title: String(localized: "On charger"), value: plugged, first: true)
+                    WidgetRow(
+                        title: String(localized: "Lowest"), value: facts.todayLowest.map { "\($0)%" } ?? "\u{2014}")
                 }
                 .padding(.top, 8)
             }
@@ -621,7 +659,9 @@ private struct FullByKind: View {
 
     var body: some View {
         if !facts.hasHelper {
-            NeedsHelper(symbol: "clock", title: "Full by", text: "Full by needs the helper.")
+            NeedsHelper(
+                symbol: "clock", title: String(localized: "Full by"),
+                text: String(localized: "Full by needs the helper."))
         } else {
             switch family {
             case .systemMedium: medium
@@ -638,7 +678,8 @@ private struct FullByKind: View {
     private var small: some View {
         VStack(alignment: .leading, spacing: 0) {
             WidgetLabel(
-                symbol: "clock", title: "Full by", note: schedule.map { $0.isRepeating ? repeatTitle($0) : "Once" })
+                symbol: "clock", title: String(localized: "Full by"),
+                note: schedule.map { $0.isRepeating ? repeatTitle($0) : String(localized: "Once") })
             Spacer(minLength: 0)
             headline(size: 36)
         }
@@ -647,14 +688,16 @@ private struct FullByKind: View {
     private var medium: some View {
         Divided {
             VStack(alignment: .leading, spacing: 0) {
-                WidgetLabel(symbol: "clock", title: "Full by")
+                WidgetLabel(symbol: "clock", title: String(localized: "Full by"))
                 Spacer(minLength: 0)
                 headline(size: 36)
             }
         } right: {
             VStack(alignment: .leading, spacing: 8) {
                 if let schedule {
-                    ColumnHeader(title: schedule.isRepeating ? "This week" : "Once", note: time(schedule))
+                    ColumnHeader(
+                        title: schedule.isRepeating ? String(localized: "This week") : String(localized: "Once"),
+                        note: time(schedule))
                     WeekStrip(schedule: schedule, next: facts.nextFullBy, skipped: facts.skippedFullBy)
                     Spacer(minLength: 0)
                     actions
@@ -671,13 +714,14 @@ private struct FullByKind: View {
 
     private var large: some View {
         VStack(alignment: .leading, spacing: 0) {
-            WidgetLabel(symbol: "clock", title: "Full by", note: scheduleNote)
+            WidgetLabel(symbol: "clock", title: String(localized: "Full by"), note: scheduleNote)
             if let schedule {
                 headline(size: 52, showsStart: false).padding(.top, 12)
                 chargeLine.padding(.top, 12)
                 ColumnHeader(title: trackTitle).padding(.top, 14)
                 FullByTrack(facts: facts).frame(height: 44).padding(.top, 6)
-                ColumnHeader(title: schedule.isRepeating ? "This week" : "Once").padding(.top, 10)
+                ColumnHeader(title: schedule.isRepeating ? String(localized: "This week") : String(localized: "Once"))
+                    .padding(.top, 10)
                 WeekStrip(schedule: schedule, next: facts.nextFullBy, skipped: facts.skippedFullBy).padding(.top, 6)
                 Spacer(minLength: 8)
                 actions
@@ -690,7 +734,7 @@ private struct FullByKind: View {
     private var extraLarge: some View {
         Divided(leftWidth: 300) {
             VStack(alignment: .leading, spacing: 0) {
-                WidgetLabel(symbol: "clock", title: "Full by", note: scheduleNote)
+                WidgetLabel(symbol: "clock", title: String(localized: "Full by"), note: scheduleNote)
                 if schedule != nil {
                     headline(size: 60, showsStart: false).padding(.top, 16)
                     chargeLine.padding(.top, 16)
@@ -704,12 +748,15 @@ private struct FullByKind: View {
         } right: {
             VStack(alignment: .leading, spacing: 6) {
                 if let schedule {
-                    ColumnHeader(title: trackTitle, note: facts.limit.map { "Limit \($0)%" })
+                    ColumnHeader(title: trackTitle, note: facts.limit.map { String(localized: "Limit \($0)%") })
                     FullByTrack(facts: facts).frame(height: 44)
-                    ColumnHeader(title: schedule.isRepeating ? "This week" : "Once", note: time(schedule))
-                        .padding(.top, 10)
+                    ColumnHeader(
+                        title: schedule.isRepeating ? String(localized: "This week") : String(localized: "Once"),
+                        note: time(schedule)
+                    )
+                    .padding(.top, 10)
                     WeekStrip(schedule: schedule, next: facts.nextFullBy, skipped: facts.skippedFullBy)
-                    ColumnHeader(title: "Coming up").padding(.top, 10)
+                    ColumnHeader(title: String(localized: "Coming up")).padding(.top, 10)
                     UpcomingRows(rows: upcoming(4))
                 } else {
                     howItWorks
@@ -720,17 +767,20 @@ private struct FullByKind: View {
 
     private var portrait: some View {
         VStack(alignment: .leading, spacing: 0) {
-            WidgetLabel(symbol: "clock", title: "Full by", note: scheduleNote)
+            WidgetLabel(symbol: "clock", title: String(localized: "Full by"), note: scheduleNote)
             if let schedule {
                 headline(size: 64, showsStart: false).padding(.top, 18)
                 chargeLine.padding(.top, 16)
                 planRows.padding(.top, 14)
                 ColumnHeader(title: trackTitle).padding(.top, 18)
                 FullByTrack(facts: facts).frame(height: 44).padding(.top, 6)
-                ColumnHeader(title: schedule.isRepeating ? "This week" : "Once", note: time(schedule))
-                    .padding(.top, 16)
+                ColumnHeader(
+                    title: schedule.isRepeating ? String(localized: "This week") : String(localized: "Once"),
+                    note: time(schedule)
+                )
+                .padding(.top, 16)
                 WeekStrip(schedule: schedule, next: facts.nextFullBy, skipped: facts.skippedFullBy).padding(.top, 6)
-                ColumnHeader(title: "Coming up").padding(.top, 16)
+                ColumnHeader(title: String(localized: "Coming up")).padding(.top, 16)
                 UpcomingRows(rows: upcoming(5)).padding(.top, 2)
                 Spacer(minLength: 8)
                 actions
@@ -746,7 +796,7 @@ private struct FullByKind: View {
         let caption: CGFloat = size >= 50 ? 12.5 : 11
         if let deadline = facts.deadline {
             let minutes = facts.estimate?.minutes
-            BigValue(parts: minutes.map { durationParts($0) } ?? [("Full", "")], size: size)
+            BigValue(parts: minutes.map { durationParts($0) } ?? [(String(localized: "Full"), "")], size: size)
             Text("to 100% by \(WidgetFacts.time(deadline))").font(.system(size: caption)).foregroundStyle(.secondary)
                 .padding(.top, 4)
             if size < 50 { WidgetMeter(percent: facts.percent, limit: 100).padding(.top, 10) }
@@ -760,7 +810,7 @@ private struct FullByKind: View {
                     .padding(.top, 6)
             }
         } else {
-            BigValue(parts: [("Off", "")], size: size - 2)
+            BigValue(parts: [(String(localized: "Off"), "")], size: size - 2)
             Text("Set a time in Chargectl").font(.system(size: caption)).foregroundStyle(.secondary).padding(.top, 4)
         }
     }
@@ -811,7 +861,7 @@ private struct FullByKind: View {
     }
 
     @ViewBuilder private func off(size: CGFloat) -> some View {
-        BigValue(parts: [("Off", "")], size: size).padding(.top, 14)
+        BigValue(parts: [(String(localized: "Off"), "")], size: size).padding(.top, 14)
         Text("Charge to 100% by a set time, on the days you pick, then back to your limit.")
             .font(.system(size: 12))
             .foregroundStyle(.secondary)
@@ -825,18 +875,28 @@ private struct FullByKind: View {
 
     /// When charging starts, how long it takes and what comes after.
     private var planRows: some View {
-        let back = facts.limit.map { "Back to \($0)%" } ?? "Back to your limit"
+        let back = facts.limit.map { String(localized: "Back to \($0)%") } ?? String(localized: "Back to your limit")
         let rows: [(String, String)]
         if let deadline = facts.deadline {
             rows = [
-                ("Full", facts.finish.map { "about \(WidgetFacts.time(min($0, deadline)))" } ?? "\u{2014}"),
-                ("Then", "At 100% until \(WidgetFacts.time(deadline))"), ("Afterwards", back),
+                (
+                    String(localized: "Full"),
+                    facts.finish.map { String(localized: "about \(WidgetFacts.time(min($0, deadline)))") } ?? "\u{2014}"
+                ),
+                (String(localized: "Then"), String(localized: "At 100% until \(WidgetFacts.time(deadline))")),
+                (String(localized: "Afterwards"), back),
             ]
         } else {
             let minutes = Int((FullBySchedule.leadTime(from: facts.percent) - FullBySchedule.margin) / 60)
             rows = [
-                ("Charging starts", facts.fullByStart.map { "about \(WidgetFacts.time($0))" } ?? "\u{2014}"),
-                ("Charging takes", "about \(WidgetFacts.duration(max(minutes, 1)))"), ("Afterwards", back),
+                (
+                    String(localized: "Charging starts"),
+                    facts.fullByStart.map { String(localized: "about \(WidgetFacts.time($0))") } ?? "\u{2014}"
+                ),
+                (
+                    String(localized: "Charging takes"),
+                    String(localized: "about \(WidgetFacts.duration(max(minutes, 1)))")
+                ), (String(localized: "Afterwards"), back),
             ]
         }
         return VStack(spacing: 0) {
@@ -848,7 +908,7 @@ private struct FullByKind: View {
 
     private var howItWorks: some View {
         VStack(alignment: .leading, spacing: 0) {
-            ColumnHeader(title: "How it works")
+            ColumnHeader(title: String(localized: "How it works"))
             ForEach(Array(Self.steps.enumerated()), id: \.offset) { index, step in
                 WidgetRow(title: step.0, value: step.1, first: index == 0)
             }
@@ -856,22 +916,28 @@ private struct FullByKind: View {
     }
 
     private static let steps = [
-        ("Until then", "Held at your limit"), ("Just before", "Charges to 100%"), ("At the time", "Full"),
-        ("After", "Back to your limit"),
+        (String(localized: "Until then"), String(localized: "Held at your limit")),
+        (String(localized: "Just before"), String(localized: "Charges to 100%")),
+        (String(localized: "At the time"), String(localized: "Full")),
+        (String(localized: "After"), String(localized: "Back to your limit")),
     ]
 
     private var scheduleNote: String? {
         guard let schedule else { return nil }
-        if let once = schedule.once { return "Once · \(Self.weekday(once)) \(WidgetFacts.time(once))" }
+        if let once = schedule.once {
+            return String(localized: "Once · \(Self.weekday(once)) \(WidgetFacts.time(once))")
+        }
         return "\(repeatTitle(schedule)) · \(time(schedule))"
     }
 
     private var trackTitle: String {
-        guard let next = facts.nextFullBy else { return "Next full charge" }
+        guard let next = facts.nextFullBy else { return String(localized: "Next full charge") }
         let day = Self.relativeDay(next, now: facts.entry.date, wide: false)
         let calendar = Calendar.current
         let near = calendar.isDate(next, inSameDayAs: facts.entry.date) || calendar.isDateInTomorrow(next)
-        return near ? "Until \(day.lowercased()) \(WidgetFacts.time(next))" : "Until \(day), \(WidgetFacts.time(next))"
+        return near
+            ? String(localized: "Until \(day.lowercased()) \(WidgetFacts.time(next))")
+            : String(localized: "Until \(day), \(WidgetFacts.time(next))")
     }
 
     /// The next full charges, the skipped one first.
@@ -880,7 +946,10 @@ private struct FullByKind: View {
         let now = facts.entry.date
         var rows: [UpcomingRows.Row] = []
         if let skipped = facts.skippedFullBy {
-            rows.append(.init(title: Self.relativeDay(skipped, now: now, wide: false), value: "Skipped", dimmed: true))
+            rows.append(
+                .init(
+                    title: Self.relativeDay(skipped, now: now, wide: false), value: String(localized: "Skipped"),
+                    dimmed: true))
         }
         var next = facts.nextFullBy
         while let date = next, rows.count < count {
@@ -899,7 +968,7 @@ private struct FullByKind: View {
     }
 
     private var skipTitle: String {
-        facts.nextFullBy.map { "Skip \(Self.weekday($0))" } ?? "Skip"
+        facts.nextFullBy.map { String(localized: "Skip \(Self.weekday($0))") } ?? String(localized: "Skip")
     }
 
     private func time(_ schedule: FullBySchedule) -> String {
@@ -909,9 +978,9 @@ private struct FullByKind: View {
     }
 
     private func repeatTitle(_ schedule: FullBySchedule) -> String {
-        if schedule.weekdays == FullBySchedule.weekdaysOnly { return "Weekdays" }
-        if schedule.weekdays == FullBySchedule.everyDay { return "Every day" }
-        return "Some days"
+        if schedule.weekdays == FullBySchedule.weekdaysOnly { return String(localized: "Weekdays") }
+        if schedule.weekdays == FullBySchedule.everyDay { return String(localized: "Every day") }
+        return String(localized: "Some days")
     }
 
     private static func weekday(_ date: Date) -> String { date.formatted(.dateTime.weekday(.abbreviated)) }
@@ -919,10 +988,10 @@ private struct FullByKind: View {
     /// "Today", "Tomorrow", or the day: "Monday" when wide, "Mon 10" otherwise.
     static func relativeDay(_ date: Date, now: Date, wide: Bool) -> String {
         let calendar = Calendar.current
-        if calendar.isDate(date, inSameDayAs: now) { return "Today" }
+        if calendar.isDate(date, inSameDayAs: now) { return String(localized: "Today") }
         if let tomorrow = calendar.date(byAdding: .day, value: 1, to: now), calendar.isDate(date, inSameDayAs: tomorrow)
         {
-            return "Tomorrow"
+            return String(localized: "Tomorrow")
         }
         return wide
             ? date.formatted(.dateTime.weekday(.wide)) : date.formatted(.dateTime.weekday(.abbreviated).day())
@@ -1018,25 +1087,27 @@ private struct FullByTrack: View {
         let middle =
             charging
             ? facts.finish.flatMap {
-                $0 < deadline ? TrackLabel(text: "Full \(WidgetFacts.time($0))", x: clamp(x($0))) : nil
+                $0 < deadline
+                    ? TrackLabel(text: String(localized: "Full \(WidgetFacts.time($0))"), x: clamp(x($0))) : nil
             }
-            : (start > now ? TrackLabel(text: "Starts \(WidgetFacts.time(start))", x: clamp(x(start))) : nil)
+            : (start > now
+                ? TrackLabel(text: String(localized: "Starts \(WidgetFacts.time(start))"), x: clamp(x(start))) : nil)
         if let middle, end.x - middle.x > 2 * half + 6 { labels.append(middle) }
-        let first = TrackLabel(text: charging ? "Charging" : "Now", x: half)
+        let first = TrackLabel(text: charging ? String(localized: "Charging") : String(localized: "Now"), x: half)
         if labels.allSatisfy({ $0.x - first.x > 2 * half + 6 }) { labels.append(first) }
         // The time held at the limit, named in its middle when there is room.
         if !charging, start > now, let limit = facts.limit {
-            let hold = TrackLabel(text: "Held at \(limit)%", x: (x(now) + x(start)) / 2)
+            let hold = TrackLabel(text: String(localized: "Held at \(limit)%"), x: (x(now) + x(start)) / 2)
             if labels.allSatisfy({ abs($0.x - hold.x) > 2 * half + 14 }) { labels.append(hold) }
         }
         return labels
     }
 
     private var accessibilityText: String {
-        guard let deadline = facts.nextFullBy else { return "No full charge set" }
-        if facts.deadline != nil { return "Charging to 100% by \(WidgetFacts.time(deadline))" }
-        let start = facts.fullByStart.map { ", charging starts about \(WidgetFacts.time($0))" } ?? ""
-        return "Full by \(WidgetFacts.time(deadline))\(start)"
+        guard let deadline = facts.nextFullBy else { return String(localized: "No full charge set") }
+        if facts.deadline != nil { return String(localized: "Charging to 100% by \(WidgetFacts.time(deadline))") }
+        let start = facts.fullByStart.map { String(localized: ", charging starts about \(WidgetFacts.time($0))") } ?? ""
+        return String(localized: "Full by \(WidgetFacts.time(deadline))\(start)")
     }
 }
 
@@ -1110,7 +1181,7 @@ private struct WeekStrip: View {
     }
 
     private var accessibilityText: String {
-        var text = schedule.summary.prefix(1).uppercased() + schedule.summary.dropFirst()
+        var text = schedule.localizedSummary.prefix(1).uppercased() + schedule.localizedSummary.dropFirst()
         if let skipped { text += ", \(skipped.formatted(.dateTime.weekday(.wide))) skipped" }
         return text
     }
@@ -1124,7 +1195,9 @@ private struct ControlsKind: View {
 
     var body: some View {
         if !facts.hasHelper {
-            NeedsHelper(symbol: "slider.horizontal.3", title: "Controls", text: "Charge control needs the helper.")
+            NeedsHelper(
+                symbol: "slider.horizontal.3", title: String(localized: "Controls"),
+                text: String(localized: "Charge control needs the helper."))
         } else if family == .systemMedium {
             Divided(leftWidth: 132) {
                 VStack(alignment: .leading, spacing: 0) {
@@ -1164,7 +1237,7 @@ private struct ControlsKind: View {
                 HStack(spacing: 6) {
                     Button(intent: TopUpIntent()) { Text("Top Up") }
                         .buttonStyle(WidgetPillStyle(dimmed: facts.status?.mode != .automatic, expands: true))
-                    Button(intent: DischargeIntent()) { Text("Discharge") }
+                    Button(intent: DischargeIntent()) { Text(String(localized: "Discharge")) }
                         .buttonStyle(WidgetPillStyle(dimmed: facts.percent <= (facts.limit ?? 100), expands: true))
                 }
                 .padding(.top, 8)
@@ -1228,9 +1301,9 @@ private struct RingKind: View {
     }
 
     private var caption: String {
-        if !facts.hasHelper { return "No helper" }
-        if let deadline = facts.deadline { return "Full by \(WidgetFacts.time(deadline))" }
-        return facts.limit.map { "Limit \($0)%" } ?? "Control off"
+        if !facts.hasHelper { return String(localized: "No helper") }
+        if let deadline = facts.deadline { return String(localized: "Full by \(WidgetFacts.time(deadline))") }
+        return facts.limit.map { String(localized: "Limit \($0)%") } ?? String(localized: "Control off")
     }
 }
 
@@ -1246,7 +1319,7 @@ private struct TimeLeftKind: View {
                 headline
             } right: {
                 VStack(alignment: .leading, spacing: 6) {
-                    ColumnHeader(title: "Now", note: finishText)
+                    ColumnHeader(title: String(localized: "Now"), note: finishText)
                     HStack(alignment: .firstTextBaseline) {
                         BigValue(parts: [("\(facts.percent)", "%")], size: 22)
                         Spacer()
@@ -1257,7 +1330,8 @@ private struct TimeLeftKind: View {
                     WidgetMeter(percent: facts.percent, limit: goal == 0 ? nil : goal).padding(.top, 6)
                     Spacer(minLength: 0)
                     WidgetRow(
-                        title: "Rate", value: "\(WidgetFacts.watts(facts.batteryWatts, signed: true)) W", first: true)
+                        title: String(localized: "Rate"),
+                        value: "\(WidgetFacts.watts(facts.batteryWatts, signed: true)) W", first: true)
                 }
             }
         } else {
@@ -1299,8 +1373,10 @@ private struct TimeLeftKind: View {
     private var finishText: String? {
         guard let finish = facts.finish else {
             // Holding on the charger has no end time; on battery without an estimate there is nothing to say.
-            return facts.isPluggedIn && facts.estimate?.minutes == nil ? "Until you unplug" : nil
+            return facts.isPluggedIn && facts.estimate?.minutes == nil ? String(localized: "Until you unplug") : nil
         }
-        return (facts.isPluggedIn ? "Done " : "Empty ") + WidgetFacts.time(finish)
+        return facts.isPluggedIn
+            ? String(localized: "Done \(WidgetFacts.time(finish))")
+            : String(localized: "Empty \(WidgetFacts.time(finish))")
     }
 }

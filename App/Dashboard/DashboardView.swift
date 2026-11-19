@@ -8,7 +8,15 @@ enum DashboardPage: String, CaseIterable, Identifiable {
     case settings
 
     var id: Self { self }
-    var title: String { rawValue.capitalized }
+    var title: String {
+        switch self {
+        case .overview: String(localized: "Overview")
+        case .control: String(localized: "Control")
+        case .history: String(localized: "History")
+        case .logs: String(localized: "Logs")
+        case .settings: String(localized: "Settings")
+        }
+    }
     var symbol: String {
         switch self {
         case .overview: "battery.75percent"
@@ -92,7 +100,7 @@ struct DashboardView: View {
             if model.service == .running {
                 HStack(spacing: 6) {
                     Circle().fill(Theme.accent).frame(width: 6, height: 6).shadow(color: Theme.glow, radius: 3)
-                    Text("Live").font(.system(size: 12)).foregroundStyle(.tertiary)
+                    Text(String(localized: "Live")).font(.system(size: 12)).foregroundStyle(.tertiary)
                 }
             }
         }
@@ -100,17 +108,25 @@ struct DashboardView: View {
 
     private var islandDetails: [(String, String)] {
         guard let settings = model.settings else {
-            return [("Helper", model.service == .running ? "running" : "not running")]
+            return [
+                (
+                    String(localized: "Helper"),
+                    model.service == .running ? String(localized: "running") : String(localized: "not running")
+                )
+            ]
         }
         var items: [(String, String)] = [
-            ("Limit", "\(settings.limit)%"),
-            ("Sails", settings.sailing == 0 ? "off" : "\(settings.lowerBound)–\(settings.limit)%"),
-            ("Helper", "running"),
+            (String(localized: "Limit"), "\(settings.limit)%"),
+            (
+                String(localized: "Sails"),
+                settings.sailing == 0 ? String(localized: "off") : "\(settings.lowerBound)–\(settings.limit)%"
+            ),
+            (String(localized: "Helper"), String(localized: "running")),
         ]
         if let estimate = model.estimate, let minutes = estimate.minutes {
-            items.append(("Est.", TimeText.minutes(minutes)))
+            items.append((String(localized: "Est."), TimeText.minutes(minutes)))
         } else {
-            items.append(("macOS", model.macOSLimit.map { "\($0)%" } ?? "off"))
+            items.append(("macOS", model.macOSLimit.map { "\($0)%" } ?? String(localized: "off")))
         }
         return items
     }
@@ -208,15 +224,20 @@ private struct HelperFooter: View {
             switch model.service {
             case .running:
                 (
-                    "Helper running",
-                    model.settings.map { $0.isEnabled ? "Charge control on" : "Charge control off" }
-                        ?? "Reading settings",
+                    String(localized: "Helper running"),
+                    model.settings.map {
+                        $0.isEnabled ? String(localized: "Charge control on") : String(localized: "Charge control off")
+                    }
+                        ?? String(localized: "Reading settings"),
                     model.settings?.isEnabled != false
                 )
-            case .checking: ("Checking…", "Asking the helper", true)
-            case .notInstalled: ("Helper not installed", "Charge limit unavailable", false)
-            case .needsApproval: ("Helper needs approval", "Turn it on in Login Items", false)
-            case .notResponding: ("Helper not responding", "Charge limit unavailable", false)
+            case .checking: (String(localized: "Checking…"), String(localized: "Asking the helper"), true)
+            case .notInstalled:
+                (String(localized: "Helper not installed"), String(localized: "Charge limit unavailable"), false)
+            case .needsApproval:
+                (String(localized: "Helper needs approval"), String(localized: "Turn it on in Login Items"), false)
+            case .notResponding:
+                (String(localized: "Helper not responding"), String(localized: "Charge limit unavailable"), false)
             }
         VStack(alignment: .leading, spacing: 6) {
             HStack(spacing: 8) {
@@ -262,19 +283,23 @@ struct PulseDot: View {
     }
 }
 
-/// "Live" in a hairline capsule: the page refreshes itself.
+/// String(localized: "Live") in a hairline capsule: the page refreshes itself.
 struct LivePill: View {
     let isLive: Bool
 
     var body: some View {
         HStack(spacing: 7) {
             if isLive { PulseDot() } else { Circle().fill(.tertiary).frame(width: 6, height: 6) }
-            Text(isLive ? "Live" : "Not running").font(.system(size: 11.5)).foregroundStyle(.tertiary)
+            Text(isLive ? String(localized: "Live") : String(localized: "Not running")).font(.system(size: 11.5))
+                .foregroundStyle(.tertiary)
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 3)
         .overlay(Capsule().strokeBorder(Theme.lineStrong))
-        .help(isLive ? "The list reloads every 5 seconds" : "The helper is not running")
+        .help(
+            isLive
+                ? String(localized: "The list reloads every 5 seconds") : String(localized: "The helper is not running")
+        )
     }
 }
 

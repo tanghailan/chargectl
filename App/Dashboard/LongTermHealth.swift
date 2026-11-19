@@ -28,8 +28,10 @@ struct LongTermHealth: View {
         let points = self.points
         Panel(padding: 22) {
             VStack(alignment: .leading, spacing: 16) {
-                PanelHeader(title: "Battery health over time", symbol: "heart.text.square") {
-                    SlidingSegments(options: Span.allCases.map { ($0, $0.rawValue) }, selection: $range, compact: true)
+                PanelHeader(title: String(localized: "Battery health over time"), symbol: "heart.text.square") {
+                    SlidingSegments(
+                        options: Span.allCases.map { ($0, $0 == .all ? String(localized: "All") : $0.rawValue) },
+                        selection: $range, compact: true)
                 }
                 if points.count < 2 {
                     VStack(spacing: 6) {
@@ -51,11 +53,14 @@ struct LongTermHealth: View {
                 if let latest = points.last {
                     HStack(spacing: 0) {
                         stat(
-                            "Health", latest.health.map { String(format: "%.1f%%", $0 * 100) } ?? "–",
+                            String(localized: "Health"),
+                            latest.health.map { String(format: "%.1f%%", $0 * 100) } ?? "–",
                             healthChange(points))
-                        stat("Cycles", "\(latest.cycleCount)", cycleChange(points))
-                        stat("At 90% or more", highChargeAverage(points), "a day, on average")
-                        stat("Warmest", warmest(points).0, warmest(points).1)
+                        stat(String(localized: "Cycles"), "\(latest.cycleCount)", cycleChange(points))
+                        stat(
+                            String(localized: "At 90% or more"), highChargeAverage(points),
+                            String(localized: "a day, on average"))
+                        stat(String(localized: "Warmest"), warmest(points).0, warmest(points).1)
                     }
                     .padding(.top, 12)
                     .overlay(alignment: .top) { Rectangle().fill(Theme.line).frame(height: 1) }
@@ -164,32 +169,36 @@ struct LongTermHealth: View {
 
     private func healthChange(_ points: [DailySample]) -> String {
         guard let first = points.first?.health, let last = points.last?.health, points.count > 1 else {
-            return "of its capacity when new"
+            return String(localized: "of its capacity when new")
         }
         let change = (last - first) * 100
         let since = points[0].day.formatted(.dateTime.month(.abbreviated).day())
-        return abs(change) < 0.05 ? "unchanged since \(since)" : String(format: "%+.1f since %@", change, since)
+        return abs(change) < 0.05
+            ? String(localized: "unchanged since \(since)")
+            : String(format: String(localized: "%+.1f since %@"), change, since)
     }
 
     private func cycleChange(_ points: [DailySample]) -> String {
-        guard let first = points.first, let last = points.last, points.count > 1 else { return "charge cycles" }
+        guard let first = points.first, let last = points.last, points.count > 1 else {
+            return String(localized: "charge cycles")
+        }
         let days = max(1, Calendar.current.dateComponents([.day], from: first.day, to: last.day).day ?? 1)
         let perMonth = Double(last.cycleCount - first.cycleCount) / Double(days) * 30
-        return String(format: "%.1f a month", perMonth)
+        return String(format: String(localized: "%.1f a month"), perMonth)
     }
 
     private func highChargeAverage(_ points: [DailySample]) -> String {
         let recorded = points.filter { $0.minutesRecorded > 0 }
         guard !recorded.isEmpty else { return "–" }
         let hours = Double(recorded.map(\.minutesHighCharge).reduce(0, +)) / Double(recorded.count) / 60
-        return String(format: "%.1f h", hours)
+        return String(format: String(localized: "%.1f h"), hours)
     }
 
     private func warmest(_ points: [DailySample]) -> (String, String) {
         guard
             let day = points.filter({ $0.maxTemperature != nil }).max(by: { $0.maxTemperature! < $1.maxTemperature! }),
             let temperature = day.maxTemperature
-        else { return ("–", "no readings yet") }
+        else { return ("–", String(localized: "no readings yet")) }
         return (unit.format(temperature, decimals: 0), day.day.formatted(.dateTime.month(.abbreviated).day()))
     }
 }

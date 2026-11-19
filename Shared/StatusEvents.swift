@@ -1,6 +1,7 @@
+/// What the app tells the user about without being asked, found by comparing two moments.
 import Foundation
 
-/// What the app tells the user about without being asked, found by comparing two moments.
+/// The parts of the app's state that events come from.
 nonisolated enum StatusEvent: Equatable, Sendable {
     case limitReached(Int)
     case jobFinished(String)
@@ -25,30 +26,41 @@ nonisolated enum StatusEvent: Equatable, Sendable {
 
     var title: String {
         switch self {
-        case .limitReached(let limit): "Charged to \(limit)%"
-        case .jobFinished(let job): "\(job.prefix(1).uppercased() + job.dropFirst()) finished"
-        case .tooWarm: "Charging paused"
-        case .helperStopped: "Charge control stopped"
-        case .weakCharger: "Charger too weak"
-        case .controlNotWorking: "Charge control isn't working"
+        case .limitReached(let limit): String(localized: "Charged to \(limit)%")
+        case .jobFinished(let job): String(localized: "\(Self.localizedJob(job)) finished")
+        case .tooWarm: String(localized: "Charging paused")
+        case .helperStopped: String(localized: "Charge control stopped")
+        case .weakCharger: String(localized: "Charger too weak")
+        case .controlNotWorking: String(localized: "Charge control isn't working")
         }
+    }
+
+    private static func localizedJob(_ job: String) -> String {
+        let title = String(localized: String.LocalizationValue(job))
+        return title.prefix(1).uppercased() + title.dropFirst()
     }
 
     var body: String {
         switch self {
-        case .limitReached: "Chargectl stopped charging; your Mac runs on the charger."
-        case .jobFinished: "Chargectl is back to your limit."
-        case .tooWarm: "The battery is warm. Charging resumes when it cools down."
+        case .limitReached: String(localized: "Chargectl stopped charging; your Mac runs on the charger.")
+        case .jobFinished: String(localized: "Chargectl is back to your limit.")
+        case .tooWarm: String(localized: "The battery is warm. Charging resumes when it cools down.")
         case .helperStopped(let reason): reason
         case .weakCharger(let watts):
-            (watts.map { "This \($0) W charger" } ?? "This charger")
-                + " can't keep up: the battery is running down while plugged in."
-        case .controlNotWorking: ControlCheck.message
+            if let watts {
+                String(
+                    localized: "This \(watts) W charger can't keep up: the battery is running down while plugged in.")
+            } else {
+                String(localized: "This charger can't keep up: the battery is running down while plugged in.")
+            }
+        case .controlNotWorking:
+            String(
+                localized:
+                    "Cutting wall power has no effect: the battery keeps charging. A macOS or firmware update may have changed how charging is controlled."
+            )
         }
     }
 }
-
-/// The parts of the app's state that events come from.
 nonisolated struct StatusSnapshot: Equatable, Sendable {
     var activity: ChargeActivity?
     var mode: ChargeMode?

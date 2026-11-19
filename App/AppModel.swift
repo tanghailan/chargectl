@@ -127,12 +127,12 @@ final class AppModel {
     var activitySummary: String {
         // With the service running, Chargectl sets macOS's limit itself.
         if service != .running, macOSIsDischarging, let macOSLimit {
-            return "macOS is discharging to its \(macOSLimit)% limit"
+            return String(localized: "macOS is discharging to its \(macOSLimit)% limit")
         }
-        if let status { return status.activity.summary }
-        guard let battery else { return "reading the battery" }
-        if !battery.isPluggedIn { return "on battery" }
-        return battery.isCharging ? "charging" : "plugged in, not charging"
+        if let status { return status.activity.localizedSummary }
+        guard let battery else { return String(localized: "reading the battery") }
+        if !battery.isPluggedIn { return String(localized: "on battery") }
+        return battery.isCharging ? String(localized: "charging") : String(localized: "plugged in, not charging")
     }
 
     var isDraining: Bool {
@@ -150,19 +150,25 @@ final class AppModel {
             notices.append(
                 Notice(
                     text: ServiceInstaller.method == .launchdPlist
-                        ? "Charge control needs its helper. Install it once; macOS asks for your password."
-                        : "Charge control needs its helper. Install it once, then turn it on in Login Items.",
-                    isService: true, action: .installService, actionTitle: "Install Helper"))
+                        ? String(
+                            localized: "Charge control needs its helper. Install it once; macOS asks for your password."
+                        )
+                        : String(
+                            localized:
+                                "Charge control needs its helper. Install it once, then turn it on in Login Items."),
+                    isService: true, action: .installService, actionTitle: String(localized: "Install Helper")))
         case .needsApproval:
             notices.append(
                 Notice(
-                    text: "Turn on Chargectl in System Settings › Login Items to start charge control.",
-                    isService: true, action: .openLoginItems, actionTitle: "Open Login Items"))
+                    text: String(
+                        localized: "Turn on Chargectl in System Settings › Login Items to start charge control."),
+                    isService: true, action: .openLoginItems, actionTitle: String(localized: "Open Login Items")))
         case .notResponding:
             notices.append(
                 Notice(
-                    text: "The helper stopped. Install it again to restart charge control.", isService: true,
-                    action: .installService, actionTitle: "Install Again"))
+                    text: String(localized: "The helper stopped. Install it again to restart charge control."),
+                    isService: true,
+                    action: .installService, actionTitle: String(localized: "Install Again")))
         }
         if service == .running, let helperVersion = status?.version, helperVersion != DaemonIdentity.version,
             let since = versionMismatchSince, Date.now.timeIntervalSince(since) > Self.helperStartGrace
@@ -170,34 +176,56 @@ final class AppModel {
             notices.append(
                 Notice(
                     text:
-                        "The helper is still version \(helperVersion). Install it again to update it to \(DaemonIdentity.version).",
-                    isService: true, action: .installService, actionTitle: "Install Again"))
+                        String(
+                            localized:
+                                "The helper is still version \(helperVersion). Install it again to update it to \(DaemonIdentity.version)."
+                        ),
+                    isService: true, action: .installService, actionTitle: String(localized: "Install Again")))
         }
         if service == .running, status?.adapterKey == nil {
-            notices.append(Notice(text: "This Mac exposes no wall-power key, so charging cannot be controlled."))
+            notices.append(
+                Notice(text: String(localized: "This Mac exposes no wall-power key, so charging cannot be controlled."))
+            )
         }
         if let conflictingApp {
-            notices.append(Notice(text: "\(conflictingApp) is also running. Quit it so the two don't fight."))
+            notices.append(
+                Notice(text: String(localized: "\(conflictingApp) is also running. Quit it so the two don't fight.")))
         }
         if macOSIsDischarging, let macOSLimit {
             notices.append(
                 Notice(
                     text:
-                        "macOS's own \(macOSLimit)% charge limit is running the Mac on battery. Turn it off in Battery settings so Chargectl can keep you on the charger.",
-                    action: .openBatterySettings, actionTitle: "Open Battery"))
+                        String(
+                            localized:
+                                "macOS's own \(macOSLimit)% charge limit is running the Mac on battery. Turn it off in Battery settings so Chargectl can keep you on the charger."
+                        ),
+                    action: .openBatterySettings, actionTitle: String(localized: "Open Battery")))
         } else if service != .running, let macOSLimit, let settings, settings.isEnabled, settings.limit > macOSLimit {
             notices.append(
                 Notice(
-                    text: "macOS stops charging at \(macOSLimit)%. Turn its limit off in Battery settings."))
+                    text: String(
+                        localized: "macOS stops charging at \(macOSLimit)%. Turn its limit off in Battery settings.")))
         }
         if status?.optimizedChargingEnabled == true {
             notices.append(
                 Notice(
                     text:
-                        "Optimized Battery Charging is on. It can hold or delay charging by itself; turn it off so Chargectl decides.",
-                    action: .openBatterySettings, actionTitle: "Open Battery"))
+                        String(
+                            localized:
+                                "Optimized Battery Charging is on. It can hold or delay charging by itself; turn it off so Chargectl decides."
+                        ),
+                    action: .openBatterySettings, actionTitle: String(localized: "Open Battery")))
         }
-        if let problem = status?.controlProblem { notices.append(Notice(text: problem)) }
+        if let problem = status?.controlProblem {
+            let text =
+                problem == ControlCheck.message
+                ? String(
+                    localized:
+                        "Cutting wall power has no effect: the battery keeps charging. A macOS or firmware update may have changed how charging is controlled."
+                )
+                : problem
+            notices.append(Notice(text: text))
+        }
         if isChargerWeak { notices.append(Notice(text: StatusEvent.weakCharger(battery?.adapterWatts).body)) }
         if let error = status?.lastError { notices.append(Notice(text: error)) }
         if let message { notices.append(Notice(text: message)) }
@@ -285,7 +313,10 @@ final class AppModel {
         var helperProblem: String?
         if case .notResponding = service {
             helperProblem =
-                "The helper stopped answering, so charging is not controlled. Open Chargectl to install it again."
+                String(
+                    localized:
+                        "The helper stopped answering, so charging is not controlled. Open Chargectl to install it again."
+                )
         }
         let snapshot = StatusSnapshot(
             activity: status?.activity, mode: status?.mode, helperProblem: helperProblem, weakCharger: isChargerWeak,
@@ -430,6 +461,16 @@ final class AppModel {
         }
     }
 
+    /// The installer script reports these sentences itself; everything else is a system error.
+    private static func localizedInstallDetail(_ detail: String) -> String {
+        detail.replacingOccurrences(
+            of: "The helper could not be copied.", with: String(localized: "The helper could not be copied.")
+        )
+        .replacingOccurrences(
+            of: "launchd did not start the helper", with: String(localized: "launchd did not start the helper")
+        )
+    }
+
     func installService() {
         if isPreview { return }
         guard !isInstallingService else { return }
@@ -441,7 +482,10 @@ final class AppModel {
             } catch ServiceInstallError.cancelled {
                 message = nil
             } catch {
-                message = "The helper could not be installed: \(error.localizedDescription)"
+                message = String(
+                    localized:
+                        "The helper could not be installed: \(Self.localizedInstallDetail(error.localizedDescription))"
+                )
             }
             isInstallingService = false
             // launchd needs a moment to start the service.
@@ -462,7 +506,10 @@ final class AppModel {
             } catch ServiceInstallError.cancelled {
                 message = nil
             } catch {
-                message = "The helper could not be removed: \(error.localizedDescription)"
+                message = String(
+                    localized:
+                        "The helper could not be removed: \(Self.localizedInstallDetail(error.localizedDescription))"
+                )
             }
             try? await Task.sleep(for: .seconds(1))
             await refresh()
@@ -484,10 +531,10 @@ final class AppModel {
             do {
                 try await installer.removeAll()
             } catch ServiceInstallError.cancelled {
-                message = "Uninstall stopped. The helper's files are still installed."
+                message = String(localized: "Uninstall stopped. The helper's files are still installed.")
                 return
             } catch {
-                message = "Uninstall stopped: \(error.localizedDescription)"
+                message = String(localized: "Uninstall stopped: \(error.localizedDescription)")
                 return
             }
         }
@@ -570,12 +617,14 @@ final class AppModel {
         let home = files.homeDirectoryForCurrentUser.path
         let alert = NSAlert()
         alert.messageText =
-            "macOS kept Chargectl from removing \(left.count == 1 ? "a folder" : "\(left.count) folders")"
+            left.count == 1
+            ? String(localized: "macOS kept Chargectl from removing a folder")
+            : String(localized: "macOS kept Chargectl from removing \(left.count) folders")
         alert.informativeText =
             left.map { "~" + $0.path.dropFirst(home.count) }.joined(separator: "\n")
-            + "\n\nEverything else is removed. Drag these to the Trash in Finder to finish."
-        alert.addButton(withTitle: "Show in Finder")
-        alert.addButton(withTitle: "Done")
+            + "\n\n" + String(localized: "Everything else is removed. Drag these to the Trash in Finder to finish.")
+        alert.addButton(withTitle: String(localized: "Show in Finder"))
+        alert.addButton(withTitle: String(localized: "Done"))
         NSApp.activate()
         if alert.runModal() == .alertFirstButtonReturn { NSWorkspace.shared.activateFileViewerSelecting(left) }
     }

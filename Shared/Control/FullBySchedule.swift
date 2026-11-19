@@ -70,4 +70,17 @@ nonisolated struct FullBySchedule: Codable, Equatable, Sendable {
         let days = weekdays.filter { (1...7).contains($0) }.sorted().map { names[$0 - 1] }.joined(separator: ", ")
         return "\(days) at \(time)"
     }
+
+    var localizedSummary: String {
+        let time = String(format: "%d:%02d", hour, minute)
+        if let once {
+            return String(localized: "once, \(once.formatted(.dateTime.weekday(.abbreviated).hour().minute()))")
+        }
+        if weekdays == Self.everyDay { return String(localized: "every day at \(time)") }
+        if weekdays == Self.weekdaysOnly { return String(localized: "weekdays at \(time)") }
+        let names = Calendar(identifier: .gregorian).shortWeekdaySymbols
+        // A day outside 1...7 can only come from a damaged settings file; it is left out, not trusted.
+        let days = weekdays.filter { (1...7).contains($0) }.sorted().map { names[$0 - 1] }.joined(separator: ", ")
+        return String(localized: "\(days) at \(time)")
+    }
 }

@@ -31,9 +31,12 @@ struct HistoryPage: View {
             if model.service != .running {
                 HelperEmptyState(
                     model: model, symbols: ["thermometer.medium", "bolt", "chart.xyaxis.line"],
-                    title: "Install the helper to record history",
+                    title: String(localized: "Install the helper to record history"),
                     message:
-                        "The helper records charge, temperature and power once a minute, even while Chargectl is closed. macOS asks for your password once."
+                        String(
+                            localized:
+                                "The helper records charge, temperature and power once a minute, even while Chargectl is closed. macOS asks for your password once."
+                        )
                 )
                 .padding(.horizontal, 24)
                 .padding(.top, 4)
@@ -81,7 +84,7 @@ struct HistoryPage: View {
             .settleIn(0)
             Panel(padding: 22, spotlight: true) {
                 VStack(alignment: .leading, spacing: 14) {
-                    PanelHeader(title: "Charge", symbol: "chart.xyaxis.line") {
+                    PanelHeader(title: String(localized: "Charge"), symbol: "chart.xyaxis.line") {
                         HStack(alignment: .firstTextBaseline, spacing: 8) {
                             if let since, shown == nil {
                                 Label(
@@ -91,7 +94,7 @@ struct HistoryPage: View {
                                 .labelStyle(DotLabelStyle())
                                 .padding(.trailing, 6)
                             }
-                            Text(shown.map { $0.date.formatted(.dateTime.hour().minute()) } ?? "Now")
+                            Text(shown.map { $0.date.formatted(.dateTime.hour().minute()) } ?? String(localized: "Now"))
                             Text(
                                 "\(Text("\(reading?.percent ?? 0)").font(.system(size: 24, weight: .semibold)))\(Text("%").font(.system(size: 13, weight: .medium)))"
                             )
@@ -108,12 +111,14 @@ struct HistoryPage: View {
                         .padding(.trailing, 34)
                         .padding(.top, -18)
                     HStack(spacing: 18) {
-                        legend(Theme.accent, "Charging")
-                        legend(Theme.accent.opacity(0.36), "On the charger, resting")
-                        legend(Theme.track, "On battery")
+                        legend(Theme.accent, String(localized: "Charging"))
+                        legend(Theme.accent.opacity(0.36), String(localized: "On the charger, resting"))
+                        legend(Theme.track, String(localized: "On battery"))
                         if let settings = model.settings {
                             if settings.sailing > 0 {
-                                legend(Theme.accentSoft, "Sailing range \(settings.lowerBound)–\(settings.limit)%")
+                                legend(
+                                    Theme.accentSoft,
+                                    String(localized: "Sailing range \(settings.lowerBound)–\(settings.limit)%"))
                             }
                             HStack(spacing: 7) {
                                 Path { path in
@@ -160,15 +165,17 @@ struct HistoryPage: View {
         }
         let peak = samples.filter { $0.temperature != nil }.max { ($0.temperature ?? 0) < ($1.temperature ?? 0) }
         SummaryTile(
-            title: "Charge", symbol: "battery.75percent",
+            title: String(localized: "Charge"), symbol: "battery.75percent",
             value: lowest?.percent == highest?.percent
                 ? Text("\(lowest?.percent ?? 0)\(unitText("%"))")
                 : Text("\(lowest?.percent ?? 0)–\(highest?.percent ?? 0)\(unitText("%"))"),
             detail: lowest?.percent == highest?.percent
-                ? "Steady" : "Lowest at \(lowest.map { time($0.date) } ?? "–")")
+                ? String(localized: "Steady") : String(localized: "Lowest at \(lowest.map { time($0.date) } ?? "–")"))
         SummaryTile(
-            title: "On the charger", symbol: "powerplug", value: duration(charging + resting),
-            detail: resting > 0 ? "\(TimeText.minutes(resting)) of it resting" : "All of it charging"
+            title: String(localized: "On the charger"), symbol: "powerplug", value: duration(charging + resting),
+            detail: resting > 0
+                ? String(localized: "\(TimeText.minutes(resting)) of it resting")
+                : String(localized: "All of it charging")
         ) {
             GeometryReader { geometry in
                 let total = CGFloat(max(samples.count, 1))
@@ -183,19 +190,22 @@ struct HistoryPage: View {
             .padding(.top, 6)
         }
         SummaryTile(
-            title: "On battery", symbol: "bolt", value: duration(onBattery),
+            title: String(localized: "On battery"), symbol: "bolt", value: duration(onBattery),
             detail: onBattery == 0
-                ? "On the charger the whole time"
+                ? String(localized: "On the charger the whole time")
                 : onBattery >= 30
-                    ? "Used \(used)% · about \(Int((Double(used) / (Double(onBattery) / 60)).rounded()))% an hour"
-                    : "Used \(used)%")
+                    ? String(
+                        localized:
+                            "Used \(used)% · about \(Int((Double(used) / (Double(onBattery) / 60)).rounded()))% an hour"
+                    )
+                    : String(localized: "Used \(used)%"))
         SummaryTile(
-            title: "Peak temperature", symbol: "thermometer.medium",
+            title: String(localized: "Peak temperature"), symbol: "thermometer.medium",
             value: Text(
                 "\(peak?.temperature.map { String(format: "%.1f", unit.value($0)) } ?? "–")\(unitText(" \(unit.symbol)"))"
             ),
             detail: peak.map {
-                "\(time($0.date)) · \(($0.batteryPower ?? 0) > 0.5 ? "charging" : ($0.wallPower ?? 0) > 0.5 ? "resting" : "on battery")"
+                "\(time($0.date)) · \(($0.batteryPower ?? 0) > 0.5 ? String(localized: "charging") : ($0.wallPower ?? 0) > 0.5 ? String(localized: "resting") : String(localized: "on battery"))"
             }
                 ?? "–")
     }
@@ -213,7 +223,8 @@ struct HistoryPage: View {
     }
 
     private func time(_ date: Date) -> String {
-        (Calendar.current.isDateInToday(date) ? "" : "yesterday ") + date.formatted(.dateTime.hour().minute())
+        (Calendar.current.isDateInToday(date) ? "" : String(localized: "yesterday "))
+            + date.formatted(.dateTime.hour().minute())
     }
 
     // MARK: Temperature and power
@@ -276,9 +287,9 @@ struct HistoryPage: View {
         _ samples: [HistorySample], domain: ClosedRange<Date>, shown: HistorySample?, reading: HistorySample?
     ) -> some View {
         let series: [(key: String, title: String, tint: Color, value: (HistorySample) -> Double?)] = [
-            ("mac", "Mac", Theme.mac, { $0.systemPower }),
-            ("wall", "Charger", Theme.accent, { $0.wallPower }),
-            ("battery", "Battery", Theme.warn, { $0.batteryPower }),
+            ("mac", String(localized: "Mac"), Theme.mac, { $0.systemPower }),
+            ("wall", String(localized: "Charger"), Theme.accent, { $0.wallPower }),
+            ("battery", String(localized: "Battery"), Theme.warn, { $0.batteryPower }),
         ]
         let all = samples.flatMap { s in series.compactMap { $0.value(s) } }
         let step: Double = ((all.max() ?? 0) - min(all.min() ?? 0, 0)) > 40 ? 20 : 10
@@ -287,7 +298,7 @@ struct HistoryPage: View {
         return Panel {
             VStack(alignment: .leading, spacing: 12) {
                 PanelHeader(title: "Power", symbol: "bolt") {
-                    Text(shown.map { $0.date.formatted(.dateTime.hour().minute()) } ?? "Now")
+                    Text(shown.map { $0.date.formatted(.dateTime.hour().minute()) } ?? String(localized: "Now"))
                 }
                 Chart {
                     RuleMark(y: .value("Zero", 0))
@@ -333,7 +344,7 @@ struct HistoryPage: View {
                             .contentShape(Capsule())
                         }
                         .buttonStyle(.plain)
-                        .accessibilityLabel("\(hidden ? "Show" : "Hide") \(item.title)")
+                        .accessibilityLabel(hidden ? "Show \(item.title)" : "Hide \(item.title)")
                     }
                 }
                 .padding(.leading, -9)
@@ -349,7 +360,7 @@ struct HistoryPage: View {
 
     private func readout(_ shown: HistorySample?, _ value: String) -> some View {
         HStack(alignment: .firstTextBaseline, spacing: 8) {
-            Text(shown.map { $0.date.formatted(.dateTime.hour().minute()) } ?? "Now")
+            Text(shown.map { $0.date.formatted(.dateTime.hour().minute()) } ?? String(localized: "Now"))
             Text(value).font(.system(size: 15, weight: .semibold)).foregroundStyle(.primary).monospacedDigit()
         }
     }

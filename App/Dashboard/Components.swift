@@ -48,8 +48,8 @@ enum TimeText {
     static func minutes(_ minutes: Int) -> String {
         let hours = minutes / 60
         let rest = minutes % 60
-        if hours == 0 { return "\(rest) min" }
-        return rest == 0 ? "\(hours) h" : "\(hours) h \(rest) min"
+        if hours == 0 { return String(localized: "\(rest) min") }
+        return rest == 0 ? String(localized: "\(hours) h") : String(localized: "\(hours) h \(rest) min")
     }
 }
 

@@ -1,5 +1,34 @@
 import SwiftUI
 
+// MARK: - Parts
+
+/// A setting as a row: what it does in bold, what that means underneath, the control on the right.
+
+/// The time and days of a Full by schedule, and when charging will start: big digits, the time
+/// on a day track, and the seven days with Weekdays, Every day and Once as shortcuts.
+
+/// Times of day as the user's clock shows them.
+
+/// The Full by time in the same thin digits as the charge limit, rolling as it changes.
+
+/// A day from midnight to midnight: the Full by time as a knob, the charging window before it as
+/// a green stretch, hour ticks and now. Click or drag to set the time, which snaps to 15
+/// minutes and ticks on each hour; hover to preview one. Arrow keys move 15 minutes, Shift an
+/// hour.
+
+/// A round day letter that fills green when chosen.
+
+/// A short line down and to the right: this setting belongs to the one above it.
+
+/// The limit slider: a ruler from 20 to 100%, the sailing range hatched under the limit, today's
+/// charge as a small marker, and a thumb with a value bubble while dragging. Arrow keys move 1%,
+/// Shift 5%. Also used by setup.
+
+/// The charging rules as one sentence, numbers highlighted.
+
+/// Cool blue to hot red with today's temperature and the cut-off marked.
+
+/// A MagSafe connector in the side of a Mac, its light showing the chosen mode.
 struct ControlPage: View {
     let model: AppModel
     @AppStorage(PreferenceKey.temperatureUnit) private var unit = TemperatureUnit.systemDefault
@@ -32,9 +61,12 @@ struct ControlPage: View {
         } else {
             HelperEmptyState(
                 model: model, symbols: ["battery.75percent", "gauge.with.dots.needle.50percent", "checkmark.shield"],
-                title: "Install the helper to set a charge limit",
+                title: String(localized: "Install the helper to set a charge limit"),
                 message:
-                    "It runs in the background and keeps the limit while Chargectl is closed. macOS asks for your password once."
+                    String(
+                        localized:
+                            "It runs in the background and keeps the limit while Chargectl is closed. macOS asks for your password once."
+                    )
             )
             .padding(.horizontal, 24)
             .padding(.top, 4)
@@ -49,7 +81,7 @@ struct ControlPage: View {
         let lower = max(limit - settings.sailing, ChargeSettings.limitRange.lowerBound)
         return Panel(padding: 24, spotlight: true) {
             VStack(alignment: .leading, spacing: 0) {
-                PanelHeader(title: "Charging", symbol: "gauge.with.dots.needle.50percent") {
+                PanelHeader(title: String(localized: "Charging"), symbol: "gauge.with.dots.needle.50percent") {
                     Label("Applied", systemImage: "checkmark.circle").foregroundStyle(.tertiary)
                         .labelStyle(TightLabelStyle(tint: Theme.accent))
                 }
@@ -89,12 +121,12 @@ struct ControlPage: View {
                     draft: $draftLimit
                 ) { value in
                     model.update { $0.limit = value }
-                    Confirmations.shared.show("Limit set to \(value)%")
+                    Confirmations.shared.show(String(localized: "Limit set to \(value)%"))
                 }
                 .padding(.top, 16)
                 VStack(spacing: 0) {
                     SettingRow(
-                        title: "Sailing range",
+                        title: String(localized: "Sailing range"),
                         detail: settings.sailing > 0
                             ? Text(
                                 "Tops up again only below \(Text("\(lower)%").foregroundStyle(.primary)), so the battery isn’t charged in short bursts."
@@ -105,11 +137,11 @@ struct ControlPage: View {
                             value: "\(settings.sailing)%",
                             canDecrement: settings.sailing > ChargeSettings.sailingRange.lowerBound,
                             canIncrement: settings.sailing < ChargeSettings.sailingRange.upperBound,
-                            accessibilityLabel: "Sailing range",
+                            accessibilityLabel: String(localized: "Sailing range"),
                             decrement: { changeSailing(-1) }, increment: { changeSailing(1) })
                     }
                     SettingRow(
-                        title: "Discharge to the limit when plugged in",
+                        title: String(localized: "Discharge to the limit when plugged in"),
                         detail: settings.autoDischarge
                             ? Text(
                                 "On: above \(Text("\(limit)%").foregroundStyle(.primary)) on the charger, the battery runs down to the limit."
@@ -118,7 +150,9 @@ struct ControlPage: View {
                                 "Off: above \(Text("\(limit)%").foregroundStyle(.primary)) on the charger, the battery stays where it is."
                             )
                     ) {
-                        switchFor(\.autoDischarge, on: "Discharge to limit on", off: "Discharge to limit off")
+                        switchFor(
+                            \.autoDischarge, on: String(localized: "Discharge to limit on"),
+                            off: String(localized: "Discharge to limit off"))
                     }
                 }
                 .padding(.top, 6)
@@ -135,7 +169,8 @@ struct ControlPage: View {
             ChargeSettings.sailingRange.upperBound)
         withAnimation(.spring(response: 0.35, dampingFraction: 0.86)) { model.update { $0.sailing = sailing } }
         let lower = max(settings.limit - sailing, ChargeSettings.limitRange.lowerBound)
-        Confirmations.shared.show(sailing == 0 ? "Sailing off" : "Sailing \(lower)–\(settings.limit)%")
+        Confirmations.shared.show(
+            sailing == 0 ? String(localized: "Sailing off") : String(localized: "Sailing \(lower)–\(settings.limit)%"))
     }
 
     // MARK: Heat, MagSafe, sleep
@@ -143,13 +178,15 @@ struct ControlPage: View {
     private func heat(_ settings: ChargeSettings) -> some View {
         Panel {
             VStack(alignment: .leading, spacing: 0) {
-                PanelHeader(title: "Heat", symbol: "thermometer.medium")
+                PanelHeader(title: String(localized: "Heat"), symbol: "thermometer.medium")
                 SettingRow(
-                    title: "Pause charging when warm",
+                    title: String(localized: "Pause charging when warm"),
                     detail: Text("Charging resumes once the battery cools by \(unit == .celsius ? "2 °C" : "4 °F")."),
                     divider: false
                 ) {
-                    switchFor(\.heatProtection, on: "Heat guard on", off: "Heat guard off")
+                    switchFor(
+                        \.heatProtection, on: String(localized: "Heat guard on"),
+                        off: String(localized: "Heat guard off"))
                 }
                 .padding(.top, 6)
                 if settings.heatProtection {
@@ -161,7 +198,7 @@ struct ControlPage: View {
                                 value: unit.format(settings.heatThreshold, decimals: 0),
                                 canDecrement: settings.heatThreshold > ChargeSettings.heatThresholdRange.lowerBound,
                                 canIncrement: settings.heatThreshold < ChargeSettings.heatThresholdRange.upperBound,
-                                accessibilityLabel: "Pause charging above",
+                                accessibilityLabel: String(localized: "Pause charging above"),
                                 decrement: { changeHeat(-1) }, increment: { changeHeat(1) })
                         }
                         TemperatureStrip(
@@ -181,13 +218,13 @@ struct ControlPage: View {
         let range = ChargeSettings.heatThresholdRange
         let value = min(max(settings.heatThreshold + delta, range.lowerBound), range.upperBound)
         withAnimation(.spring(response: 0.35, dampingFraction: 0.86)) { model.update { $0.heatThreshold = value } }
-        Confirmations.shared.show("Pause above \(unit.format(value, decimals: 0))")
+        Confirmations.shared.show(String(localized: "Pause above \(unit.format(value, decimals: 0))"))
     }
 
     private func magSafe(_ settings: ChargeSettings) -> some View {
         Panel {
             VStack(alignment: .leading, spacing: 14) {
-                PanelHeader(title: "MagSafe light", symbol: "bolt")
+                PanelHeader(title: String(localized: "MagSafe light"), symbol: "bolt")
                 HStack {
                     MagSafePlug(
                         isOff: settings.magSafeLED == .off,
@@ -198,19 +235,26 @@ struct ControlPage: View {
                     .frame(width: 132, height: 40)
                     Spacer()
                     SlidingSegments(
-                        options: [(MagSafeLEDMode.system, "Automatic"), (.off, "Off")],
+                        options: [
+                            (MagSafeLEDMode.system, String(localized: "Automatic")), (.off, String(localized: "Off")),
+                        ],
                         selection: Binding(
                             get: { model.settings?.magSafeLED ?? .system },
                             set: { mode in
                                 model.update { $0.magSafeLED = mode }
                                 Confirmations.shared.show(
-                                    mode == .off ? "MagSafe light off" : "MagSafe light automatic")
+                                    mode == .off
+                                        ? String(localized: "MagSafe light off")
+                                        : String(localized: "MagSafe light automatic"))
                             }))
                 }
                 Text(
                     settings.magSafeLED == .off
-                        ? "Off keeps the light dark, including while charging."
-                        : "Automatic lets the light show charging as usual: amber while charging, green when held."
+                        ? String(localized: "Off keeps the light dark, including while charging.")
+                        : String(
+                            localized:
+                                "Automatic lets the light show charging as usual: amber while charging, green when held."
+                        )
                 )
                 .font(.system(size: 12))
                 .foregroundStyle(.tertiary)
@@ -222,14 +266,16 @@ struct ControlPage: View {
     private func sleep(_ settings: ChargeSettings) -> some View {
         Panel {
             VStack(alignment: .leading, spacing: 0) {
-                PanelHeader(title: "Sleep", symbol: "moon")
+                PanelHeader(title: String(localized: "Sleep"), symbol: "moon")
                 SettingRow(
-                    title: "Keep discharging while asleep",
+                    title: String(localized: "Keep discharging while asleep"),
                     detail: Text(
                         "Before the Mac sleeps, Chargectl reconnects wall power if it had cut it to discharge. Turn this on to keep discharging while asleep. macOS holds the limit itself during sleep; where it can’t hold yours, wall power stays cut while asleep so the battery only drifts down a little."
                     ), divider: false
                 ) {
-                    switchFor(\.holdAsleep, on: "Discharge while asleep on", off: "Discharge while asleep off")
+                    switchFor(
+                        \.holdAsleep, on: String(localized: "Discharge while asleep on"),
+                        off: String(localized: "Discharge while asleep off"))
                 }
                 .padding(.top, 6)
             }
@@ -242,7 +288,7 @@ struct ControlPage: View {
         let schedule = settings.fullBy
         return Panel {
             VStack(alignment: .leading, spacing: 0) {
-                PanelHeader(title: "Full by", symbol: "clock") {
+                PanelHeader(title: String(localized: "Full by"), symbol: "clock") {
                     if case .fullBy(let deadline) = model.status?.mode {
                         Label(
                             "Charging for \(deadline.formatted(date: .omitted, time: .shortened))",
@@ -257,7 +303,7 @@ struct ControlPage: View {
                     }
                 }
                 SettingRow(
-                    title: "Charge to 100% by a set time",
+                    title: String(localized: "Charge to 100% by a set time"),
                     detail: Text(
                         "Starts just long enough before, so the battery isn’t kept full for hours, then goes back to \(Text("\(settings.limit)%").foregroundStyle(.primary))."
                     ), divider: false
@@ -275,7 +321,10 @@ struct ControlPage: View {
                                             : nil
                                     }
                                 }
-                                Confirmations.shared.show(on ? "Full by weekdays at 8:00" : "Full by off")
+                                Confirmations.shared.show(
+                                    on
+                                        ? String(localized: "Full by weekdays at 8:00")
+                                        : String(localized: "Full by off"))
                             })
                     )
                     .toggleStyle(GlowSwitchStyle())
@@ -286,7 +335,7 @@ struct ControlPage: View {
                 if let schedule {
                     FullByEditor(schedule: schedule, percent: model.battery?.percent ?? settings.limit) { changed in
                         model.update { $0.fullBy = changed }
-                        Confirmations.shared.show("Full by \(changed.summary)")
+                        Confirmations.shared.show(String(localized: "Full by \(changed.localizedSummary)"))
                     }
                     .padding(.top, 12)
                     .overlay(alignment: .top) { Rectangle().fill(Theme.line).frame(height: 1) }
@@ -302,9 +351,10 @@ struct ControlPage: View {
         let calendar = Calendar.current
         let day =
             calendar.isDateInToday(date)
-            ? "Today" : calendar.isDateInTomorrow(date) ? "Tomorrow" : date.formatted(.dateTime.weekday(.wide))
+            ? String(localized: "Today")
+            : calendar.isDateInTomorrow(date) ? String(localized: "Tomorrow") : date.formatted(.dateTime.weekday(.wide))
         let time = date.formatted(date: .omitted, time: .shortened)
-        return once ? "\(day) only, \(time)" : "Next: \(day), \(time)"
+        return once ? String(localized: "\(day) only, \(time)") : String(localized: "Next: \(day), \(time)")
     }
 
     // MARK: Master switch
@@ -312,14 +362,15 @@ struct ControlPage: View {
     private func master(_ settings: ChargeSettings) -> some View {
         Panel(tint: settings.isEnabled ? nil : Theme.warn) {
             VStack(alignment: .leading, spacing: 10) {
-                PanelHeader(title: "Charge control", symbol: "shield")
+                PanelHeader(title: String(localized: "Charge control"), symbol: "shield")
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 3) {
-                        Text(settings.isEnabled ? "On" : "Off").font(.system(size: 15, weight: .semibold))
+                        Text(settings.isEnabled ? String(localized: "On") : String(localized: "Off")).font(
+                            .system(size: 15, weight: .semibold))
                         Text(
                             settings.isEnabled
-                                ? "Chargectl manages charging with the rules on this page."
-                                : "macOS manages charging and charges to 100%."
+                                ? String(localized: "Chargectl manages charging with the rules on this page.")
+                                : String(localized: "macOS manages charging and charges to 100%.")
                         )
                         .font(.system(size: 12))
                         .foregroundStyle(.tertiary)
@@ -335,7 +386,7 @@ struct ControlPage: View {
                                     withAnimation(.spring(response: 0.35, dampingFraction: 0.86)) {
                                         model.update { $0.isEnabled = true }
                                     }
-                                    Confirmations.shared.show("Charge control on")
+                                    Confirmations.shared.show(String(localized: "Charge control on"))
                                 } else {
                                     confirmingOff = true
                                 }
@@ -360,7 +411,7 @@ struct ControlPage: View {
                                     withAnimation(.spring(response: 0.35, dampingFraction: 0.86)) {
                                         model.update { $0.isEnabled = false }
                                     }
-                                    Confirmations.shared.show("Charge control off")
+                                    Confirmations.shared.show(String(localized: "Charge control off"))
                                 }
                                 .buttonStyle(SoftButtonStyle(kind: .danger, small: true))
                             }
@@ -384,7 +435,7 @@ struct ControlPage: View {
             Spacer()
             Button("Turn On") {
                 withAnimation(.spring(response: 0.35, dampingFraction: 0.86)) { model.update { $0.isEnabled = true } }
-                Confirmations.shared.show("Charge control on")
+                Confirmations.shared.show(String(localized: "Charge control on"))
             }
             .buttonStyle(SoftButtonStyle(small: true))
         }
@@ -411,9 +462,6 @@ struct ControlPage: View {
         .labelsHidden()
     }
 }
-
-// MARK: - Parts
-
 private struct TightLabelStyle: LabelStyle {
     let tint: Color
 
@@ -424,7 +472,6 @@ private struct TightLabelStyle: LabelStyle {
         }
     }
 }
-
 extension View {
     /// Settings that are paused while charge control is off.
     func dimmed(_ isDimmed: Bool) -> some View {
@@ -434,8 +481,6 @@ extension View {
             .animation(.easeOut(duration: 0.3), value: isDimmed)
     }
 }
-
-/// A setting as a row: what it does in bold, what that means underneath, the control on the right.
 struct SettingRow<Control: View>: View {
     let title: String
     var detail: Text?
@@ -447,7 +492,7 @@ struct SettingRow<Control: View>: View {
     var body: some View {
         HStack(alignment: .center, spacing: 16) {
             VStack(alignment: .leading, spacing: 2) {
-                Text(title).font(.system(size: 13, weight: .medium))
+                Text(LocalizedStringKey(title)).font(.system(size: 13, weight: .medium))
                 if let detail {
                     detail
                         .font(.system(size: 12))
@@ -472,9 +517,6 @@ struct SettingRow<Control: View>: View {
         .accessibilityElement(children: .contain)
     }
 }
-
-/// The time and days of a Full by schedule, and when charging will start: big digits, the time
-/// on a day track, and the seven days with Weekdays, Every day and Once as shortcuts.
 private struct FullByEditor: View {
     let schedule: FullBySchedule
     let percent: Int
@@ -540,7 +582,10 @@ private struct FullByEditor: View {
 
     private var repeatSegments: some View {
         SlidingSegments(
-            options: [(Repeat.weekdays, "Weekdays"), (.everyDay, "Every day"), (.once, "Once")],
+            options: [
+                (Repeat.weekdays, String(localized: "Weekdays")), (.everyDay, String(localized: "Every day")),
+                (.once, String(localized: "Once")),
+            ],
             selection: Binding(get: { repeating }, set: setRepeat), compact: true
         )
         .fixedSize()
@@ -603,8 +648,6 @@ private struct FullByEditor: View {
         withAnimation(.spring(response: 0.35, dampingFraction: 0.86)) { change(changed) }
     }
 }
-
-/// Times of day as the user's clock shows them.
 enum ClockTime {
     /// A minute of the day, wrapped to 0..<1440, on today's date.
     static func date(_ minutes: Int) -> Date {
@@ -631,8 +674,6 @@ enum ClockTime {
         date(hour * 60).formatted(.dateTime.hour())
     }
 }
-
-/// The Full by time in the same thin digits as the charge limit, rolling as it changes.
 private struct TimeDigits: View {
     let minutes: Int
 
@@ -654,11 +695,6 @@ private struct TimeDigits: View {
         .accessibilityElement(children: .combine)
     }
 }
-
-/// A day from midnight to midnight: the Full by time as a knob, the charging window before it as
-/// a green stretch, hour ticks and now. Click or drag to set the time, which snaps to 15
-/// minutes and ticks on each hour; hover to preview one. Arrow keys move 15 minutes, Shift an
-/// hour.
 private struct DayTrack: View {
     let saved: Int
     let lead: Int
@@ -861,8 +897,6 @@ private struct DayTrack: View {
         }
     }
 }
-
-/// A round day letter that fills green when chosen.
 private struct DayChipStyle: ButtonStyle {
     let isOn: Bool
 
@@ -878,8 +912,6 @@ private struct DayChipStyle: ButtonStyle {
             .contentShape(Circle())
     }
 }
-
-/// A short line down and to the right: this setting belongs to the one above it.
 nonisolated struct Elbow: Shape {
     func path(in rect: CGRect) -> Path {
         Path { path in
@@ -890,10 +922,6 @@ nonisolated struct Elbow: Shape {
         }
     }
 }
-
-/// The limit slider: a ruler from 20 to 100%, the sailing range hatched under the limit, today's
-/// charge as a small marker, and a thumb with a value bubble while dragging. Arrow keys move 1%,
-/// Shift 5%. Also used by setup.
 struct LimitSlider: View {
     let limit: Int
     let saved: Int
@@ -1021,8 +1049,6 @@ struct LimitSlider: View {
         }
     }
 }
-
-/// The charging rules as one sentence, numbers highlighted.
 private struct RuleSentence: View {
     let settings: ChargeSettings
     let limit: Int
@@ -1046,25 +1072,28 @@ private struct RuleSentence: View {
     }
 
     private func sentence(lower: Int) -> AttributedString {
-        if limit >= 100 { return plain("The battery charges ") + mark("fully") + plain(".") }
-        var text = plain("Charging stops at ") + mark("\(limit)%") + plain(" and the Mac keeps running on the charger.")
+        if limit >= 100 {
+            return AttributedString(localized: "The battery charges \(mark(String(localized: "fully"))).")
+        }
+        var text = AttributedString(
+            localized: "Charging stops at \(mark("\(limit)%")) and the Mac keeps running on the charger.")
         if settings.sailing > 0 {
-            text +=
-                plain(" If the charge drifts down, it is not topped up until it reaches ") + mark("\(lower)%")
-                + plain(".")
+            text += AttributedString(
+                localized: " If the charge drifts down, it is not topped up until it reaches \(mark("\(lower)%")).")
         }
         text +=
             settings.autoDischarge
-            ? plain(" Plugged in above the limit, the battery discharges down to ") + mark("\(limit)%") + plain(".")
-            : plain(" Plugged in above the limit, the Mac runs on the charger and the battery stays where it is.")
+            ? AttributedString(
+                localized: " Plugged in above the limit, the battery discharges down to \(mark("\(limit)%")).")
+            : AttributedString(
+                localized: " Plugged in above the limit, the Mac runs on the charger and the battery stays where it is."
+            )
         if settings.heatProtection {
-            text +=
-                plain(" Charging pauses above ") + mark(unit.format(settings.heatThreshold, decimals: 0)) + plain(".")
+            text += AttributedString(
+                localized: " Charging pauses above \(mark(unit.format(settings.heatThreshold, decimals: 0))).")
         }
         return text
     }
-
-    private func plain(_ text: String) -> AttributedString { AttributedString(text) }
 
     private func mark(_ text: String) -> AttributedString {
         var value = AttributedString(" \(text) ")
@@ -1074,8 +1103,6 @@ private struct RuleSentence: View {
         return value
     }
 }
-
-/// Cool blue to hot red with today's temperature and the cut-off marked.
 private struct TemperatureStrip: View {
     let now: Double?
     let threshold: Double
@@ -1125,8 +1152,6 @@ private struct TemperatureStrip: View {
             "Battery temperature \(unit.format(now)), charging pauses above \(unit.format(threshold, decimals: 0))")
     }
 }
-
-/// A MagSafe connector in the side of a Mac, its light showing the chosen mode.
 private struct MagSafePlug: View {
     let isOff: Bool
     let color: Color

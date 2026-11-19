@@ -169,11 +169,11 @@ enum UpdateError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .noRelease: "GitHub did not return a release."
-        case .download: "The download failed."
-        case .checksum: "The download did not match its checksum."
-        case .wrongApp: "The download is not the expected Chargectl version."
-        case .tool(let name): "\(name) failed."
+        case .noRelease: String(localized: "GitHub did not return a release.")
+        case .download: String(localized: "The download failed.")
+        case .checksum: String(localized: "The download did not match its checksum.")
+        case .wrongApp: String(localized: "The download is not the expected Chargectl version.")
+        case .tool(let name): String(localized: "\(name) failed.")
         }
     }
 }

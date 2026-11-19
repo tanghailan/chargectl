@@ -95,21 +95,27 @@ struct WelcomeView: View {
 
     private var title: String {
         switch step {
-        case .welcome: "Welcome to Chargectl"
-        case .helper: "Install the helper"
-        case .limit: "Choose a limit"
-        case .done: "You’re all set"
+        case .welcome: String(localized: "Welcome to Chargectl")
+        case .helper: String(localized: "Install the helper")
+        case .limit: String(localized: "Choose a limit")
+        case .done: String(localized: "You’re all set")
         }
     }
 
     private var message: String {
         switch step {
-        case .welcome: "Keep your MacBook’s battery at a charge limit, right from the menu bar."
+        case .welcome: String(localized: "Keep your MacBook’s battery at a charge limit, right from the menu bar.")
         case .helper:
-            "Charging is controlled by a small helper that runs as an administrator, also while Chargectl is closed."
-        case .limit: "Charging stops here and your Mac keeps running on the charger."
+            String(
+                localized:
+                    "Charging is controlled by a small helper that runs as an administrator, also while Chargectl is closed."
+            )
+        case .limit: String(localized: "Charging stops here and your Mac keeps running on the charger.")
         case .done:
-            "Chargectl lives in your menu bar. Click the ring any time to see your battery and change the limit."
+            String(
+                localized:
+                    "Chargectl lives in your menu bar. Click the ring any time to see your battery and change the limit."
+            )
         }
     }
 
@@ -123,11 +129,13 @@ struct WelcomeView: View {
             if model.settings != nil, model.isControllable {
                 let limit = currentLimit
                 LimitRing(
-                    fill: model.battery?.percent ?? limit, limit: limit, number: limit, caption: "Limit",
+                    fill: model.battery?.percent ?? limit, limit: limit, number: limit,
+                    caption: String(localized: "Limit"),
                     smooth: draftLimit == nil)
             } else {
                 let percent = model.battery?.percent ?? 0
-                LimitRing(fill: percent, limit: 100, number: percent, caption: "Charge now").opacity(0.55)
+                LimitRing(fill: percent, limit: 100, number: percent, caption: String(localized: "Charge now")).opacity(
+                    0.55)
             }
         case .done:
             MenuBarPreview(model: model)
@@ -147,11 +155,17 @@ struct WelcomeView: View {
 
     private var features: some View {
         HStack(alignment: .top, spacing: 0) {
-            Feature(symbol: "battery.75percent", title: "A charge limit", text: "Stop anywhere from 20% to 100%.")
+            Feature(
+                symbol: "battery.75percent", title: String(localized: "A charge limit"),
+                text: String(localized: "Stop anywhere from 20% to 100%."))
             Rectangle().fill(Theme.line).frame(width: 1, height: 52)
-            Feature(symbol: "bolt", title: "Live power", text: "Watts in and out, second by second.")
+            Feature(
+                symbol: "bolt", title: String(localized: "Live power"),
+                text: String(localized: "Watts in and out, second by second."))
             Rectangle().fill(Theme.line).frame(width: 1, height: 52)
-            Feature(symbol: "chart.xyaxis.line", title: "History", text: "Charge and heat over the last day.")
+            Feature(
+                symbol: "chart.xyaxis.line", title: String(localized: "History"),
+                text: String(localized: "Charge and heat over the last day."))
         }
     }
 
@@ -162,17 +176,20 @@ struct WelcomeView: View {
             Panel(padding: 0) {
                 VStack(spacing: 0) {
                     TaskRow(
-                        number: 1, title: "Install the helper",
-                        detail: needsApproval ? "Adds it to Login Items." : "macOS asks for your password once.",
+                        number: 1, title: String(localized: "Install the helper"),
+                        detail: needsApproval
+                            ? String(localized: "Adds it to Login Items.")
+                            : String(localized: "macOS asks for your password once."),
                         phase: isInstalled ? .done : model.isInstallingService ? .working : .current, divider: false)
                     if needsApproval {
                         TaskRow(
-                            number: 2, title: "Allow it in Login Items",
-                            detail: "System Settings › General › Login Items & Extensions.",
+                            number: 2, title: String(localized: "Allow it in Login Items"),
+                            detail: String(localized: "System Settings › General › Login Items & Extensions."),
                             phase: !isInstalled ? .waiting : model.service == .needsApproval ? .current : .done)
                     }
                     TaskRow(
-                        number: needsApproval ? 3 : 2, title: "Helper running", detail: runningDetail,
+                        number: needsApproval ? 3 : 2, title: String(localized: "Helper running"),
+                        detail: runningDetail,
                         phase: runningPhase)
                 }
             }
@@ -208,9 +225,9 @@ struct WelcomeView: View {
 
     private var runningDetail: String {
         switch model.service {
-        case .running: "Charge control is on."
-        case .notResponding: "It stopped answering. Install it again."
-        default: "Starts by itself once it’s installed."
+        case .running: String(localized: "Charge control is on.")
+        case .notResponding: String(localized: "It stopped answering. Install it again.")
+        default: String(localized: "Starts by itself once it’s installed.")
         }
     }
 
@@ -244,7 +261,7 @@ struct WelcomeView: View {
                         Text("Plugged in above the limit").font(.system(size: 13, weight: .medium))
                         Spacer()
                         SlidingSegments(
-                            options: [(false, "Hold"), (true, "Discharge")],
+                            options: [(false, String(localized: "Hold")), (true, String(localized: "Discharge"))],
                             selection: Binding(
                                 get: { settings.autoDischarge },
                                 set: { value in model.update { $0.autoDischarge = value } }))
@@ -274,7 +291,7 @@ struct WelcomeView: View {
                             .foregroundStyle(.tertiary)
                     }
                     Spacer(minLength: 8)
-                    Button("Install Helper") { go(to: .helper) }
+                    Button(String(localized: "Install Helper")) { go(to: .helper) }
                         .buttonStyle(SoftButtonStyle(small: true))
                 }
             }
@@ -287,23 +304,28 @@ struct WelcomeView: View {
     private var summary: some View {
         Panel(padding: 0) {
             VStack(spacing: 0) {
-                SettingRow(title: "Charge limit", divider: false) {
+                SettingRow(title: String(localized: "Charge limit"), divider: false) {
                     value(model.settings.map { "\($0.limit)%" } ?? "–")
                 }
-                SettingRow(title: "Above the limit") {
-                    value(model.settings.map { $0.autoDischarge ? "Discharge" : "Hold" } ?? "–")
+                SettingRow(title: String(localized: "Above the limit")) {
+                    value(
+                        model.settings.map {
+                            $0.autoDischarge ? String(localized: "Discharge") : String(localized: "Hold")
+                        } ?? "–")
                 }
-                SettingRow(title: "Helper") {
+                SettingRow(title: String(localized: "Helper")) {
                     HStack(spacing: 8) {
                         if model.service == .running {
                             PulseDot()
                         } else {
                             Circle().fill(Theme.warn).frame(width: 7, height: 7)
                         }
-                        value(model.service == .running ? "Running" : "Not installed")
+                        value(
+                            model.service == .running
+                                ? String(localized: "Running") : String(localized: "Not installed"))
                     }
                 }
-                SettingRow(title: "Open Chargectl at login") {
+                SettingRow(title: String(localized: "Open Chargectl at login")) {
                     Toggle("", isOn: $opensAtLogin)
                         .toggleStyle(GlowSwitchStyle())
                         .labelsHidden()
@@ -354,27 +376,33 @@ struct WelcomeView: View {
 
     @ViewBuilder private var primaryButton: some View {
         switch step {
-        case .welcome: primary("Get Started") { go(to: .helper) }
+        case .welcome: primary(String(localized: "Get Started")) { go(to: .helper) }
         case .helper: helperButton
-        case .limit: primary("Continue") { go(to: .done) }
-        case .done: primary("Open Chargectl") { finish() }
+        case .limit: primary(String(localized: "Continue")) { go(to: .done) }
+        case .done: primary(String(localized: "Open Chargectl")) { finish() }
         }
     }
 
     @ViewBuilder private var helperButton: some View {
         switch model.service {
         case .running:
-            primary("Continue") { go(to: .limit) }
+            primary(String(localized: "Continue")) { go(to: .limit) }
         case .needsApproval:
-            primary("Open Login Items") { ServiceInstaller.openLoginItems() }
+            primary(String(localized: "Open Login Items")) { ServiceInstaller.openLoginItems() }
         case .checking where isInstalled:
-            primary("Starting…", enabled: false) {}
+            primary(String(localized: "Starting…"), enabled: false) {}
         case .notResponding:
-            primary(model.isInstallingService ? "Installing…" : "Install Again", enabled: !model.isInstallingService) {
+            primary(
+                model.isInstallingService ? String(localized: "Installing…") : String(localized: "Install Again"),
+                enabled: !model.isInstallingService
+            ) {
                 model.installService()
             }
         default:
-            primary(model.isInstallingService ? "Installing…" : "Install Helper", enabled: !model.isInstallingService) {
+            primary(
+                model.isInstallingService ? String(localized: "Installing…") : String(localized: "Install Helper"),
+                enabled: !model.isInstallingService
+            ) {
                 model.installService()
             }
         }
@@ -420,7 +448,7 @@ struct WelcomeView: View {
                 try SMAppService.mainApp.unregister()
             }
         } catch {
-            model.message = "Open at login could not be changed: \(error.localizedDescription)"
+            model.message = String(localized: "Open at login could not be changed: \(error.localizedDescription)")
         }
         opensAtLogin = SMAppService.mainApp.status == .enabled
     }
@@ -482,7 +510,8 @@ private struct WelcomeRing: View {
 
     var body: some View {
         LimitRing(
-            fill: charge, limit: limit, number: charge, caption: charge < limit ? "Charging" : "Held at the limit"
+            fill: charge, limit: limit, number: charge,
+            caption: charge < limit ? String(localized: "Charging") : String(localized: "Held at the limit")
         )
         .accessibilityHidden(true)
         .task {
@@ -522,7 +551,7 @@ private struct HelperDiagram: View {
                     .frame(width: 58, height: 58)
             }
             Beam(style: links.0).frame(height: 48)
-            node("Helper") {
+            node(String(localized: "Helper")) {
                 tile {
                     Image(systemName: "lock.shield")
                         .font(.system(size: 19))
@@ -531,7 +560,7 @@ private struct HelperDiagram: View {
                 }
             }
             Beam(style: links.1).frame(height: 48)
-            node("Battery") {
+            node(String(localized: "Battery")) {
                 tile {
                     Image(systemName: "battery.75percent")
                         .font(.system(size: 18))
@@ -797,11 +826,11 @@ private struct TaskRow: View {
 
     private var accessibilityValue: String {
         switch phase {
-        case .waiting: "Not yet"
-        case .current: "Next"
-        case .working: "In progress"
-        case .done: "Done"
-        case .failed: "Failed"
+        case .waiting: String(localized: "Not yet")
+        case .current: String(localized: "Next")
+        case .working: String(localized: "In progress")
+        case .done: String(localized: "Done")
+        case .failed: String(localized: "Failed")
         }
     }
 }

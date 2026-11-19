@@ -139,7 +139,7 @@ struct PanelHeader<Trailing: View>: View {
                 .font(.system(size: 12, weight: .medium))
                 .foregroundStyle(.tertiary)
                 .frame(width: 15)
-            Text(title).font(.system(size: 12, weight: .medium)).foregroundStyle(.secondary)
+            Text(LocalizedStringKey(title)).font(.system(size: 12, weight: .medium)).foregroundStyle(.secondary)
             Spacer(minLength: 8)
             trailing
                 .font(.system(size: 12))
@@ -495,9 +495,9 @@ struct StatusIsland: View {
     private var title: String {
         switch model.service {
         case .running, .checking: model.activitySummary.capitalizedFirst
-        case .notInstalled: "Helper not installed"
-        case .needsApproval: "Helper needs approval"
-        case .notResponding: "Helper not responding"
+        case .notInstalled: String(localized: "Helper not installed")
+        case .needsApproval: String(localized: "Helper needs approval")
+        case .notResponding: String(localized: "Helper not responding")
         }
     }
 

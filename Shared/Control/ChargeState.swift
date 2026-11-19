@@ -27,6 +27,16 @@ nonisolated enum ChargeMode: Codable, Equatable, Sendable {
         case .fullBy: "full charge"
         }
     }
+
+    var localizedTitle: String {
+        switch self {
+        case .automatic: String(localized: "automatic")
+        case .topUp: String(localized: "top up")
+        case .discharge: String(localized: "discharge")
+        case .calibrate: String(localized: "calibration")
+        case .fullBy: String(localized: "full charge")
+        }
+    }
 }
 
 /// Where an automatic charge stands while the charger is connected. One value instead of a hold
@@ -176,6 +186,33 @@ nonisolated enum ChargeActivity: Codable, Equatable, Sendable {
         case .calibrating(.draining): "calibrating, draining to \(ChargePolicy.calibrationFloor)%"
         case .calibrating(.charging): "calibrating, charging to 100%"
         case .calibrating(.holding): "calibrating, resting at 100%"
+        }
+    }
+
+    var localizedSummary: String {
+        switch self {
+        case .starting: String(localized: "starting charge control")
+        case .off: String(localized: "charge control off")
+        case .onBattery: String(localized: "on battery")
+        case .charging(let target): String(localized: "charging to \(target)%")
+        case .full: String(localized: "fully charged")
+        case .sailing(let limit, let lowerBound):
+            limit == lowerBound
+                ? String(localized: "holding at \(limit)%") : String(localized: "sailing down to \(lowerBound)%")
+        case .aboveLimit: String(localized: "above the limit, discharging")
+        case .holdingAbove: String(localized: "above the limit, running on the charger")
+        case .holding(let level): String(localized: "holding at \(level)%, running on the charger")
+        case .sailingHold(_, let resumeAt): String(localized: "sailing on the charger, charges again at \(resumeAt)%")
+        case .stoppedOvercharge(let target):
+            String(localized: "macOS kept charging past \(target)%; running on battery back to it")
+        case .discharging(let target): String(localized: "discharging to \(target)%")
+        case .heatPaused: String(localized: "too warm, charging paused")
+        case .toppingUp: String(localized: "topping up to 100%")
+        case .chargingFull(let deadline):
+            String(localized: "charging to 100% by \(deadline.formatted(date: .omitted, time: .shortened))")
+        case .calibrating(.draining): String(localized: "calibrating, draining to \(ChargePolicy.calibrationFloor)%")
+        case .calibrating(.charging): String(localized: "calibrating, charging to 100%")
+        case .calibrating(.holding): String(localized: "calibrating, resting at 100%")
         }
     }
 
